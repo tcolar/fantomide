@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE module_updates PUBLIC "-//NetBeans//DTD Autoupdate Catalog 2.6//EN" "http://www.netbeans.org/dtds/autoupdate-catalog-2_6.dtd">
+<module_updates timestamp="25/28/19/07/07/2009">
+
+
+<module_group name="Languages Support">
+
+<module codenamebase="net.colar.netbeans.fan" distribution="net-colar-netbeans-fan.nbm" downloadsize="160265" homepage="http://wiki.colar.net/" license="AD9FBBC9" moduleauthor="Thibaut Colar" needsrestart="false" releasedate="2009/07/07">
+    <manifest AutoUpdate-Show-In-Client="true" OpenIDE-Module="net.colar.netbeans.fan/1" OpenIDE-Module-Display-Category="Languages Support" OpenIDE-Module-Implementation-Version="1" OpenIDE-Module-Java-Dependencies="Java &gt; 1.5" OpenIDE-Module-Long-Description="Fan language:&#10;http://www.fandev.org/&#10;&#10;Thibaut Colar&#10;http://wiki.colar.net/" OpenIDE-Module-Module-Dependencies="org.antlr/3, org.netbeans.modules.csl.api/1 &gt; 1.9.1.1.1.1.1, org.netbeans.modules.lexer/2 &gt; 1.30.1.1, org.netbeans.modules.parsing.api &gt; 1.14.1.1, org.openide.filesystems &gt; 7.21.1.1.1" OpenIDE-Module-Name="Fan" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="Support for the Fan programming lang." OpenIDE-Module-Specification-Version="1.0"/>
+    
+</module>
+
+</module_group>
+
+<module_group name="Libraries">
+
+<module autoload="true" codenamebase="org.antlr" distribution="org-antlr.nbm" downloadsize="140100" homepage="" license="AD9FBBC9" moduleauthor="" needsrestart="false" releasedate="2009/07/07">
+    <manifest AutoUpdate-Show-In-Client="false" OpenIDE-Module="org.antlr/3" OpenIDE-Module-Display-Category="Libraries" OpenIDE-Module-Implementation-Version="3" OpenIDE-Module-Java-Dependencies="Java &gt; 1.4" OpenIDE-Module-Long-Description="ANTLR runtime library version 3.1.3&#10;http://www.antlr.org/" OpenIDE-Module-Name="antlr-runtime-3.1.3" OpenIDE-Module-Requires="org.openide.modules.ModuleFormat1" OpenIDE-Module-Short-Description="antlr-runtime" OpenIDE-Module-Specification-Version="3.3"/>
+    
+</module>
+
+</module_group>
+
+<license name="AD9FBBC9" url="licenses/AD9FBBC9.license"/>
+</module_updates>
+
