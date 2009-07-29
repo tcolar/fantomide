@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="net.colar.netbeans.fan/1">
-    <module_version install_time="1248595037703" last="true" origin="installer" specification_version="1.0">
-        <file crc="4001427134" name="config/Modules/net-colar-netbeans-fan.xml"/>
-        <file crc="3030638597" name="modules/net-colar-netbeans-fan.jar"/>
-    </module_version>
-</module>
