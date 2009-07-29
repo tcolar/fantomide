@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: net.jot
+OpenIDE-Module-Localizing-Bundle: net/jot/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
