@@ -5,4 +5,17 @@
 <project name="FanSuite" basedir=".">
     <description>Builds the module suite FanSuite.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <target name="FAN_releases" description="Build releases.">
+	<delete dir="build" includeemptydirs="true" includes="**/*"/>
+	<delete dir="release" includeemptydirs="true" includes="**/*"/>
+	<delete dir="dist" includeemptydirs="true" includes="**/*"/>
+	<ant target="build-zip"/>
+	<ant target="build-mac"/>
+	<copy file="dist/fansuite.zip" todir="release"/>
+	<zip zipfile="release/fansuite.app.zip">
+	    <fileset dir="dist/fansuite.app"/>
+	</zip>
+    </target>
+
 </project>
