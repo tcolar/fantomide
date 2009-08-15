@@ -14,9 +14,7 @@
 	<ant target="build-zip"/>
 	<ant target="build-mac"/>
 	<copy file="dist/fansuite.zip" todir="release"/>
-	<zip zipfile="release/fansuite.app.zip">
-	    <fileset dir="dist/fansuite.app"/>
-	</zip>
+	<tar tarfile="release/fansuite.app.tgz" basedir="dist" includes="fansuite.app/**" compression="gzip"/>
 	<ant target="nbms"/>
 	<copy todir="release/plugin" overwrite="true" verbose="true">
 	    <fileset dir="build/updates/"/>
