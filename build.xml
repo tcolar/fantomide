@@ -10,6 +10,7 @@
 	<delete dir="build" includeemptydirs="true" includes="**/*"/>
 	<delete dir="release" includeemptydirs="true" includes="**/*"/>
 	<delete dir="dist" includeemptydirs="true" includes="**/*"/>
+	<ant target="nbms"/>
 	<ant target="build-zip"/>
 	<ant target="build-mac"/>
 	<copy file="dist/fansuite.zip" todir="release"/>
@@ -20,6 +21,9 @@
 	<copy todir="release/plugin" overwrite="true" verbose="true">
 	    <fileset dir="build/updates/"/>
 	</copy>
+	<zip zipfile="release/plugin/all-nbms.zip">
+	    <fileset dir="release/plugin/" includes="*.nbm"/>
+	</zip>
     </target>
 
 </project>
