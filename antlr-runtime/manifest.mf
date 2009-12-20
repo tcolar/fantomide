@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module: org.antlr/3
-OpenIDE-Module-Implementation-Version: 3
-OpenIDE-Module-Localizing-Bundle: org/antlr/Bundle.properties
-

@@ -25,9 +25,6 @@
 		<copy todir="release/plugin" overwrite="true" verbose="true">
 			<fileset dir="build/updates/"/>
 		</copy>
-		<zip zipfile="release/plugin/all-nbms.zip">
-			<fileset dir="release/plugin/" includes="*.nbm"/>
-		</zip>
 	</target>
 
 
