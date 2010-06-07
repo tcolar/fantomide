@@ -7,7 +7,7 @@ To intall the standalone IDE, download and install:
 To install the plugin:
 
 IMPORTANT:update.xml mow points to a plugin built for netbeans 6.9
-For netbeans 6.7 point to nb6.8-updates.xml instead.
+For netbeans 6.8 point to nb6.8-updates.xml instead.
 
   - Open Netbeans
   - Go to tools / plugins
