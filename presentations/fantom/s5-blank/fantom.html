@@ -10,7 +10,7 @@
         <meta name="version" content="S5 1.1" />
         <meta name="presdate" content="20050728" />
         <meta name="author" content="Thibaut Colar" />
-        <meta name="company" content="" />
+        <meta name="company" content="tcolar@colar.net" />
         <!-- configuration parameters -->
         <meta name="defaultView" content="slideshow" />
         <meta name="controlVis" content="hidden" />
@@ -41,33 +41,92 @@
             <div class="slide">
                 <h1>The Fantom language</h1>
                 <h2><a href="http://www.fantom.org/">http://www.fantom.org/</a></h2>
+                <h3>This presentation online:</h3>
+                <h4><a href="http://wiki.colar.net/fantompres">http://wiki.colar.net/fantompres</a></h4>
                 <h3>Thibaut Colar</h3>
-                <h4></h4>
+                <h4>tcolar @ colar.net</h4>
             </div>
 
             <!-- ============ Begin slides ============= -->    
 
             <div class="slide">
-                <h1>About Fantom</h1>
+                <h1>Why Fantom ?</h1>
                 <ul>
-                    <li>Brian & Andy Frank</li>
-                    <div class="handout">Java & .Net background. Java/ Javascript</div>
-                    <li>History</li>
+                    <li>Brian And Andy Frank</li><div class="handout">TODO Java & .Net background. Java/ JavaScript</div>
+                    <li>History</li><div class="handout">TODO see http://fantom.org/sidewalk/topic/355    http://fantom.org/sidewalk/topic/1107</div>
+                    <!-- currently ~ 1.0 release -->
+                    <li>Solve real Java and C# problems</li>
+                    <li>Practical programming</li> <div class="handout">It is not an academic language to explore bleeding edge theories, but based on solid real world experience</div>
+                    <li>Boring by design</li> <div class="handout">TODO: http://fantom.org/sidewalk/topic/1101</div>
+                    <!-- TODO: scala comparaisons: http://fantom.org/sidewalk/topic/675-->
                 </ul>
             </div>
 
-            <div class="slide">
-                <h1>Why Fantom ?</h1>
-                <ul>
-                    <li>Solve real Java and C# problems</li>
-                    <li>Practical programming</li> <div class="handout">It is not an academic language to explore bleeding edge theories, but based on solid real world experience</div>
-            </div>
-
+            <!-- 
+            TODO 
+            IDE support ?  (debugger / tooling - bytecode )
+            use fansh for demo 
+            Hello worlds ?
+            built-in tests and other features   http://fantom.org/doc/docTools/index.html
+            tools: fansh, fan(script), fant  etc...    build file
+            
+            Netbeans DEMO: use huge fonts ??
+            or bug fonts in shell (fansh)
+            Operators are functions (+ minus etc...)
+            
+            Demo ... basic types/expressions (fansh)
+            
+            java FFI's
+            
+            Fantom from java ???
+            compile into java (jardist) + example + alternative like i do in ide for indexing(using fantom java class + dynamic calls)
+            
+            actor -> thread locals discussion ?? http://fantom.org/sidewalk/topic/1374
+            
+            opened to ideas  quick fixes/ impl.
+            -->
+            
+            
+            
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li>Portability JVM, .Net & more</li><div class="handout">Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(no fcode)</div>
-                    <li>Clean API's</li> <div class="handout">Underrated fact. Few powerful classes. Lots of cheap features (in part thanks to functions/closures)</div>
+                    <li>Portability - JVM, .Net & more</li><div class="handout">Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(no fcode)</div>
+                    <!-- TODO: JavaScript huge
+                    fantom "full stack"
+                    -->
+                    
+                    <li>Clean API's</li> <div class="handout">Underrated fact. Few powerful classes. Lots of cheap features (in part thanks to functions/closures). Demo DateTime or File ?</div>
+                    <li>Strong AND dynamic typing</li> <div class="handout">Why have too choose one or the other, choose as you please. Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. Type inference.</div>
+                    <li>Mixins</li> <div class="handout">Bridge the gap between classes(inheritance issues) and interfaces(common code). Like interface but can have implementation. mixins can have methods and fields without state(abstract only)</div>
+                    <li>Modularity - pods</li> <div class="handout">Pods are the unit of versioning and deployment. They are combined together using clear dependencies. No Classpath/DLL hell.</div>
+                    <li>Simple namespace</li> <div class="handout">pod::type.slot pod is unit of deployment/versioning - serialization. Cleaner than jars/classpath mess.</div>
+                    <li>Truly object oriented</li> <div class="handout">Everything is an object (no primmitives). Like C# ValueTypes. Automatically boxed/un-boxed when on JVM</div>
+            </div>
+            <div class="slide">
+                <h1>What makes it special ?</h1>
+                <ul>
+                    <li>Functional programming</li> <div class="handout">Built-in. Closures support. Functions are a first class object. API's make heavy/good use of closures(huge benefit). While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala) but rather a huge simplicity bonus (API's)</div>
+                    <li>Declarative programming</li> <div class="handout">Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).Reduces need for config files.</div>
+                    <li>Concurrency</li> <div class="handout">Actors model. More details later.</div>
+                    <li>Limited generics</li> <div class="handout">Generics greatly complicate the language. List, Maps and Functions can be parameterized. Controversial subject. Good concept but most implementations are too complex/painful</div>
+                    <li>Syntax sugar</li> <div class="handout">Default parameters, type inference, Field Accessors, Nullable types, All numbers are 64bits.</div>
+                    <!-- added -->
+                    <li>Intuitive syntax for Java / C# programmers</li><div class="handout">Feels a lot like a boilerplate-less version of java. Not complex like Scala, Clojure. Feels more like Groovy/Python but with strong types.</div>
+            </div>
+
+            
+            <div class="slide">
+                <h1>Resources</h1>
+                <ul>
+                    <li>This presentation: <a href="http://wiki.colar.net/fantompres">http://wiki.colar.net/fantompres</a></li><!--TODO: link-->
+                    <li><A href="http://www.fantom.org">Fantom.org</a> (Language Reference & Forum)</li>
+                    <li>Fantom <A href="http://wiki.colar.net/fan_cheat_sheet">cheat sheet</a></li>
+                    <li>Fantom <A href="http://fantom.org/doc/docTools/IDEs.html">IDE's</a></li>
+                    <li><A href="http://www.talesframework.org/">Tales</a> framework</li>
+                    
+                    <!-- TODO: servlet container -->
+                </ul>
             </div>
 
             <!-- ============ End slides ============= -->    
