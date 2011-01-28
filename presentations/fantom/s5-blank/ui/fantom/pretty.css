@@ -31,14 +31,14 @@ sup {font-size: smaller; line-height: 1px;}
 
 div#header, div#footer {background: #005; color: #AAB;
   font-family: Verdana, Helvetica, sans-serif;}
-div#header {background: url(logo.png) 0 0 no-repeat; top: 20px; left: 30px; font-size: 2em;  line-height: 1px;}
+div#header {background: url(logo.png) 98% 0 no-repeat; top: 22px; font-size: 2em;  line-height: 1px;}
 div#footer {background: #FFF url(footer_bg.png) 0 0 repeat-x; font-size: 0.5em; font-weight: bold; padding: 1em 0;}
 #footer h1, #footer h2 {display: block; padding: 0 1em;}
 #footer h2 {font-style: italic;}
 
 div.long {font-size: 0.75em;}
-.slide h1 {position: absolute; top: 0.1em; left: 200px; z-index: 1;
-  margin: 0; padding: 0.3em 0 0 50px; white-space: nowrap;
+.slide h1 {position: absolute; top: 20px; left: 0.4em; z-index: 1;
+  white-space: nowrap;
   font: bold 130%/1em Helvetica, sans-serif; text-transform: capitalize;
   color: #DDE;}
 .slide h3 {font-size: 130%;}
@@ -61,7 +61,7 @@ div#controls form {position: absolute; bottom: 0; right: 0; width: 100%;
 
 #slide0 {padding-top: 3.5em; font-size: 90%;}
 #slide0 h1 {position: static; margin: 1em 0 0; padding: 0;
-   font: bold 2em Helvetica, sans-serif; white-space: normal;
+   font: bold 2em Helvetica, sans-serif; white-space: normal; 
    color: #000; background: transparent;}
 #slide0 h2 {font: bold italic 1em Helvetica, sans-serif; margin: 0.25em;}
 #slide0 h3 {margin-top: 1.5em; font-size: 1.5em;}
@@ -78,8 +78,24 @@ html>body .external {border-bottom: none;}
 img.incremental {visibility: hidden;}
 .slide .current {color: #B02;}
 
-
 /* diagnostics
 
 li:after {content: " [" attr(class) "]"; color: #F88;}
  */
+ 
+ /*thibautc*/
+.moreInfos
+{
+     /*display: none;*/ /* Use this and comment rest, to hide the moreInfos - projector mode*/
+     margin-left: 5px; margin-right: 5px; position:relative; z-index:24; 
+     background: url(infos.png) no-repeat; display:inline-block; height:16px; width:16px;
+}
+
+.moreInfos span {display: none}
+
+.moreInfos:hover span
+{
+    font-size: .5em;
+    display:block; position:absolute; top:1.5em; left:1.5em; width:40em;
+    border:1px solid #4949a4; background-color:#d2d2f9; color:#000; text-align: center
+}

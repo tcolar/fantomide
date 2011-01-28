@@ -52,12 +52,16 @@
             <div class="slide">
                 <h1>Why Fantom ?</h1>
                 <ul>
-                    <li>Brian And Andy Frank</li><div class="handout">TODO Java & .Net background. Java/ JavaScript</div>
-                    <li>History</li><div class="handout">TODO see http://fantom.org/sidewalk/topic/355    http://fantom.org/sidewalk/topic/1107</div>
+                    <li><a class="moreInfos"><span>TODO Java &amp; .Net background. Java/ JavaScript</span></a>
+                        Brian And Andy Frank</li>
+                    <li><a class="moreInfos"><span>TODO see http://fantom.org/sidewalk/topic/355    http://fantom.org/sidewalk/topic/1107</span></a>
+                        History</li>
                     <!-- currently ~ 1.0 release -->
                     <li>Solve real Java and C# problems</li>
-                    <li>Practical programming</li> <div class="handout">It is not an academic language to explore bleeding edge theories, but based on solid real world experience</div>
-                    <li>Boring by design</li> <div class="handout">TODO: http://fantom.org/sidewalk/topic/1101</div>
+                    <li><a class="moreInfos"><span>It is not an academic language to explore bleeding edge theories, but based on solid real world experience</span></a>
+                        Practical programming</li>
+                    <li><a class="moreInfos"><span>TODO: http://fantom.org/sidewalk/topic/1101</span></a>
+                        Boring by design</li>
                     <!-- TODO: scala comparaisons: http://fantom.org/sidewalk/topic/675-->
                 </ul>
             </div>
@@ -85,37 +89,50 @@
             
             opened to ideas  quick fixes/ impl.
             -->
-            
-            
-            
+
+
+
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li>Portability - JVM, .Net & more</li><div class="handout">Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(no fcode)</div>
+                    <li><a class="moreInfos"><span>Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(no fcode)</span></a>
+                        Portability - JVM, .Net & more</li>
                     <!-- TODO: JavaScript huge
                     fantom "full stack"
                     -->
-                    
-                    <li>Clean API's</li> <div class="handout">Underrated fact. Few powerful classes. Lots of cheap features (in part thanks to functions/closures). Demo DateTime or File ?</div>
-                    <li>Strong AND dynamic typing</li> <div class="handout">Why have too choose one or the other, choose as you please. Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. Type inference.</div>
-                    <li>Mixins</li> <div class="handout">Bridge the gap between classes(inheritance issues) and interfaces(common code). Like interface but can have implementation. mixins can have methods and fields without state(abstract only)</div>
-                    <li>Modularity - pods</li> <div class="handout">Pods are the unit of versioning and deployment. They are combined together using clear dependencies. No Classpath/DLL hell.</div>
-                    <li>Simple namespace</li> <div class="handout">pod::type.slot pod is unit of deployment/versioning - serialization. Cleaner than jars/classpath mess.</div>
-                    <li>Truly object oriented</li> <div class="handout">Everything is an object (no primmitives). Like C# ValueTypes. Automatically boxed/un-boxed when on JVM</div>
+
+                    <li><a class="moreInfos"><span>Underrated fact. Few powerful classes. Lots of cheap features (in part thanks to functions/closures). Demo DateTime or File ?</span></a>
+                        Clean API's </li>
+                    <li><a class="moreInfos"><span>Why have too choose one or the other, choose as you please. Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. Type inference.</span></a>
+                        Strong AND dynamic typing </li>
+                    <li><a class="moreInfos"><span>Bridge the gap between classes(inheritance issues) and interfaces(common code). Like interface but can have implementation. mixins can have methods and fields without state(abstract only)</span></a>
+                        Mixins </li>
+                    <li><a class="moreInfos"><span>Pods are the unit of versioning and deployment. They are combined together using clear dependencies. No Classpath/DLL hell.</span></a>
+                        Modularity - pods </li>
+                    <li><a class="moreInfos"><span>pod::type.slot pod is unit of deployment/versioning - serialization. Cleaner than jars/classpath mess.</span></a>
+                        Simple namespace </li>
+                    <li><a class="moreInfos"><span>Everything is an object (no primmitives). Like C# ValueTypes. Automatically boxed/un-boxed when on JVM<</span></a>
+                        Truly object oriented </li>
             </div>
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li>Functional programming</li> <div class="handout">Built-in. Closures support. Functions are a first class object. API's make heavy/good use of closures(huge benefit). While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala) but rather a huge simplicity bonus (API's)</div>
-                    <li>Declarative programming</li> <div class="handout">Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).Reduces need for config files.</div>
-                    <li>Concurrency</li> <div class="handout">Actors model. More details later.</div>
-                    <li>Limited generics</li> <div class="handout">Generics greatly complicate the language. List, Maps and Functions can be parameterized. Controversial subject. Good concept but most implementations are too complex/painful</div>
-                    <li>Syntax sugar</li> <div class="handout">Default parameters, type inference, Field Accessors, Nullable types, All numbers are 64bits.</div>
+                    <li><a class="moreInfos"><span>Built-in. Closures support. Functions are a first class object. API's make heavy/good use of closures(huge benefit). While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala) but rather a huge simplicity bonus (API's)</span></a>
+                        Functional programming </li>
+                    <li><a class="moreInfos"><span>Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).Reduces need for config files.</span></a>
+                        Declarative programming </li>
+                    <li><a class="moreInfos"><span>Actors model. More details later.</span></a>
+                        Concurrency </li>
+                    <li><a class="moreInfos"><span>Generics greatly complicate the language. List, Maps and Functions can be parameterized. Controversial subject. Good concept but most implementations are too complex/painful</span></a>
+                        Limited generics </li>
+                    <li><a class="moreInfos"><span>Default parameters, type inference, Field Accessors, Nullable types, All numbers are 64bits.</span></a>
+                        Syntax sugar </li>
                     <!-- added -->
-                    <li>Intuitive syntax for Java / C# programmers</li><div class="handout">Feels a lot like a boilerplate-less version of java. Not complex like Scala, Clojure. Feels more like Groovy/Python but with strong types.</div>
+                    <li><a class="moreInfos"><span>Feels a lot like a boilerplate-less version of java. Not complex like Scala, Clojure. Feels more like Groovy/Python but with strong types.</span></a>
+                        Intuitive syntax for Java / C# programmers</li>
             </div>
 
-            
+
             <div class="slide">
                 <h1>Resources</h1>
                 <ul>
@@ -124,11 +141,24 @@
                     <li>Fantom <A href="http://wiki.colar.net/fan_cheat_sheet">cheat sheet</a></li>
                     <li>Fantom <A href="http://fantom.org/doc/docTools/IDEs.html">IDE's</a></li>
                     <li><A href="http://www.talesframework.org/">Tales</a> framework</li>
-                    
-                    <!-- TODO: servlet container -->
+
+                    <!-- TODO: servlet container
+                    mustache ?
+                    sap engine ?
+                    -->
                 </ul>
             </div>
 
+            <div class="slide">
+                <h1>Test</h1>
+                <code>code</code>
+                <code class="bad">Bad code</code>
+                <code class="old">Old code</code>
+                <pre>
+                    Pre
+                    <code>Pre: code</pre>
+                </pre>
+            </div>
             <!-- ============ End slides ============= -->    
         </div>
     </body>
