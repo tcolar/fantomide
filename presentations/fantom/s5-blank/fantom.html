@@ -50,57 +50,27 @@
             <!-- ============ Begin slides ============= -->    
 
             <div class="slide">
-                <h1>Why Fantom ?</h1>
+                <h1>Why Fantom?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>TODO Java &amp; .Net background. Java/ JavaScript</span></a>
+                    <li><a class="moreInfos"><span>In 1996 founder of Tridium. Java framework for various markets(automation/aerospace...). Used Java but some companies MS only (.Net)
+                            Honeywell acquirer Tridium (2005). </span></a>
                         Brian And Andy Frank</li>
-                    <li><a class="moreInfos"><span>TODO see http://fantom.org/sidewalk/topic/355    http://fantom.org/sidewalk/topic/1107</span></a>
-                        History</li>
-                    <!-- currently ~ 1.0 release -->
-                    <li>Solve real Java and C# problems</li>
-                    <li><a class="moreInfos"><span>It is not an academic language to explore bleeding edge theories, but based on solid real world experience</span></a>
+                    <li><a class="moreInfos"><span>Wanted java+.net compat with better concurrency model. Pure OO, simpler compiler. Then moved to fcode. then Fantom compiler/builds. Became "public" in 2008. OSS during spare time, then now full time (Fantom  + SkyFoundry)
+                                JavaScript target(unified frontend/backend - Andy). FWT -> unified UI code (JS/HTML5 + Swing).
+                            </span></a>
+                        Short History</li>
+                    <li><a class="moreInfos"><span>Andy & Brian experience / needs </span></a>
+                        Solve real Java and C# problems</li>
+                    <li><a class="moreInfos"><span>"Boring by design". It is not an academic language to explore bleeding edge theories, but based on solid real world experience (Obvious when you use it)</span></a>
                         Practical programming</li>
-                    <li><a class="moreInfos"><span>TODO: http://fantom.org/sidewalk/topic/1101</span></a>
-                        Boring by design</li>
-                    <!-- TODO: scala comparaisons: http://fantom.org/sidewalk/topic/675-->
                 </ul>
             </div>
-
-            <!-- 
-            TODO 
-            IDE support ?  (debugger / tooling - bytecode )
-            use fansh for demo 
-            Hello worlds ?
-            built-in tests and other features   http://fantom.org/doc/docTools/index.html
-            tools: fansh, fan(script), fant  etc...    build file
-            
-            Netbeans DEMO: use huge fonts ??
-            or bug fonts in shell (fansh)
-            Operators are functions (+ minus etc...)
-            
-            Demo ... basic types/expressions (fansh)
-            
-            java FFI's
-            
-            Fantom from java ???
-            compile into java (jardist) + example + alternative like i do in ide for indexing(using fantom java class + dynamic calls)
-            
-            actor -> thread locals discussion ?? http://fantom.org/sidewalk/topic/1374
-            
-            opened to ideas  quick fixes/ impl.
-            -->
-
-
 
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(no fcode)</span></a>
-                        Portability - JVM, .Net & more</li>
-                    <!-- TODO: JavaScript huge
-                    fantom "full stack"
-                    -->
-
+                    <li><a class="moreInfos"><span>Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(Huge IMO! no fcode when compiling to js)</span></a>
+                        Portability - JVM, .Net &amp; more</li>
                     <li><a class="moreInfos"><span>Underrated fact. Few powerful classes. Lots of cheap features (in part thanks to functions/closures). Demo DateTime or File ?</span></a>
                         Clean API's </li>
                     <li><a class="moreInfos"><span>Why have too choose one or the other, choose as you please. Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. Type inference.</span></a>
@@ -111,8 +81,9 @@
                         Modularity - pods </li>
                     <li><a class="moreInfos"><span>pod::type.slot pod is unit of deployment/versioning - serialization. Cleaner than jars/classpath mess.</span></a>
                         Simple namespace </li>
-                    <li><a class="moreInfos"><span>Everything is an object (no primmitives). Like C# ValueTypes. Automatically boxed/un-boxed when on JVM<</span></a>
+                    <li><a class="moreInfos"><span>Everything is an object (no primmitives). Like C# ValueTypes. Automatically boxed/un-boxed when on JVM</span></a>
                         Truly object oriented </li>
+                </ul>
             </div>
             <div class="slide">
                 <h1>What makes it special ?</h1>
@@ -130,22 +101,105 @@
                     <!-- added -->
                     <li><a class="moreInfos"><span>Feels a lot like a boilerplate-less version of java. Not complex like Scala, Clojure. Feels more like Groovy/Python but with strong types.</span></a>
                         Intuitive syntax for Java / C# programmers</li>
+                    <li><a class="moreInfos"><span>All you need in one small standalone package: module system, build framework, unit testing, documentation, tools, basic web framework and web server,
+                        desktop UI(FWT), javascript, ajax, email, SQL, common formats: xml, json, csv</span></a>
+                        "Full" stack</li>  
+                </ul>
             </div>
 
+            <div class="slide">
+                <h1>Getting started</h1>
+                <ul>
+                    <li>Have Java 6+ JVM installed (or .NET)</li>
+                    <li>Download and extract Fantom from <a href="http://www.fantom.org/">http://www.fantom.org/</a></li>
+                    <li>If on Linux/Mac, setup the environment:
+                        <pre><code>
+chmod +x fantom-1.0.57/adm/unixsetup
+./fantom-1.0.57/adm/unixsetup
+export PATH=$PATH:/home/me/fantom-1.0.57/bin
+                        </code></pre>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h1>Fantom tools</h1>
+                <ul>
+                    <li><a class="moreInfos"><span>Show a mini hello world demo. Str name := 23; name := "john"; echo("$name"); scope
+</span></a>
+                        Fansh - Fantom shell</li>
+                    <li><a class="moreInfos"><span>Show a fan script. class Hello{static Void main() { echo("hello world #!")}}
+                            Then show hello example pod (build.fan) and build it / run it.</span></a>
+                        Fan - Fantom launcher</li>
+                    <li><a class="moreInfos"><span>Show unit test. (Show  Verify** ,methods in Netbeans)</span></a>
+                        Fant - Unit test</li>
+                    <li><a class="moreInfos"><span>View/debug generated bytecode.</span></a>
+                        Fanp - FCode decompiler
+                    <li><a class="moreInfos"><span>Possibility of compiling Fantom from sources.</span></a>
+                        Bootstrap</li>
+                </ul>
+            </div>
+            
+            <div class="slide">
+                <h1>Fantom code structure</h1>
+                <ul>
+                    <li><a class="moreInfos"><span>Fantom's namespace as well as the unit of deployment(pod::Type.slot). A pod's name is globally unique. Also does Dependency management(show meta in build.fan).  Plain zip file. Reflection: Demo: Pod.list, Pod.of("sys").types </span></a>
+                        Pods</li>
+                    <li><a class="moreInfos"><span>Can have multiple in single fan file. A Type is an object oriented class which encapsulates state and behavior. Demo: Type.of("sys::Str").slots</span></a>
+                        Types</li>
+                    <ul>
+                        <li><a class="moreInfos"><span>Inherit from One superclass and 0+ mixins. Can be public/internal abstract/final. Const(Const fields only)</span></a>
+                            Classes</li>
+                            <ul>
+                            <li><a class="moreInfos"><span>Demo enumerations.fan. Normal class: (enum class but const & final with fixed instances. inherit sys::Enum) Can have methods. private constructors.</span></a>
+                                Enumerations</li>
+                            </ul>
+                        <li><a class="moreInfos"><span>Demo mixins.fan. Like interfaces but can have methods (code reuse). Abstract, can't create instances. can't store state (can have abstract fields).</span></a>
+                            Mixins</li>
+                    </ul>
+                    <li><a class="moreInfos"><span>Unique name(no overloading) but allows easy/fast reflection etc... (helped by lack of primitives)</span></a>
+                        Slots</li>
+                    <ul>
+                        <li><a class="moreInfos"><span>TODO: fields</span></a>
+                            Fields</li>
+                        <li><a class="moreInfos"><span>TODO: methods - Are just wrappers for functions</span></a>
+                            Methods</li>
+                    </ul>
+                </ul>
+            </div>
+            <!-- 
+            TODO 
+            use fansh for demo 
+            Hello worlds ?            
+            Netbeans DEMO: use huge fonts ??
+            And big fonts in shell (fansh / vi)
+            
+            Operators are functions (+ minus etc...)
+            
+            Demo ... basic types/expressions (fansh)
+            
+            java FFI's
+            
+            Fantom from java ???
+            compile into java (jardist) + example + alternative like i do in ide for indexing(using fantom java class + dynamic calls)
+            
+            actor -> thread locals discussion ?? http://fantom.org/sidewalk/topic/1374
+            
+            opened to ideas  quick fixes/ impl.
+            -->
 
             <div class="slide">
                 <h1>Resources</h1>
                 <ul>
                     <li>This presentation: <a href="http://wiki.colar.net/fantompres">http://wiki.colar.net/fantompres</a></li><!--TODO: link-->
-                    <li><A href="http://www.fantom.org">Fantom.org</a> (Language Reference & Forum)</li>
-                    <li>Fantom <A href="http://wiki.colar.net/fan_cheat_sheet">cheat sheet</a></li>
+                    <li><A href="http://www.fantom.org">Fantom.org</a> (Language Reference & Forum) <A href="http://wiki.colar.net/fan_cheat_sheet">cheat sheet</a></li>
                     <li>Fantom <A href="http://fantom.org/doc/docTools/IDEs.html">IDE's</a></li>
                     <li><A href="http://www.talesframework.org/">Tales</a> framework</li>
-
-                    <!-- TODO: servlet container
-                    mustache ?
-                    sap engine ?
-                    -->
+                    <li><A href="https://bitbucket.org/chunquedong/slan/overview">Slan</a> web framework</li>
+                    <li><A href="https://bitbucket.org/liamstask/fanlet/overview">Fanlet</a> (Java Servlet interface)</li>
+                    <li><A href="http://mustache.github.com/">Mustache</a> Logic-less templates</li>
+                    <li><a href="https://bitbucket.org/liamstask/fantomongo/overview">Fantomongo</a> MongoDb driver</li>
+                    <li><A href="http://www.talesframework.org/examples/whoswho">AppEngine demo</a></li>
                 </ul>
             </div>
 
