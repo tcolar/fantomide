@@ -139,7 +139,10 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                         Bootstrap</li>
                 </ul>
             </div>
-            
+            <!-- TODO: 
+            compilation units http://fantom.org/doc/docLang/CompilationUnits.html
+            facets
+            -->
             <div class="slide">
                 <h1>Fantom code structure</h1>
                 <ul>
@@ -160,9 +163,12 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                     <li><a class="moreInfos"><span>Unique name(no overloading) but allows easy/fast reflection etc... (helped by lack of primitives)</span></a>
                         Slots</li>
                     <ul>
-                        <li><a class="moreInfos"><span>TODO: fields</span></a>
+                        <li><a class="moreInfos"><span>No inference. Storage + [getter/setter](automatic). Show getter/setter example in OtherThings.fan. 
+                                Const fields (pre-assigned or in constructor)
+                                static(must be const, thread safety), abstract, public, protected, internal
+                                readonly, virtual(getter/setter can be overriden)</span></a>
                             Fields</li>
-                        <li><a class="moreInfos"><span>TODO: methods - Are just wrappers for functions</span></a>
+                        <li><a class="moreInfos"><span>TODO: http://fantom.org/doc/docLang/Methods.html methods - Are just wrappers for functions</span></a>
                             Methods</li>
                     </ul>
                 </ul>
