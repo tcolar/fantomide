@@ -10,7 +10,7 @@ enum class Suits
   hearts("red"),
   spades("black")
 
-  private new make(Str color) { this.color = color; }
+  private new make(Str color) { this.color = color }
 
   const Str color;
 }

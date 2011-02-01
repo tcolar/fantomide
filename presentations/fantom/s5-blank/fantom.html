@@ -139,9 +139,11 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                         Bootstrap</li>
                 </ul>
             </div>
+            
             <!-- TODO: 
             compilation units http://fantom.org/doc/docLang/CompilationUnits.html
             facets
+            closures, operator overloading (slice etc...)
             -->
             <div class="slide">
                 <h1>Fantom code structure</h1>
@@ -173,8 +175,50 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                     </ul>
                 </ul>
             </div>
+
+            <div class="slide">
+                <h1>Type system</h1>
+                <ul>
+                    <li><a class="moreInfos"><span>Demo with fansh (Int, Bool etc..). Explaine value-types(Int, Bool, Float)</span></a>
+                        Purely object oriented</li>
+                    <li><a class="moreInfos"><span>Show in fansh: Bool, Int(64 bits, chars, 0x, underscores), Float, Decimal(4d - bigdecimal), 
+                                Str(multi-line, interpolation, triple quotes, locale($&lt;&gt;), Duration(day, hr, ms), Uri(can do interpolation),
+                                Type(Str#), Slot(Int#plus), Range((0..3).contains(2), 0..<3), List(add,first), Map(put,get)</span></a>
+                        Fantom Literals</li>
+                    <li><a class="moreInfos"><span>Compiler wars you about simple mistakes. Runtime checks for null coercing - fail fast. Show default values of Int vs Int? for example. </span></a>
+                        (Non)Nullable Types</li>
+                    <li><a class="moreInfos"><span>But inference for local vars, maps, list. dynamic call operator(-&gt;). Better tooling, error reporting.</span></a>
+                        Statically typed</li>
+                    <li><a class="moreInfos"><span>A.fits(B)-&gt;ok  B.fits(A)-&gt; implicit cast   otherwise-&gt;error. 
+                                Allows dynamic calls(obj?) cast: Str name := x->person->name. "Liskov Substitution Principle"</span></a>
+                        Implicit casts</li>
+                    <li><a class="moreInfos"><span>Limited for simplicity. List(V,L), Maps(K,V,M), Funcs(A-H, R). Functions explained more later.</span></a>
+                        Generics</li>
+                </ul>
+            </div>
+            
+            
+            <div class="slide">
+                <h1>TODO: Name this</h1>
+                <ul>
+                    <li><a class="moreInfos"><span>Semicolums optional. Show/explain examples in OtherThings.statements</span></a>
+                        Statements</li>
+                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). Show/explain examples in OtherThings.exceptions </span></a>
+                        Exception Handling</li>
+                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. Mapped to methods (and, or etc...). No bitwise ops(use methods)</span></a>
+                        Expressions/Operators</li>
+            <!-- todo:
+            functions
+            closures
+            itblocks
+            exceptions / throw
+            Lof=gging built-in
+            -->
+                </ul>
+            </div>
+            
             <!-- 
-            TODO 
+            TODO  : is  isnot as fits()
             use fansh for demo 
             Hello worlds ?            
             Netbeans DEMO: use huge fonts ??
