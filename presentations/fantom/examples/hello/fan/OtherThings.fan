@@ -11,13 +11,6 @@ using fwt
 **
 class OtherThings
 {
-  ** Field with manual getter/setter
-  Int id := 0
-  {
-    get { echo("get id"); return &id }
-    set { echo("set id"); &id = it }
-  }
-    
   ** Statements examples
   Void statements()
   {
