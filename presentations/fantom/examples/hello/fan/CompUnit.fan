@@ -2,7 +2,7 @@
 Academic License 2.0
 */
 using email // "like" a java whole pacakege import
-using sql::Connection // single Type import
+using sql::SqlConn // single Type import
 
 **
 ** CompUnit
