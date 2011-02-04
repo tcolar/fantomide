@@ -44,8 +44,9 @@ class OtherThings
   Void exceptions()
   {
       // try/catch/finaly example
+      Int? a  
       try
-          s := null + 2
+          s := a + 2
       catch(NullErr npe)
           echo("Catched NPE")
       catch(Err e)
@@ -65,8 +66,8 @@ class OtherThings
     d := 2 > 1 ? true : false // ternary    
             
     // Fantom specific         
-    j := a <=> b // compare method       
-    k := a === b // !==   -> same in memory, not equals    
+    j := a <=> 5 // compare method       
+    k := "Hello" === "Hello" // !==   -> same in memory, not equals    
     l := (a is Int) // is, isnot
     m := (a as Num) // cast
     n := 0..3 // 0..<3   -> range    

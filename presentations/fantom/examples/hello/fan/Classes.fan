@@ -15,7 +15,7 @@ class Class3
     Void main()
     {  
         // Example of Using Type reflection  
-        Type t := Class1.typeof  
-        t.make                   // use default make constructor
+        Type t := Class1#  
+        t.make  // use default make constructor
     }
 }

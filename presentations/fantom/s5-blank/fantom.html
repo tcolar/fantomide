@@ -153,19 +153,7 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             </div>
 
             <div class="slide">
-                <h1>TODO: Name this</h1>
-                <ul>
-                    <li><a class="moreInfos"><span>Semi-columns optional. Show/explain examples in OtherThings.statements</span></a>
-                        Statements</li>
-                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). Show/explain examples in OtherThings.exceptions </span></a>
-                        Exception Handling</li>
-                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. Mapped to methods (and, or etc...). No bitwise ops(use methods)</span></a>
-                        Expressions/Operators</li>
-                </ul>
-            </div>
-
-            <div class="slide">
-                <h1>Type system</h1>
+                <h1>Type system : Concepts</h1>
                 <ul>
                     <li><a class="moreInfos"><span>Demo with fansh (Int, Bool etc..). Explaine value-types(Int, Bool, Float)</span></a>
                         Purely object oriented</li>
@@ -173,7 +161,7 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                 Str(multi-line, interpolation, triple quotes, locale($&lt;&gt;), Duration(day, hr, ms), Uri(can do interpolation),
                                 Type(Str#), Slot(Int#plus), Range((0..3).contains(2), 0..&lt;3), List(add,first), Map(put,get)</span></a>
                         Fantom Literals</li>
-                    <li><a class="moreInfos"><span>Compiler wars you about simple mistakes. Runtime checks for null coercing - fail fast. Show default values of Int vs Int? for example. </span></a>
+                    <li><a class="moreInfos"><span>Compiler warns you about simple mistakes. Runtime checks for null coercing - fail fast. Show default values of Int vs Int? for example. </span></a>
                         (Non)Nullable Types</li>
                     <li><a class="moreInfos"><span>But inference for local vars, maps, list. dynamic call operator(-&gt;). Better tooling, error reporting.</span></a>
                         Statically typed</li>
@@ -186,40 +174,78 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             </div>
 
             <div class="slide">
-                <h1>Types</h1>
+                <h1>Statement / Expressions</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Demo classes.fan. Can Inherit from One superclass and 0+ mixins. Can be public/internal abstract/final. Const(Const fields only)</span></a>
-                        Classes
-                    </li>
-                    <li><a class="moreInfos"><span>Demo Enumerations.fan. Normal class: (enum class but const &amp; final with fixed instances. inherit sys::Enum) Can have methods. private constructors.</span></a>
-                        Enumerations</li>
-                    <li><a class="moreInfos"><span>Demo Mixins.fan. Like interfaces but can have methods (code reuse). Abstract, can't create instances. can't store state (can have abstract fields).</span></a>
-                        Mixins</li>
+                    <li><a class="moreInfos"><span>Semi-columns optional. Show/explain examples in OtherThings.statements</span></a>
+                        Statements</li>
+                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). Show/explain examples in OtherThings.exceptions </span></a>
+                        Exception Handling</li>
+                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. Mapped to methods (and, or etc...). No bitwise ops(use methods)</span></a>
+                        Expressions/Operators</li>
                 </ul>
             </div>
 
             <div class="slide">
-                <h1>Slots</h1><!--Unique name(no overloading) but allows easy/fast reflection etc... (helped by lack of primitives)-->
+                <h1>Type System</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Demo Slots.fan. No inference. Storage + [getter/setter](automatic). 
-                                Const fields (pre-assigned or in constructor)
-                                static(must be const, thread safety), abstract, public, protected, internal
-                                readonly, virtual(getter/setter can be overriden)</span></a>
-                        Fields</li>
-                    <li><a class="moreInfos"><span>Demo Slots.fan. A method is a slot which defines a function within a class or mixin.
-                                Covariance OK - allows an overridden method to narrow the return type of the inherited method.
-                            </span></a>
-                        Methods
+                    <li>Types</li>
                     <ul>
-                    <li><a class="moreInfos"><span>Demo Slots.fan. Use the "new" keyword. By convention make**
-                            </span></a>
-                        Constructors</li>
+                        <li><a class="moreInfos"><span>Demo classes.fan. Can Inherit from One superclass and 0+ mixins. Can be public/internal abstract/final. Const(Const fields only)</span></a>
+                            Classes
+                        </li>
+                        <ul>
+                            <li><a class="moreInfos"><span>Demo Enumerations.fan. Normal class: (enum class but const &amp; final with fixed instances. inherit sys::Enum) Can have methods. private constructors.</span></a>
+                                Enumerations</li>
+                            <li><a class="moreInfos"><span>Demo Facets.fan. (~ annotations). Facets are defined as normal classes(Implied const) using the facet positional keyword
+                                    </span></a>
+                                Facets</li>
+                        </ul>
+                        <li><a class="moreInfos"><span>Demo Mixins.fan. Like interfaces but can have methods (code reuse). Abstract, can't create instances. can't store state (can have abstract fields).</span></a>
+                            Mixins</li>
+                        <li><a class="moreInfos"><span>Demo inheritance.fan. Base class first(if any) then 'n' mixins
+                                    Covariance allowed for methods
+                                    Fantom avoids the diamond inheritance problem. First mixins can't declare concrete fields, which mean they never store state. Second any ambiguity that arises from diamond inheritance or otherwise requires the subclass to explicitly disambiguate (or if the inherited slots are not virtual, then the subtype simply cannot be created).
+                                </span></a>
+                            Inheritance</li>
                     </ul>
-                    </li>
+                </ul>
+                <ul>
+                    <li>Slots</li>
+                    <ul>
+                        <li><a class="moreInfos"><span>Slots: Unique name(no overloading) but allows easy/fast reflection etc... (helped by lack of primitives)
+                                    Demo/explain Slots.fan. No inference. Storage + [getter/setter](automatic). 
+                                    Const fields (pre-assigned or in constructor)
+                                    static(must be const, thread safety), abstract, public, protected, internal
+                                    readonly, virtual(getter/setter can be overriden)</span></a>
+                            Fields</li>
+                        <li><a class="moreInfos"><span>Demo/explain Slots.fan. A method is a slot which defines a function within a class or mixin.
+                                    Covariance OK - allows an overridden method to narrow the return type of the inherited method.
+                                </span></a>
+                            Methods
+                            <ul>
+                                <li><a class="moreInfos"><span>Demo/explain Slots.fan. Use the "new" keyword. By convention make**
+                                        </span></a>
+                                    Constructors</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </ul>
             </div>
+
+            <div class="slide">
+                <h1>Advanced topics</h1>
+                <ul>
+                    <li><a class="moreInfos"><span>First class objects(sys::Func). Created through: methods, closures, binding. 
+                        Explain parameterized with Builtin generic syntax |A-H->R|
+                        Instance methods map to a function where the first argument is the implicit this parameter
+                        </span></a>
+                        Functions</li>
+                </ul>
+            </div>
+
             <!-- todo:
             facets
+            range: args.size.times
             functions
             closures
             itblocks

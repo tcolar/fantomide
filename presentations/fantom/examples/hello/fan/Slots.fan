@@ -38,7 +38,7 @@ abstract class MyUser
   }
 
   ** abstract method to be impl. by subclass
-  abstract Int inplementMe(Str param)
+  abstract Int implementMe(Str param)
     
   ** Virtual method : Has an implementation but specifically marked as an overridable class (Clean API's)
   virtual Void talk() { echo("Hello") }
@@ -49,8 +49,8 @@ abstract class MyUser
   ** Operator overloading example  (called when using  myClass + Int)
   @Operator MyUser plusInt(Int x) { age+=x ; return this }
   
-  ** Once method, automatically lazy-cached in memory !
-  once Int expensiveComputation(Int x, Int y) {return x.hash.pow(y.hash)}
+  ** Once method, automatically "lazy-cached"
+  once Int expensiveComputation() {return 2548597.hash.pow(265489.hash)}
   
   ** Method calls
   internal Void methodCalls()
@@ -69,13 +69,13 @@ abstract class MyUser
   new make(Str name, Int age:=30) { this.name = name; i := age }
   
   ** Constructor
-  new makeFromSql(Row sqlRow) { this.name = sqlRow.col(name) }
+  new makeFromSql(Row sqlRow) { this.name = sqlRow.get(sqlRow.col("name")) as Str ?: ""}
   
   Void ctorCalls()
   {
-    s := MyUser.make("John Doe") // ctor call
-    s2 := MyUser("John Doe", 30) // ctor call shortcut
-    s3 := MyUser("John Doe").addAlias("a").addAlias("b")
+    s := MySubUser.make() // ctor call
+    s2 := MySubUser() // ctor call shortcut
+    s3 := MySubUser().addAlias("a").addAlias("b")
   }
   
 }
@@ -84,6 +84,8 @@ abstract class MyUser
 class MySubUser : MyUser
 {
   new make() : super("Sub User") {/*...*/}
-  new makeFromSql(Str sql) : super.makeFromSql(sql) {/*...*/}
-  new makeFromObj(Obj obj) : this.makeFromSql(obj.toStr) {/*...*/}
+  new makeFromSql(Row sqlRow) : super.makeFromSql(sqlRow) {/*...*/}
+  new makeFromObj(Obj obj) : this.makeFromSql(obj->name) {/*...*/}
+  
+  override Int implementMe(Str param) { param.size }
 }
