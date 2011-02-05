@@ -235,27 +235,41 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             <div class="slide">
                 <h1>Advanced topics</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>First class objects(sys::Func). Created through: methods, closures, binding. 
-                        Explain parameterized with Builtin generic syntax |A-H->R|
-                        Instance methods map to a function where the first argument is the implicit this parameter
-                        </span></a>
-                        Functions</li>
+                    <li>Functional Programming</li>
+                    <ul>
+                        <li><a class="moreInfos"><span>Show Functions.fan
+                                    First class objects(sys::Func). Created through: methods, closures, binding. 
+                                    Explain parameterized with Builtin generic syntax |A-H->R|
+                                    Instance methods map to a function where the first argument is the implicit this parameter
+                                </span></a>
+                            Functions</li>
+                        <li><a class="moreInfos"><span>Show Closures.fan
+                                    Closures are an expression to create a function inside the body of a method. 
+                                    Have own scope, but can reference local variables from their scope. 
+                                    Makes it easy to use closures as method arguments (used extensively in API's, to good effect) 
+                                    Example: iteration mechanism</span></a>
+                            Closures</li>
+                    </ul>
+                <ul>
+                    <li>Java/.Net Interaction</li>
+                    <ul>
+                        <li><a class="moreInfos"><span>.Net FFI a work in progress.
+                                Limitations: multi-dimensional arrays, Sub-classing a Java class more than one level deep, 
+                                can't override java overLOADED methods -> can be an issue, my solution -> create a java "pass-through" method.
+                                You may not subclass from a Fantom class which itself subclasses from a Java class(constructors issue)</span></a>
+                            Java / .Net FFI</li>
                 </ul>
             </div>
 
             <!-- todo:
-            facets
+            Java FFI: explain deployment, classpath, try to use java code in "java" folder
+            native code.
             range: args.size.times
-            functions
-            closures
-            itblocks
             Logging built-in
 
             Hello worlds ?            
             Netbeans DEMO: use huge fonts ??
             And big fonts in shell (fansh / vi)
-            
-            java FFI's
             
             Fantom from java ???
             compile into java (jardist) + example + alternative like i do in ide for indexing(using fantom java class + dynamic calls)
