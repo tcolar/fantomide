@@ -75,7 +75,7 @@ abstract class MyUser
   {
     s := MySubUser.make() // ctor call
     s2 := MySubUser() // ctor call shortcut
-    s3 := MySubUser().addAlias("a").addAlias("b")
+    s3 := s2.addAlias("The Dude").addAlias("El Duderino")
   }
   
 }

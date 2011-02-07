@@ -52,16 +52,20 @@
             <div class="slide">
                 <h1>Why Fantom?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>In 1996 founder of Tridium. Java framework for various markets(automation/aerospace...). Used Java but some companies MS only (.Net)
-                                Honeywell acquirer Tridium (2005). </span></a>
+                    <li><a class="moreInfos"><span>In 1996 they founded Tridium, a Java framework for various markets(automation/aerospace...). 
+                                They Used Java, but some companies where MS only (.Net) and integration can be difficult.
+                                Honeywell acquired Tridium in 2005. </span></a>
                         Brian And Andy Frank</li>
-                    <li><a class="moreInfos"><span>Wanted java+.net compat with better concurrency model. Pure OO, simpler compiler. Then moved to fcode. then Fantom compiler/builds. Became "public" in 2008. OSS during spare time, then now full time (Fantom  + SkyFoundry)
-                                JavaScript target(unified frontend/backend - Andy). FWT -> unified UI code (JS/HTML5 + Swing).
+                    <li><a class="moreInfos"><span>They Wanted java as well as .NET compatibility with a better concurrency model. 
+                                Started with a pur OO language, added simpler compiler/build system, then moved to Fcode.
+                                Fantom became "public" in 2008. They worked on Fantom(OSS) during spare time, then full time (Fantom  + SkyFoundry)
+                                JavaScript target added after 2008(unified frontend/backend - Andy). FWT -> unified UI code (JS/HTML5 + Swing).
                             </span></a>
                         Short History</li>
                     <li><a class="moreInfos"><span>Andy &amp; Brian experience / needs </span></a>
                         Solve real Java and C# problems</li>
-                    <li><a class="moreInfos"><span>"Boring by design". It is not an academic language to explore bleeding edge theories, but based on solid real world experience (Obvious when you use it)</span></a>
+                    <li><a class="moreInfos"><span>"Boring by design". It is not an academic language to explore bleeding edge theories, 
+                                but based on solid real world experience (Obvious when you use it)</span></a>
                         Practical programming</li>
                 </ul>
             </div>
@@ -69,40 +73,58 @@
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Compiles to fcode bytecode, which can run on JVM, .NET ... LLVM. JavaScript(Huge IMO! no fcode when compiling to js)</span></a>
+                    <li><a class="moreInfos"><span>Compiles to Fcode bytecode, which can run on JVM, .NET and possibly more(LLVM).
+                                JavaScript target(Huge feature IMO! No Fcode when compiling to js)</span></a>
                         Portability - JVM, .Net &amp; more</li>
-                    <li><a class="moreInfos"><span>Underrated fact. Few powerful classes. Lots of cheap features (in part thanks to functions/closures). Demo DateTime or File ?</span></a>
+                    <li><a class="moreInfos"><span>Underrated fact. Few powerful classes. 
+                                Lots of cheap features (in part thanks to functions/closures).</span></a>
                         Clean API's </li>
-                    <li><a class="moreInfos"><span>Why have too choose one or the other, choose as you please. Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. Type inference.</span></a>
+                    <li><a class="moreInfos"><span>Why have too choose one or the other? Choose as you please. 
+                                Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. 
+                                Type inference.</span></a>
                         Strong AND dynamic typing </li>
-                    <li><a class="moreInfos"><span>Bridge the gap between classes(inheritance issues) and interfaces(common code). Like interface but can have implementation. mixins can have methods and fields without state(abstract only)</span></a>
+                    <li><a class="moreInfos"><span>Bridge the gap between classes(inheritance issues) and interfaces(common code). 
+                                Like interface but can have implementation. 
+                                Mixins can have methods and fields without state(abstract only)</span></a>
                         Mixins </li>
-                    <li><a class="moreInfos"><span>Pods are the unit of versioning and deployment. They are combined together using clear dependencies. No Classpath/DLL hell.</span></a>
+                    <li><a class="moreInfos"><span>Pods are the unit of versioning and deployment. 
+                                They are combined together using clear dependencies. No Classpath / DLL hell.</span></a>
                         Modularity - pods </li>
-                    <li><a class="moreInfos"><span>pod::type.slot pod is unit of deployment/versioning - serialization. Cleaner than jars/classpath mess.</span></a>
+                    <li><a class="moreInfos"><span>pod::type.slot pod is unit of deployment/versioning - serialization. 
+                                Cleaner than jars/classpath mess.</span></a>
                         Simple namespace </li>
-                    <li><a class="moreInfos"><span>Everything is an object (no primmitives). Like C# ValueTypes. Automatically boxed/un-boxed when on JVM</span></a>
+                    <li><a class="moreInfos"><span>Everything is an object (no primmitives). 
+                                Like C# ValueTypes. 
+                                Automatically boxed/un-boxed when on JVM</span></a>
                         Truly object oriented </li>
                 </ul>
             </div>
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Built-in. Closures support. Functions are a first class object. API's make heavy/good use of closures(huge benefit). While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala) but rather a huge simplicity bonus (API's)</span></a>
+                    <li><a class="moreInfos"><span>Built-in. Closures support. 
+                                Functions are a first class object. 
+                                API's make heavy/good use of closures(huge benefit). 
+                                While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala),
+                                but rather a huge simplicity bonus (API's)</span></a>
                         Functional programming </li>
-                    <li><a class="moreInfos"><span>Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).Reduces need for config files.</span></a>
+                    <li><a class="moreInfos"><span>Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).
+                                Reduces need for config files.</span></a>
                         Declarative programming </li>
                     <li><a class="moreInfos"><span>Actors model. More details later.</span></a>
                         Concurrency </li>
-                    <li><a class="moreInfos"><span>Generics greatly complicate the language. List, Maps and Functions can be parameterized. Controversial subject. Good concept but most implementations are too complex/painful</span></a>
+                    <li><a class="moreInfos"><span>Generics greatly complicate the language. 
+                                List, Maps and Functions can be parameterized. Controversial subject. 
+                                Good concept but most implementations are too complex/painful</span></a>
                         Limited generics </li>
                     <li><a class="moreInfos"><span>Default parameters, type inference, Field Accessors, Nullable types, All numbers are 64bits.</span></a>
                         Syntax sugar </li>
                     <!-- added -->
-                    <li><a class="moreInfos"><span>Feels a lot like a boilerplate-less version of java. Not complex like Scala, Clojure. Feels more like Groovy/Python but with strong types.</span></a>
+                    <li><a class="moreInfos"><span>Feels a lot like a boilerplate-less version of java. Not as complex/intimidating like Scala, Clojure. 
+                                Feels more like Groovy/Python but with strong types.</span></a>
                         Intuitive syntax for Java / C# programmers</li>
-                    <li><a class="moreInfos"><span>All you need in one small standalone package: module system, build framework, unit testing, documentation, tools, basic web framework and web server,
-                                desktop UI(FWT), javascript, ajax, email, SQL, common formats: xml, json, csv</span></a>
+                    <li><a class="moreInfos"><span>All you need in one small standalone package: module system, build framework, unit testing, documentation, tools, 
+                                basic web framework and web server, desktop UI(FWT), JavaScript, ajax, email, SQL, common formats: xml, json, csv</span></a>
                         "Full" stack</li>  
                 </ul>
             </div>
@@ -131,9 +153,9 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                     <li><a class="moreInfos"><span>Show a fan script. class Hello{static Void main() { echo("hello world #!")}}
                                 Explain pod later</span></a>
                         Fan - Fantom launcher</li>
-                    <li><a class="moreInfos"><span>Show unit test. (Show  Verify** ,methods in Netbeans)</span></a>
+                    <li><a class="moreInfos"><span>Show Demo unit test. (Show  Verify** ,methods in Netbeans)</span></a>
                         Fant - Unit test</li>
-                    <li><a class="moreInfos"><span>View/debug generated bytecode.</span></a>
+                    <li><a class="moreInfos"><span>View/debug generated bytecode. fanp hello::Main.main</span></a>
                         Fanp - FCode decompiler</li>
                     <li><a class="moreInfos"><span>Possibility of compiling Fantom from sources.</span></a>
                         Bootstrap</li>
@@ -143,11 +165,16 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             <div class="slide">
                 <h1>Fantom code structure</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Fantom's namespace as well as the unit of deployment(pod::Type.slot). A pod's name is globally unique. Also does Dependency management(show meta in build.fan).  Plain zip file. Reflection: Demo: Pod.list, Pod.of("sys").types </span></a>
+                    <li><a class="moreInfos"><span>Fantom's namespace as well as the unit of deployment(pod::Type.slot). 
+                                A pod's name is globally unique. Also does Dependency management(show meta in build.fan).  
+                                Plain zip file. Reflection: Demo: Pod.list, Pod.of("sys").types </span></a>
                         Pods</li>
-                    <li><a class="moreInfos"><span>Show hello pod example: Show explain pod folders(src, tst etc...). Show/explain CompUnit.fan. Show/Explain pod meta (build.fan)</span></a>
+                    <li><a class="moreInfos"><span>Show hello pod example: Show explain pod folders(src, tst etc...). 
+                                Show/explain CompUnit.fan. Show/Explain pod meta (build.fan)</span></a>
                         Compilation Unit</li>
-                    <li><a class="moreInfos"><span>Can have multiple in single fan file. A Type is an object oriented class which encapsulates state and behavior. Demo: Type.of("sys::Str").slots</span></a>
+                    <li><a class="moreInfos"><span>Can have multiple in single fan file. 
+                                A Type is an object oriented class which encapsulates state and behavior. 
+                                Demo: Type.of("sys::Str").slots</span></a>
                         Types</li>
                 </ul>
             </div>
@@ -155,18 +182,23 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             <div class="slide">
                 <h1>Type system : Concepts</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Demo with fansh (Int, Bool etc..). Explaine value-types(Int, Bool, Float)</span></a>
+                    <li><a class="moreInfos"><span>Demo with fansh (Int, Bool etc..). 
+                                Explain value-types(Int, Bool, Float)</span></a>
                         Purely object oriented</li>
                     <li><a class="moreInfos"><span>Show in fansh: Bool, Int(64 bits, chars, 0x, underscores), Float, Decimal(4d - bigdecimal), 
                                 Str(multi-line, interpolation, triple quotes, locale($&lt;&gt;), Duration(day, hr, ms), Uri(can do interpolation),
                                 Type(Str#), Slot(Int#plus), Range((0..3).contains(2), 0..&lt;3), List(add,first), Map(put,get)</span></a>
                         Fantom Literals</li>
-                    <li><a class="moreInfos"><span>Compiler warns you about simple mistakes. Runtime checks for null coercing - fail fast. Show default values of Int vs Int? for example. </span></a>
+                    <li><a class="moreInfos"><span>Compiler warns you about simple mistakes. 
+                                Runtime checks for null coercing - fail fast. 
+                                Show default values of Int vs Int? for example. </span></a>
                         (Non)Nullable Types</li>
-                    <li><a class="moreInfos"><span>But inference for local vars, maps, list. dynamic call operator(-&gt;). Better tooling, error reporting.</span></a>
+                    <li><a class="moreInfos"><span>But inference for local vars, maps, list. dynamic call operator(-&gt;). 
+                                Better tooling, error reporting.</span></a>
                         Statically typed</li>
                     <li><a class="moreInfos"><span>A.fits(B)-&gt;ok  B.fits(A)-&gt; implicit cast   otherwise-&gt;error. 
-                                Allows dynamic calls(obj?) cast: Str name := x->person->name. "Liskov Substitution Principle"</span></a>
+                                Allows dynamic calls(obj?) cast: Str name := x->person->name. 
+                                "Liskov Substitution Principle"</span></a>
                         Implicit casts</li>
                     <li><a class="moreInfos"><span>Limited for simplicity. List(V,L), Maps(K,V,M), Funcs(A-H, R). Functions explained more later.</span></a>
                         Generics</li>
@@ -178,9 +210,11 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 <ul>
                     <li><a class="moreInfos"><span>Semi-columns optional. Show/explain examples in OtherThings.statements</span></a>
                         Statements</li>
-                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). Show/explain examples in OtherThings.exceptions </span></a>
+                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). 
+                                Show/explain examples in OtherThings.exceptions </span></a>
                         Exception Handling</li>
-                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. Mapped to methods (and, or etc...). No bitwise ops(use methods)</span></a>
+                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. 
+                                Mapped to methods (and, or etc...). No bitwise ops(use methods)</span></a>
                         Expressions/Operators</li>
                 </ul>
             </div>
@@ -190,21 +224,28 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 <ul>
                     <li>Types</li>
                     <ul>
-                        <li><a class="moreInfos"><span>Demo classes.fan. Can Inherit from One superclass and 0+ mixins. Can be public/internal abstract/final. Const(Const fields only)</span></a>
+                        <li><a class="moreInfos"><span>Demo classes.fan. Can Inherit from One superclass and 0+ mixins. 
+                                    Can be public/internal abstract/final. Const(Const fields only)</span></a>
                             Classes
                         </li>
                         <ul>
-                            <li><a class="moreInfos"><span>Demo Enumerations.fan. Normal class: (enum class but const &amp; final with fixed instances. inherit sys::Enum) Can have methods. private constructors.</span></a>
+                            <li><a class="moreInfos"><span>Demo Enumerations.fan. Normal class: (enum class but const &amp; final with fixed instances. 
+                                        Inherit sys::Enum. Can have methods. private constructors.</span></a>
                                 Enumerations</li>
-                            <li><a class="moreInfos"><span>Demo Facets.fan. (~ annotations). Facets are defined as normal classes(Implied const) using the facet positional keyword
+                            <li><a class="moreInfos"><span>Demo Facets.fan. (~ annotations). 
+                                        Facets are defined as normal classes(Implied const) using the facet positional keyword
                                     </span></a>
                                 Facets</li>
                         </ul>
-                        <li><a class="moreInfos"><span>Demo Mixins.fan. Like interfaces but can have methods (code reuse). Abstract, can't create instances. can't store state (can have abstract fields).</span></a>
+                        <li><a class="moreInfos"><span>Demo Mixins.fan. Like interfaces but can have methods (code reuse). 
+                                    Abstract, can't create instances. can't store state (can have abstract fields).</span></a>
                             Mixins</li>
                         <li><a class="moreInfos"><span>Demo inheritance.fan. Base class first(if any) then 'n' mixins
                                     Covariance allowed for methods
-                                    Fantom avoids the diamond inheritance problem. First mixins can't declare concrete fields, which mean they never store state. Second any ambiguity that arises from diamond inheritance or otherwise requires the subclass to explicitly disambiguate (or if the inherited slots are not virtual, then the subtype simply cannot be created).
+                                    Fantom avoids the diamond inheritance problem. 
+                                    First mixins can't declare concrete fields, which mean they never store state. 
+                                    Second any ambiguity that arises from diamond inheritance or otherwise requires the subclass to explicitly disambiguate (or if the inherited slots are not virtual, 
+                                    then the subtype simply cannot be created).
                                 </span></a>
                             Inheritance</li>
                     </ul>
