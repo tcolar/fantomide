@@ -291,37 +291,35 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                     Example: iteration mechanism</span></a>
                             Closures</li>
                     </ul>
-                <ul>
                     <li>Java/.Net Interaction</li>
                     <ul>
-                        <li><a class="moreInfos"><span>.Net FFI a work in progress.
-                                Limitations: multi-dimensional arrays, Sub-classing a Java class more than one level deep, 
-                                can't override java overLOADED methods -> can be an issue, my solution -> create a java "pass-through" method.
-                                You may not subclass from a Fantom class which itself subclasses from a Java class(constructors issue)</span></a>
+                        <li><a class="moreInfos"><span>.Net FFI are a work in progress.
+                                    Java, done, a few limitations: Multi-dimensional arrays, Sub-classing a Java class more than one level deep, 
+                                    can't override java overLOADED methods -> can be an issue, my solution -> create a java "pass-through" method.
+                                    You may not subclass from a Fantom class which itself subclasses from a Java class(constructors issue)</span></a>
                             Java / .Net FFI</li>
-                </ul>
+                        <li><a class="moreInfos"><span>Show Hello:BuildJar task. Class naming Rule: fan.pod.class.method</span></a>
+                            Using Fantom code from Java (jarDistEnv)</li>
+                    </ul>
+                    <li><a class="moreInfos"><span>Show NativeClassExample, NativeExample. Don't use, except when If you need to call out native APIs, but still wish your Fantom pod to be portable across multiple platforms</span></a>
+                        Natives
+                    </li>
             </div>
 
             <!-- todo:
-            Java FFI: explain deployment, classpath, try to use java code in "java" folder
-            http://fantom.org/doc/docLang/Env.html#JarDistEnv
-            http://fantom.org/sidewalk/topic/872
-            http://fantom.org/sidewalk/topic/1235
+            fwt, javascript, Env, Serialization, concurrency/actors, Naming, Logging, Localization, DSL's, DateTime
+
+            actor -> thread locals discussion ?? http://fantom.org/sidewalk/topic/1374            
+            
             itBlocks: explain it vs this etc...
-            native code.
             range: args.size.times
-            Logging built-in
+
             fwt example
             javascript examples
 
             Hello worlds ?            
             Netbeans DEMO: use huge fonts ??
             And big fonts in shell (fansh / vi)
-            
-            Fantom from java ???
-            compile into java (jardist) + example + alternative like i do in ide for indexing(using fantom java class + dynamic calls)
-            
-            actor -> thread locals discussion ?? http://fantom.org/sidewalk/topic/1374
             
             opened to ideas  quick fixes/ impl.
             -->
@@ -341,7 +339,7 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 </ul>
             </div>
 
-            <div class="slide">
+            <!--<div class="slide">
                 <h1>Test</h1>
                 <code>code</code>
                 <code class="bad">Bad code</code>
@@ -350,7 +348,7 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                     Pre
                     <code>Pre: code</pre>
                 </pre>
-            </div>
+            </div>-->
             <!-- ============ End slides ============= -->    
         </div>
     </body>

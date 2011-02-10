@@ -8,8 +8,6 @@ using [java] java.io::FileFilter
 using [java] java.io::File as JFile
 // annotation
 using [java] java.lang::SuppressWarnings
-// "local" class
-using [java] corp::LocalJava
 
 ** ** Using a java API
 class UsingJavaRegex
@@ -58,14 +56,6 @@ internal class FilterImpl : FileFilter
     {
         f.getName.endsWith(".fan")
     }
-}
-
-class LocalJavaExample
-{
-  static Void Main()
-  {
-    echo(LocalJava().getJavaHello)
-  }
 }
 
 /*
