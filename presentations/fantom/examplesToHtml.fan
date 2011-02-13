@@ -23,7 +23,7 @@ class ExamplesToHtml
     }
     else if(f.ext == "fan")
     {
-      html := dest.createFile(path[0..-5] + ".html") 
+      html := dest.createFile(path + ".html") 
       in := f.in; out := html.out   
       writeHeader(out, f)
       FanToHtml(in, out).parse
