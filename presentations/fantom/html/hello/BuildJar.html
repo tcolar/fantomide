@@ -1,0 +1,32 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>BuildJar.fan</title>
+  <link rel='stylesheet' type='text/css' href='../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> build
+
+<span class='z'>**</span>
+<span class='z'>** Build the fantom code as a standalone jar</span>
+<span class='z'>** </span>
+<span class='z'>** Example of use:</span>
+<span class='z'>** java -jar /home/thibautc/NetBeansProjects/fantomide/presentations/fantom/examples/hello/hello.jar \</span>
+<span class='z'>** -Dfan.home=/home/thibautc/apps/fantom-1.0.57/ -Dfan.jardist=true </span>
+<span class='z'>**</span>
+<span class='k'>class</span> BuildJar : BuildScript
+<span class='b'>{</span>
+  
+  @Target <span class='b'>{</span> help = <span class='s'>"Build pod as a single Jar"</span> <span class='b'>}</span>
+  Void distJar<span class='b'>()</span>
+  <span class='b'>{</span>
+    builder := JarDist<span class='b'>(</span><span class='k'>this</span><span class='b'>)</span>
+    builder.outFile = <span class='u'>`./hello.jar`</span>.toFile.normalize
+    builder.podNames = Str<span class='b'>[</span><span class='s'>"hello"</span>,<span class='s'>"sql"</span>,<span class='s'>"fwt"</span>,<span class='s'>"email"</span>, <span class='s'>"concurrent"</span>, <span class='s'>"gfx"</span>, <span class='s'>"inet"</span><span class='b'>]</span>
+    builder.mainMethod = <span class='s'>"hello::Main.main"</span>
+    builder.run
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

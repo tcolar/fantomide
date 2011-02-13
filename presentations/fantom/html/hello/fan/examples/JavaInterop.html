@@ -1,0 +1,108 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>JavaInterop.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='y'>// Java Interopability examples</span>
+
+<span class='y'>// importing java.regex.*</span>
+<span class='k'>using</span> <span class='b'>[</span>java<span class='b'>]</span> java.util.regex 
+<span class='y'>// importing java.io.FileFilter</span>
+<span class='k'>using</span> <span class='b'>[</span>java<span class='b'>]</span> java.io::FileFilter
+<span class='y'>// importing java.io.File under the name JFile (avoids ambiguity with sys::File)</span>
+<span class='k'>using</span> <span class='b'>[</span>java<span class='b'>]</span> java.io::File <span class='k'>as</span> JFile
+<span class='y'>// annotation</span>
+<span class='k'>using</span> <span class='b'>[</span>java<span class='b'>]</span> java.lang::SuppressWarnings
+
+<span class='z'>** ** Using a java API</span>
+<span class='k'>class</span> UsingJavaRegex
+<span class='b'>{</span>
+
+  Void example<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// Using java pattern class</span>
+    Pattern wordPattern := Pattern.compile<span class='b'>(</span>Str&lt;|\w+|&gt;<span class='b'>)</span>
+    matcher := wordPattern.matcher<span class='b'>(</span><span class='s'>"I am using Fantom from Java"</span><span class='b'>)</span>
+    <span class='k'>while</span><span class='b'>(</span>matcher.find<span class='b'>)</span> 
+      echo<span class='b'>(</span>matcher.group<span class='b'>)</span>
+      
+    <span class='y'>// can make use of dynamic calls too</span>
+    matcher-&gt;reset
+  <span class='b'>}</span> 
+<span class='b'>}</span>
+
+<span class='z'>** Subclassing a Java class</span>
+<span class='k'>class</span> SubJavaClass : JFile
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>(</span>Uri uri<span class='b'>)</span> : <span class='k'>super</span><span class='b'>(</span>uri.pathStr<span class='b'>)</span> 
+  <span class='b'>{</span>
+    echo<span class='b'>(</span><span class='s'>"New File: $uri.pathStr"</span><span class='b'>)</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='z'>** Implementing a java interface</span>
+<span class='k'>class</span> FanFilesLister
+<span class='b'>{</span>
+    @SuppressWarnings<span class='b'>{}</span> <span class='y'>// Java annotation (dummy example))</span>
+    Void example<span class='b'>()</span>
+    <span class='b'>{</span>
+	folder := File<span class='b'>(</span><span class='u'>`/tmp/`</span><span class='b'>)</span>
+        dir := JFile<span class='b'>(</span>folder.pathStr<span class='b'>)</span>
+        JFile<span class='b'>[]</span> files := dir.listFiles<span class='b'>(</span>FilterImpl<span class='b'>())</span>;
+        <span class='y'>// We can take advantage of the "real" Fantom List(instead of Java primitive list)</span>
+        files.each <span class='b'>{</span> echo<span class='b'>(</span>it.getName<span class='b'>())</span> <span class='b'>}</span>
+    <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>internal</span> <span class='k'>class</span> FilterImpl : FileFilter
+<span class='b'>{</span>
+    <span class='y'>// Note that we use "JFIle?"  because all mapped java types are nullable (Example String[] -&gt; Str?[]?)</span>
+    <span class='k'>override</span> Bool accept<span class='b'>(</span>JFile? f<span class='b'>)</span>
+    <span class='b'>{</span>
+        f.getName.endsWith<span class='b'>(</span><span class='s'>".fan"</span><span class='b'>)</span>
+    <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='x'>/*
+=================== Primitives mapping ====================================
+byte    sys::Int
+short   sys::Int
+char    sys::Int
+int     sys::Int
+long    sys::Int
+float   sys::Float
+
+=================== Interop summary =======================================
+Java Type            Fantom Type
+-----------          -----------
+foo.bar.Baz          [java]foo.bar::Baz
+boolean              sys::Bool
+byte                 sys::Int
+short                sys::Int
+char                 sys::Int
+int                  sys::Int
+long                 sys::Int
+float                sys::Float
+double               sys::Float
+java.lang.Object     sys::Obj
+java.lang.String     sys::Str
+java.lang.Boolean    sys::Bool?
+java.lang.Long       sys::Int?
+java.lang.Double     sys::Float?
+java.math.BigDecimal sys::Decimal
+Foo[]                Foo[]  // sys::List parameterized with Foo
+boolean[]            [java]fanx.interop::BooleanArray
+byte[]               [java]fanx.interop::ByteArray
+short[]              [java]fanx.interop::ShortArray
+char[]               [java]fanx.interop::CharArray
+int[]                [java]fanx.interop::IntArray
+long[]               [java]fanx.interop::LongArray
+float[]              [java]fanx.interop::FloatArray
+double[]             [java]fanx.interop::DoubleArray
+Foo[][]             // unsupported for both primitivies and Objects
+*/</span></pre>
+</div>
+  </body></html>

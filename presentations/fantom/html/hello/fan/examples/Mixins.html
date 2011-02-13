@@ -1,0 +1,28 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Mixins.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='z'>**</span>
+<span class='z'>** Mixin Example</span>
+<span class='z'>**</span>
+<span class='k'>mixin</span> Audio
+<span class='b'>{</span>
+  <span class='k'>abstract</span> Int volume
+  Void incrementVolume<span class='b'>()</span> <span class='b'>{</span> volume += 1 <span class='b'>}</span>
+  Void decrementVolume<span class='b'>()</span> <span class='b'>{</span> volume -= 1 <span class='b'>}</span>
+  <span class='z'>** Return impl. description</span>
+  <span class='k'>abstract</span> Str description<span class='b'>()</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> Television : Audio
+<span class='b'>{</span>
+  <span class='k'>override</span> Int volume := 0
+  <span class='k'>override</span> Str description<span class='b'>()</span> <span class='b'>{</span> <span class='k'>return</span> <span class='s'>"I'm a TV!"</span> <span class='b'>}</span> <span class='y'>// return optional</span>
+<span class='b'>}</span>
+</pre>
+</div>
+  </body></html>

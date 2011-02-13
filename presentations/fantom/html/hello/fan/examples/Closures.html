@@ -1,0 +1,112 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Closures.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> fwt
+
+<span class='z'>**</span>
+<span class='z'>** Closures examples</span>
+<span class='z'>**</span>
+<span class='k'>class</span> Closures
+<span class='b'>{</span>
+  Void example<span class='b'>()</span>
+  <span class='b'>{</span>
+    Str s := <span class='s'>"hello World"</span>
+    <span class='y'>//Str.any(|Int char, Int index-&gt; Bool| c) -&gt; Return true if c returns true for any of the characters in this string.</span>
+    hasD := s.any<span class='b'>(</span>|Int char -&gt; Bool| <span class='b'>{</span> <span class='k'>return</span> char == <span class='s'>'d'</span><span class='b'>})</span>
+    hasD = s.any<span class='b'>()</span> |Int char -&gt; Bool| <span class='b'>{</span> <span class='k'>return</span> char == <span class='s'>'d'</span><span class='b'>}</span> <span class='y'>// simplified</span>
+    hasD = s.any |char| <span class='b'>{</span> <span class='k'>return</span> char == <span class='s'>'d'</span><span class='b'>}</span> <span class='y'>// simplified more, and inference</span>
+  <span class='b'>}</span>
+  
+  Void arity<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// arity   str.each -&gt; Void each(|Int ch, Int index| c)</span>
+    <span class='y'>// Don't have to use all the parameters</span>
+    <span class='s'>"Hello"</span>.each |Int char, Int index| <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"$index =&gt; $char"</span><span class='b'>)</span> <span class='b'>}</span>
+    <span class='s'>"Hello"</span>.each |char| <span class='b'>{</span> echo<span class='b'>(</span>char<span class='b'>)</span> <span class='b'>}</span>
+  <span class='b'>}</span>
+  
+  <span class='z'>** Examples of nice closure use in API's</span>
+  Void apiExamples<span class='b'>()</span>
+  <span class='b'>{</span> 
+    <span class='y'>// List.findAll (findAll(|V item, Int index-&gt;Bool| c)) -&gt; Return a new list containing the items for which c returns true </span>
+    odds := <span class='b'>[</span>1, 2, 3, 4, 5<span class='b'>]</span>.findAll |val| <span class='b'>{</span> val.isOdd <span class='b'>}</span>
+    
+    <span class='y'>// File.eachLine -&gt; Read the entire stream into Str lines. This InStream is guaranteed to be closed upon return.</span>
+    f := File<span class='b'>(</span><span class='u'>`/tmp/dummyFile.txt`</span><span class='b'>)</span>
+    f.eachLine |line| <span class='b'>{</span> echo<span class='b'>(</span>line<span class='b'>)</span> <span class='b'>}</span>
+    
+    <span class='y'>// Example where the return value is used</span>
+    m := <span class='b'>[</span><span class='s'>"2"</span>:2, <span class='s'>"3"</span>:3, <span class='s'>"4"</span>:4<span class='b'>]</span>
+    <span class='y'>// Map.reduce : Iterates through every value in the map to reduce the map into a single value.</span>
+    <span class='y'>// The initial value of the reduction is passed in as the init parameter, </span>
+    <span class='y'>// then passed back to the closure along with each item. </span>
+    total := m.reduce<span class='b'>(</span>100<span class='b'>)</span> |Obj r, Int v-&gt;Obj| <span class='y'>// would get 109</span>
+    <span class='b'>{</span> 
+      echo<span class='b'>(</span><span class='s'>"Adding: $v"</span><span class='b'>)</span>; <span class='k'>return</span> <span class='b'>(</span>Int<span class='b'>)</span>r + v 
+    <span class='b'>}</span>  
+  <span class='b'>}</span>
+
+  <span class='z'>** Closure Variables binding examples  </span>
+  Void varBinding<span class='b'>()</span>
+  <span class='b'>{</span>
+    
+    counter := 0 <span class='y'>// all closures in this scope can bind this var.</span>
+    f := |-&gt;Int| <span class='b'>{</span> <span class='k'>return</span> ++counter <span class='b'>}</span>
+    f<span class='b'>()</span>; f<span class='b'>()</span>; f<span class='b'>()</span> 
+    echo<span class='b'>(</span>counter<span class='b'>)</span> <span class='y'>// 3</span>
+    g := |-&gt;Int| <span class='b'>{</span> <span class='k'>return</span> --counter <span class='b'>}</span>
+    g<span class='b'>()</span>; g<span class='b'>()</span>; g<span class='b'>()</span>
+    echo<span class='b'>(</span>counter<span class='b'>)</span> <span class='y'>// 0</span>
+    
+    <span class='y'>//When a closure binds to a local variable in its outer scope, that variable lives as long as the closure lives</span>
+    <span class='y'>// allows closures to store their own state between invocations.</span>
+    f2 := createFunc<span class='b'>()</span> 
+    echo<span class='b'>(</span>f2<span class='b'>())</span>; echo<span class='b'>(</span>f2<span class='b'>())</span>; echo<span class='b'>(</span>f2<span class='b'>())</span> <span class='y'>//1,2,3</span>
+  <span class='b'>}</span>
+  
+  Func createFunc<span class='b'>()</span>
+  <span class='b'>{</span>
+    counter := 0; <span class='k'>return</span> |-&gt;Int| <span class='b'>{</span> <span class='k'>return</span> ++counter <span class='b'>}</span>
+  <span class='b'>}</span>  
+  
+  Void itBlocks<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// An it-block can be used whenever a single parameter function is expected</span>
+    <span class='b'>[</span><span class='s'>"a"</span>,<span class='s'>"b"</span>,<span class='s'>"c"</span><span class='b'>]</span>.each <span class='b'>{</span> echo<span class='b'>(</span>it.upper<span class='b'>)</span> <span class='b'>}</span>
+    <span class='b'>[</span><span class='s'>"a"</span>,<span class='s'>"b"</span>,<span class='s'>"c"</span><span class='b'>]</span>.each <span class='b'>{</span> echo<span class='b'>(</span>upper<span class='b'>)</span> <span class='b'>}</span> <span class='y'>// implicit use of it</span>
+
+  
+    <span class='y'>// Special "This" method parameter</span>
+    <span class='y'>// fwt::Button signature : new make(|This| f) { f(this) }</span>
+    oldSchool := Button<span class='b'>()</span> <span class='y'>// old school</span>
+    oldSchool.text = <span class='s'>"Button1"</span>
+    oldSchool.selected = <span class='k'>true</span>
+    Window
+    <span class='b'>{</span>
+        add<span class='b'>(</span> oldSchool <span class='b'>)</span>
+        add<span class='b'>(</span> Button <span class='b'>{</span> it.text = <span class='s'>"Easier"</span><span class='b'>}</span> <span class='b'>)</span> 
+        Button <span class='b'>{</span>it.text = <span class='s'>"Easiest"</span><span class='b'>}</span>, <span class='y'>// itBlock plus "itAdd" operator (comma))</span>
+        Button 
+        <span class='b'>{</span>
+           text = <span class='s'>"Exit"</span> <span class='y'>// implied "it""</span>
+           onAction.add |-&gt;| <span class='b'>{</span> Env.cur.exit <span class='b'>}</span> <span class='y'>// use of closure</span>
+        <span class='b'>}</span>,          
+    <span class='b'>}</span>.open    
+  <span class='b'>}</span>
+
+  Void withBlocks<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// when itBlock passed to a method not waiting for one, then "with" method is called</span>
+    <span class='y'>// Obj.with: just applies the function and returns it.</span>
+    <span class='y'>// The itBlock opens a new scope can be used for declarative programming.</span>
+    list := Str<span class='b'>[</span>,<span class='b'>]</span>.with <span class='b'>{</span> fill<span class='b'>(</span><span class='s'>"x"</span>, 3<span class='b'>)</span> <span class='b'>}</span>
+    list2 := Str<span class='b'>[</span>,<span class='b'>]</span> <span class='b'>{</span> fill<span class='b'>(</span><span class='s'>"x"</span>, 3<span class='b'>)</span> <span class='b'>}</span> <span class='y'>// implicit call to with</span>
+  <span class='b'>}</span>  
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

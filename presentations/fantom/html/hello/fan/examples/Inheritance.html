@@ -1,0 +1,42 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Inheritance.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+
+<span class='y'>// inheriting examples</span>
+<span class='k'>using</span> fwt::Button
+
+<span class='k'>class</span> SubObj <span class='b'>{}</span>
+<span class='k'>class</span> SubObj2 : Obj <span class='b'>{}</span>
+<span class='k'>class</span> SubObj3 : Button <span class='b'>{</span> <span class='k'>new</span> make<span class='b'>()</span> : <span class='k'>super</span><span class='b'>()</span> <span class='b'>{}</span> <span class='b'>}</span>
+<span class='k'>class</span> SubObj4 : sys::Obj <span class='b'>{}</span>
+
+<span class='k'>mixin</span> Mixin1<span class='b'>{}</span> 
+<span class='k'>mixin</span> Mixin2<span class='b'>{}</span> 
+
+<span class='y'>// class inheritance</span>
+<span class='k'>class</span> SubClassA : SubObj <span class='b'>{}</span> <span class='y'>// class</span>
+<span class='k'>class</span> SubClassB : Mixin1, Mixin2 <span class='b'>{}</span> <span class='y'>//mixins</span>
+<span class='k'>class</span> SubClassC : SubObj, Mixin1, Mixin2 <span class='b'>{}</span> <span class='y'>// class &amp; mixin(s)</span>
+
+<span class='y'>// mixin inheritance</span>
+<span class='k'>mixin</span> MixinA : Mixin1 <span class='b'>{}</span>
+<span class='k'>mixin</span> MixinB : Mixin1, Mixin2 <span class='b'>{}</span>
+
+
+<span class='k'>class</span> Super1 : Button
+<span class='b'>{</span> 
+  <span class='k'>new</span> make<span class='b'>()</span> : <span class='k'>super</span><span class='b'>()</span> <span class='b'>{}</span> 
+   
+  Void echoText<span class='b'>()</span> 
+  <span class='b'>{</span>
+    echo<span class='b'>(</span><span class='k'>super</span>.text<span class='b'>)</span> <span class='y'>// super</span>
+    echo<span class='b'>(</span>Obj.<span class='k'>super</span>.toStr<span class='b'>)</span> <span class='y'>// named super</span>
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

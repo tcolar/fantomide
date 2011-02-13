@@ -1,0 +1,38 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Enumerations.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='z'>**</span>
+<span class='z'>** Enumeration examples</span>
+<span class='z'>**</span>
+<span class='k'>enum</span> <span class='k'>class</span> Color <span class='b'>{</span> red, blue, green <span class='b'>}</span>
+
+<span class='k'>enum</span> <span class='k'>class</span> Suits
+<span class='b'>{</span>
+  clubs<span class='b'>(</span><span class='s'>"black"</span><span class='b'>)</span>,
+  diamonds<span class='b'>(</span><span class='s'>"red"</span><span class='b'>)</span>,
+  hearts<span class='b'>(</span><span class='s'>"red"</span><span class='b'>)</span>,
+  spades<span class='b'>(</span><span class='s'>"black"</span><span class='b'>)</span>
+
+  <span class='k'>private</span> <span class='k'>new</span> make<span class='b'>(</span>Str color<span class='b'>)</span> <span class='b'>{</span> <span class='k'>this</span>.color = color <span class='b'>}</span>
+
+  <span class='k'>const</span> Str color;
+<span class='b'>}</span>
+
+<span class='k'>class</span> EnumUse
+<span class='b'>{</span>
+  Void enumUse<span class='b'>()</span>
+  <span class='b'>{</span>  
+    apr := Month.apr              <span class='y'>// direct access</span>
+    jun := Month.vals<span class='b'>[</span>5<span class='b'>]</span>          <span class='y'>// lookup by ordinal</span>
+    aug := Month.fromStr<span class='b'>(</span><span class='s'>"aug"</span><span class='b'>)</span>   <span class='y'>// lookup by name</span>
+    Month.fromStr<span class='b'>(</span><span class='s'>"bad"</span><span class='b'>)</span>          <span class='y'>// throws ParseErr</span>
+    Month.fromStr<span class='b'>(</span><span class='s'>"bad"</span>, <span class='k'>false</span><span class='b'>)</span>   <span class='y'>// returns null</span>
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

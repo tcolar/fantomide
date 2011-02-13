@@ -1,0 +1,125 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>OtherThings.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='y'>// To change this License template, choose Tools / Templates</span>
+<span class='y'>// and edit Licenses / FanDefaultLicense.txt</span>
+<span class='y'>//</span>
+<span class='y'>// History:</span>
+<span class='y'>//   31-Jan-2011 thibautc Creation</span>
+<span class='y'>//</span>
+<span class='k'>using</span> fwt
+
+<span class='z'>**</span>
+<span class='z'>** Various other examples</span>
+<span class='z'>**</span>
+<span class='k'>class</span> OtherThings
+<span class='b'>{</span>
+  <span class='z'>** Statements examples</span>
+  Void statements<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// semicolumns are optional. statements can end with a newline a semi or }</span>
+    Str s1 := <span class='s'>"str 1"</span> <span class='y'>// assignment uses :=</span>
+    s2 := <span class='s'>"s2 and $s1"</span> <span class='y'>//inferred assignment with interpolation</span>
+    
+    <span class='k'>while</span> <span class='b'>(</span>s1.size &lt;= 5<span class='b'>)</span> <span class='y'>// while loop</span>
+        s1 += <span class='s'>" "</span>  <span class='y'>// single statment doesn't need curlies</span>
+    
+    <span class='k'>for</span> <span class='b'>(</span>i:=0; i&lt;4; ++i<span class='b'>)</span> <span class='y'>// for loop</span>
+    <span class='b'>{</span>
+        <span class='k'>if</span> <span class='b'>(</span>i == 2<span class='b'>)</span> <span class='k'>continue</span> <span class='y'>//continue</span>
+        echo<span class='b'>(</span>i<span class='b'>)</span>
+        <span class='k'>if</span> <span class='b'>(</span>i == 3<span class='b'>)</span> <span class='k'>break</span>   <span class='y'>// break</span>
+    <span class='b'>}</span>  
+            
+    <span class='k'>switch</span> <span class='b'>(</span>s1<span class='b'>)</span> <span class='y'>// switch example (Int, Enum values or any other type(equals) can be used)</span>
+    <span class='b'>{</span>
+      <span class='k'>case</span> <span class='s'>"str 1"</span>:
+        echo<span class='b'>(</span><span class='s'>"case 1"</span><span class='b'>)</span> <span class='y'>// no fall-through / no "break" needed</span>
+      <span class='k'>case</span> <span class='s'>"str2"</span>:
+      <span class='k'>case</span> <span class='s'>"str3"</span>: <span class='y'>// grouped "case" </span>
+        echo<span class='b'>(</span><span class='s'>"case 2"</span><span class='b'>)</span>
+      <span class='k'>default</span>: <span class='y'>// default if no matches</span>
+        echo<span class='b'>(</span><span class='s'>"default"</span><span class='b'>)</span>
+    <span class='b'>}</span>                   
+  <span class='b'>}</span>  
+  
+  <span class='z'>** Exception handling examples</span>
+  Void exceptions<span class='b'>()</span>
+  <span class='b'>{</span>
+      <span class='y'>// try/catch/finaly example</span>
+      Int? a  
+      <span class='k'>try</span>
+          s := a + 2
+      <span class='k'>catch</span><span class='b'>(</span>NullErr npe<span class='b'>)</span>
+          echo<span class='b'>(</span><span class='s'>"Catched NPE"</span><span class='b'>)</span>
+      <span class='k'>catch</span><span class='b'>(</span>Err e<span class='b'>)</span>
+          e.trace    <span class='y'>// dump trace to system out, can also use a log file </span>
+      <span class='k'>finally</span>
+          echo<span class='b'>(</span><span class='s'>"Done"</span><span class='b'>)</span>     
+          
+      <span class='k'>throw</span> IndexErr<span class='b'>(</span><span class='s'>"Index error"</span><span class='b'>)</span>  <span class='y'>// exception throwing        </span>
+  <span class='b'>}</span>    
+              
+  <span class='z'>** Expressions examples  </span>
+  Void operators<span class='b'>()</span>
+  <span class='b'>{</span>
+    a := 1 + 2 <span class='y'>// + - * / % ++ --</span>
+    b := a == 3 <span class='y'>// == != &lt;= &gt;=   </span>
+    c := <span class='b'>(</span>Num<span class='b'>)</span> a <span class='y'>// cast</span>
+    d := 2 &gt; 1 ? <span class='k'>true</span> : <span class='k'>false</span> <span class='y'>// ternary    </span>
+            
+    <span class='y'>// Fantom specific         </span>
+    j := a &lt;=&gt; 5 <span class='y'>// compare method       </span>
+    k := <span class='s'>"Hello"</span> === <span class='s'>"Hello"</span> <span class='y'>// !==   -&gt; same in memory, not equals    </span>
+    l := <span class='b'>(</span>a <span class='k'>is</span> Int<span class='b'>)</span> <span class='y'>// is, isnot</span>
+    m := <span class='b'>(</span>a <span class='k'>as</span> Num<span class='b'>)</span> <span class='y'>// cast</span>
+    n := 0..3 <span class='y'>// 0..&lt;3   -&gt; range    </span>
+    p := 2 &gt; 1 ? <span class='k'>true</span> : <span class='k'>throw</span> ArgErr<span class='b'>(</span><span class='s'>"Broken math!"</span><span class='b'>)</span> <span class='y'>// ternary with throw</span>
+            
+    Int? nullable
+    <span class='b'>[</span>Str:Int<span class='b'>]</span>? map := <span class='b'>[</span><span class='s'>"john"</span>:1, <span class='s'>"mike"</span>:2<span class='b'>]</span>    
+    Str hello := <span class='s'>"Hello"</span>
+                    
+    q := nullable ?: 5 <span class='y'>// (Elvis op) same as:   q = nullable != null ? nullable : 5  </span>
+    r := nullable ?: <span class='k'>throw</span> ArgErr<span class='b'>(</span><span class='s'>"nullable is null !"</span><span class='b'>)</span>   <span class='y'>// Elvis op with throw()</span>
+            
+    s := map?.get<span class='b'>(</span><span class='s'>"bob"</span><span class='b'>)</span>?.abs <span class='y'>// safe invoke ... s would be a null Int</span>
+    t := map?-&gt;get<span class='b'>(</span><span class='s'>"bob"</span><span class='b'>)</span>?-&gt;abs <span class='y'>// safe dynamic invoke</span>
+        
+    u := map<span class='b'>[</span><span class='s'>"john"</span><span class='b'>]</span> <span class='y'>// indexing operator, calls get() can also do map["john"] = 3</span>
+    v := hello<span class='b'>[</span>0..2<span class='b'>]</span> <span class='y'>// range operator, calls getRange() -&gt; would get "hel", can use negative values</span>
+        
+    w := Version<span class='b'>(</span><span class='s'>"3.2"</span><span class='b'>)</span> <span class='y'>// Serilaization -&gt; equivalent to Version.fromStr(3.2). Note: static fromStr takes precedence over make(str)</span>
+        
+    <span class='y'>// itBlock</span>
+    address := Address
+    <span class='b'>{</span>
+      it.street = <span class='s'>"123 Happy Lane"</span>
+      city   = <span class='s'>"Houston"</span>
+      state  = <span class='s'>"TX"</span>
+    <span class='b'>}</span>
+        
+    <span class='x'>/*
+    Comma operator -&gt; it.add()    
+    Note the comma operator chains the calls to add, therefore the add method must be annotated with the @Operator facet and return the chainable type This.
+    */</span>        
+    win := Window<span class='b'>{</span> Button<span class='b'>{</span>text=<span class='s'>"Ok"</span><span class='b'>}</span>, Button<span class='b'>{</span>text=<span class='s'>"Cancel"</span><span class='b'>}</span>, <span class='b'>}</span> <span class='y'>// add method</span>
+  <span class='b'>}</span>                                      
+<span class='b'>}</span>
+
+<span class='k'>class</span> Address
+<span class='b'>{</span>
+  Str street := <span class='s'>""</span>
+  Str city := <span class='s'>"N/A"</span>  
+  Str? state
+<span class='b'>}</span>
+
+
+</pre>
+</div>
+  </body></html>

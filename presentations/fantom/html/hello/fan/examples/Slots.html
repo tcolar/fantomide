@@ -1,0 +1,101 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Slots.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> sql
+
+<span class='z'>**</span>
+<span class='z'>** Slots examples</span>
+<span class='z'>**</span>
+<span class='k'>abstract</span> <span class='k'>class</span> MyUser
+<span class='b'>{</span>
+  <span class='z'>** Fields</span>
+  Int age := 23 <span class='y'>// field</span>
+  Bool? isInactive  <span class='y'>// nullable field</span>
+  Str name <span class='y'>// not null, will need to be assigned in ctor</span>
+  Str<span class='b'>[]</span> aliases := <span class='b'>[</span>,<span class='b'>]</span> <span class='y'>// list of Str</span>
+  
+  <span class='z'>** Field with manual getter/setter</span>
+  Int id := 0
+  <span class='b'>{</span>
+    get <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"get id"</span><span class='b'>)</span>; <span class='k'>return</span> &amp;id <span class='b'>}</span>
+    set <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"set id"</span><span class='b'>)</span>; &amp;id = it <span class='b'>}</span> <span class='y'>// using field storage</span>
+  <span class='b'>}</span>
+  
+  <span class='z'>** Method</span>
+  Void hello<span class='b'>()</span>  <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"Hello"</span><span class='b'>)</span> <span class='b'>}</span>
+
+  <span class='z'>** Method with defaulted params</span>
+  Void hello2<span class='b'>(</span>Str first, Str last:=<span class='s'>""</span>, Str middle:=<span class='s'>""</span><span class='b'>)</span>  
+  <span class='b'>{</span> 
+    echo<span class='b'>(</span><span class='s'>"Hello $first $middle $last"</span><span class='b'>)</span> 
+  <span class='b'>}</span>
+  
+  <span class='z'>** static method</span>
+  <span class='k'>static</span> Int add<span class='b'>(</span>Int a, Int b<span class='b'>)</span> <span class='b'>{</span> <span class='k'>return</span> a + b <span class='b'>}</span> <span class='y'>// return optional when only one statement</span>
+  
+  <span class='z'>** special "This" return type, allows method chaining like s := slots().addParam(p1).addParam(p2)....</span>
+  This addAlias<span class='b'>(</span>Str alias<span class='b'>)</span>
+  <span class='b'>{</span>
+    aliases.add<span class='b'>(</span>alias<span class='b'>)</span>
+    <span class='k'>return</span> <span class='k'>this</span>
+  <span class='b'>}</span>
+
+  <span class='z'>** abstract method to be impl. by subclass</span>
+  <span class='k'>abstract</span> Int implementMe<span class='b'>(</span>Str param<span class='b'>)</span>
+    
+  <span class='z'>** Virtual method : Has an implementation but specifically marked as an overridable class (Clean API's)</span>
+  <span class='k'>virtual</span> Void talk<span class='b'>()</span> <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"Hello"</span><span class='b'>)</span> <span class='b'>}</span>
+
+  <span class='z'>** Overriding (override keyword)  </span>
+  <span class='k'>override</span> Str toStr<span class='b'>()</span> <span class='b'>{</span> <span class='s'>"I'm a MyClass impl."</span> <span class='b'>}</span>
+    
+  <span class='z'>** Operator overloading example  (called when using  myClass + Int)</span>
+  @Operator MyUser plusInt<span class='b'>(</span>Int x<span class='b'>)</span> <span class='b'>{</span> age+=x ; <span class='k'>return</span> <span class='k'>this</span> <span class='b'>}</span>
+  
+  <span class='z'>** Once method, automatically "lazy-cached"</span>
+  <span class='k'>once</span> Int expensiveComputation<span class='b'>()</span> <span class='b'>{</span><span class='k'>return</span> 2548597.hash.pow<span class='b'>(</span>265489.hash<span class='b'>)}</span>
+  
+  <span class='z'>** Method calls</span>
+  <span class='k'>internal</span> Void methodCalls<span class='b'>()</span>
+  <span class='b'>{</span>
+    hello <span class='y'>// optional parenthesis if no args</span>
+    <span class='k'>this</span>.hello   
+    hello2<span class='b'>(</span><span class='s'>"John"</span>, <span class='s'>"Doe"</span><span class='b'>)</span>
+    Str? string := <span class='s'>"Hello"</span>
+    string.capitalize <span class='y'>// call</span>
+    string?.capitalize <span class='y'>// safe call</span>
+    string-&gt;capitalize <span class='y'>// dynamic call</span>
+    string?-&gt;capitalize <span class='y'>// safe dynamic call</span>
+  <span class='b'>}</span>
+  
+  <span class='z'>** Constructor</span>
+  <span class='k'>new</span> make<span class='b'>(</span>Str name, Int age:=30<span class='b'>)</span> <span class='b'>{</span> <span class='k'>this</span>.name = name; i := age <span class='b'>}</span>
+  
+  <span class='z'>** Constructor</span>
+  <span class='k'>new</span> makeFromSql<span class='b'>(</span>Row sqlRow<span class='b'>)</span> <span class='b'>{</span> <span class='k'>this</span>.name = sqlRow.get<span class='b'>(</span>sqlRow.col<span class='b'>(</span><span class='s'>"name"</span><span class='b'>))</span> <span class='k'>as</span> Str ?: <span class='s'>""</span><span class='b'>}</span>
+  
+  Void ctorCalls<span class='b'>()</span>
+  <span class='b'>{</span>
+    s := MySubUser.make<span class='b'>()</span> <span class='y'>// ctor call</span>
+    s2 := MySubUser<span class='b'>()</span> <span class='y'>// ctor call shortcut</span>
+    s3 := s2.addAlias<span class='b'>(</span><span class='s'>"The Dude"</span><span class='b'>)</span>.addAlias<span class='b'>(</span><span class='s'>"El Duderino"</span><span class='b'>)</span>
+  <span class='b'>}</span>
+  
+<span class='b'>}</span>
+
+<span class='z'>** Contsructor chaining examples</span>
+<span class='k'>class</span> MySubUser : MyUser
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>()</span> : <span class='k'>super</span><span class='b'>(</span><span class='s'>"Sub User"</span><span class='b'>)</span> <span class='b'>{</span><span class='x'>/*...*/</span><span class='b'>}</span>
+  <span class='k'>new</span> makeFromSql<span class='b'>(</span>Row sqlRow<span class='b'>)</span> : <span class='k'>super</span>.makeFromSql<span class='b'>(</span>sqlRow<span class='b'>)</span> <span class='b'>{</span><span class='x'>/*...*/</span><span class='b'>}</span>
+  <span class='k'>new</span> makeFromObj<span class='b'>(</span>Obj obj<span class='b'>)</span> : <span class='k'>this</span>.makeFromSql<span class='b'>(</span>obj-&gt;name<span class='b'>)</span> <span class='b'>{</span><span class='x'>/*...*/</span><span class='b'>}</span>
+  
+  <span class='k'>override</span> Int implementMe<span class='b'>(</span>Str param<span class='b'>)</span> <span class='b'>{</span> param.size <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

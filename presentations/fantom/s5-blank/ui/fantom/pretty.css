@@ -92,6 +92,7 @@ li:after {content: " [" attr(class) "]"; color: #F88;}
 }
 
 .moreInfos span {display: none}
+.moreInfos span a{display: none}
 
 .moreInfos:hover span
 {

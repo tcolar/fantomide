@@ -1,0 +1,47 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Facets.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='y'>// Facets examples</span>
+
+<span class='y'>// simple marker facet with no fields</span>
+facet <span class='k'>class</span> Indexed <span class='b'>{}</span>
+
+<span class='y'>// struct facet with one or more const fields</span>
+facet <span class='k'>class</span> Table
+<span class='b'>{</span>
+  <span class='y'>// fields must be serializable (A serializable object must support a make constructor which either takes no parameters or takes an it-block)</span>
+  <span class='k'>const</span> Str name := <span class='s'>""</span> 
+  <span class='k'>const</span> Bool autoCreate <span class='y'>// required</span>
+<span class='b'>}</span>
+
+<span class='y'>// Example of use:</span>
+@Indexed
+@Table <span class='b'>{</span> name = <span class='s'>"Employees"</span>; autoCreate = <span class='k'>true</span> <span class='b'>}</span>
+<span class='k'>class</span> Employee <span class='b'>{}</span>
+
+<span class='y'>// Reflection:</span>
+<span class='k'>class</span> FacetReflection
+<span class='b'>{</span>
+  Str myField := <span class='s'>""</span>
+  
+  Void example<span class='b'>()</span>
+  <span class='b'>{</span>
+    strIsTransient := Str#.hasFacet<span class='b'>(</span>Transient#<span class='b'>)</span>
+    p := 5 <span class='y'>//Int</span>
+    intIsSerializable := p.typeof.facet<span class='b'>(</span>Serializable#, <span class='k'>false</span><span class='b'>)</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='y'>// Facet inheritance</span>
+@FacetMeta <span class='b'>{</span> inherited = <span class='k'>true</span> <span class='b'>}</span> <span class='y'>// Use @FacetMeta</span>
+facet <span class='k'>class</span> Facet1 <span class='b'>{}</span>
+
+@Facet1 <span class='k'>class</span> class1 <span class='b'>{}</span>
+<span class='k'>class</span> class2 : class1 <span class='b'>{}</span> <span class='y'>// will inherit the facet @facet1 from class1</span></pre>
+</div>
+  </body></html>

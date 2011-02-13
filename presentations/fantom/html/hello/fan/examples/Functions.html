@@ -1,0 +1,51 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Functions.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='z'>**</span>
+<span class='z'>** Functions examples</span>
+<span class='z'>**</span>
+<span class='k'>class</span> Functions
+<span class='b'>{</span>
+  Void example<span class='b'>()</span>
+  <span class='b'>{</span>
+    func1 := |Int a, Int b-&gt;Int| <span class='b'>{</span>a+b<span class='b'>}</span>  <span class='y'>// function that takes two Int and return an Int</span>
+    
+    a := func1.callList<span class='b'>([</span>2,3<span class='b'>])</span> <span class='y'>//  5</span>
+    b := func1.call<span class='b'>(</span>2,3<span class='b'>)</span> <span class='y'>//  5</span>
+    c := func1<span class='b'>(</span>2,3<span class='b'>)</span> <span class='y'>// 5</span>
+
+    func3 := func1.bind<span class='b'>([</span>3<span class='b'>])</span> <span class='y'>// [Int-&gt;Int]</span>
+    p := func3<span class='b'>(</span>3<span class='b'>)</span> <span class='y'>// 5</span>
+      
+    executor<span class='b'>(</span>Obj#.method<span class='b'>(</span><span class='s'>"echo"</span><span class='b'>)</span>.func, <span class='b'>[</span><span class='s'>"Hello"</span><span class='b'>])</span> <span class='y'>// Hello        </span>
+  <span class='b'>}</span>
+
+  Void executor<span class='b'>(</span>Func func, Obj<span class='b'>[]</span> params<span class='b'>)</span>
+  <span class='b'>{</span>
+      echo<span class='b'>(</span><span class='s'>"... Starting execution"</span><span class='b'>)</span>
+      func.call<span class='b'>(</span>params<span class='b'>)</span>  
+      echo<span class='b'>(</span><span class='s'>"... Stopping execution"</span><span class='b'>)</span>
+  <span class='b'>}</span>
+  
+  Void funcParam<span class='b'>(</span>Int i, |Str-&gt;Int| func<span class='b'>)</span> <span class='b'>{}</span>
+  
+  Void exampleInstanceParams<span class='b'>()</span>
+  <span class='b'>{</span>
+    m := Str#replace
+    f := m.func
+    m.params<span class='y'>// [sys::Str from, sys::Str to]</span>
+    f.params<span class='y'>// [sys::Str this, sys::Str from, sys::Str to]</span>
+    <span class='y'>// call as a method on instance</span>
+    s1 := <span class='s'>"hi!"</span>.replace<span class='b'>(</span><span class='s'>"hi"</span>, <span class='s'>"hello"</span><span class='b'>)</span>
+    <span class='y'>// call the function, passing an instance</span>
+    s2 := f<span class='b'>(</span><span class='s'>"hi!"</span>, <span class='s'>"hi"</span>, <span class='s'>"hello"</span><span class='b'>)</span>
+  <span class='b'>}</span>
+  
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

@@ -1,0 +1,17 @@
+div.src { margin: 1em 0; }
+div.src pre
+{
+  font: 12pt Monaco, "Courier New";
+  background: none;
+  border: none;
+  color: #000;
+  padding: 5px;
+}
+.src .b { color: #f00; }     /* bracket       */
+.src .k { color: #00f; }     /* keyword       */
+.src .s { color: #008080; }  /* string        */
+.src .c { color: #008080; }  /* char          */
+.src .u { color: #008080; }  /* uri           */
+.src .x { color: #888; }     /* blockComment  */
+.src .y { color: #888; }     /* lineComment   */
+.src .z { color: #080; }     /* fandocComment */
