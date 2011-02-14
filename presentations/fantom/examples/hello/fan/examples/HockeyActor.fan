@@ -10,22 +10,19 @@ class HockeyActor
   {
     pool := ActorPool()
     goalie := Goalie(pool)
-    Shooter(pool, "Wayne", goalie).send(null)
-    Shooter(pool, "Mario", goalie).send(null)
-    Shooter(pool, "Goardie", goalie).send(null)
+    f1 :=Shooter(pool, "Wayne", goalie).send(null)
+    f2 := Shooter(pool, "Mario", goalie).send(null)
+    f3 := Shooter(pool, "Goardie", goalie).send(null)
     
-    while( ! pool.isDone) 
-    { 
-      Actor.sleep(1sec) 
-    }
-    
-    saves := Actor.locals[Goalie.handle] as Int
-    shots := saves + 9
-    echo("Goalies saved $saves out of $shots")
-    }
+    s1 := f1.get(null) as Int
+    s2 := f2.get(null) as Int
+    s3 := f3.get(null) as Int
+    shots := s1+s2+s3
+    echo("Goalie saved ${shots -9} out of $shots shots.")
+  }
 }
 
-** A Shooter, shoots pucks until scores 3
+** A Shooter, shoots pucks until scoring 3
 const class Shooter : Actor
 {
   const Str name
@@ -58,11 +55,11 @@ const class Shooter : Actor
       Actor.sleep(10ms)      
     }
     echo("$name done: 5 goals on ${Actor.locals[shotsHandle]} shots")
-    return null
+    return Actor.locals[shotsHandle]
   }
 }
 
-** Puck const class, it's the "message" sent from the sooter to the goalie
+** Puck const class: It's the "message" sent from the shooter to the goalie
 const class Puck
 {
   const Str thrownBy
@@ -78,7 +75,7 @@ const class Puck
 ** The goalie who stops ~90% of pucks (random)
 const class Goalie : Actor
 {
-  static const Str handle := "Goalie.saves.counter"
+  const Str handle := "Goalie.saves.counter"
   
   new make(ActorPool pool) : super(pool) {}
   
