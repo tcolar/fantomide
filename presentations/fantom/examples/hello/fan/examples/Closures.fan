@@ -24,7 +24,9 @@ class Closures
   
   ** Examples of nice closure use in API's
   Void apiExamples()
-  { 
+  {     
+    5.times { echo("Hello #$it") } // Hello #0 to Hello #4
+    
     // List.findAll (findAll(|V item, Int index->Bool| c)) -> Return a new list containing the items for which c returns true 
     odds := [1, 2, 3, 4, 5].findAll |val| { val.isOdd }
     

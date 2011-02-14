@@ -1,7 +1,7 @@
 **
 ** Enumeration examples
 **
-enum class Color { red, blue, green }
+enum class ColorExample { red, blue, green }
 
 enum class Suits
 {
