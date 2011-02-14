@@ -5,7 +5,7 @@ class Actors
 {
   Void main()
   {  // pass receive to constructor as a closure function
-    actor := Actor(pool) |Int msg->Int| { msg + 1 }
+    actor := Actor(ActorPool()) |Int msg->Int| { msg + 1 }
   }
 }
 
