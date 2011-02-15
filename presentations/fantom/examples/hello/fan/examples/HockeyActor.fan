@@ -1,10 +1,11 @@
 using concurrent
 
 ** Actor Example
-** We have sevral shooters all shotting at one goalie (at the same time)
+** We have several shooters all sendingpucks at a goalie (at the same time !)
 ** As soon as a shooter as scored 3 goals, he stops
 ** 
-class HockeyActor
+** Note: Echo() output can get "scrambled" as it's not synchronized (Logger would work best)
+class HockeyActorExample
 {
   Void main()
   {
@@ -14,14 +15,28 @@ class HockeyActor
     f2 := Shooter(pool, "Mario", goalie).send(null)
     f3 := Shooter(pool, "Goardie", goalie).send(null)
     
+    // Wait for shooters to be done and see how many shots they fired
     s1 := f1.get(null) as Int
     s2 := f2.get(null) as Int
     s3 := f3.get(null) as Int
-    shots := s1+s2+s3
-    echo("Goalie saved ${shots -9} out of $shots shots.")
+    
+    shots := s1 + s2 + s3    
+    echo("## The goalie saved ${shots - 9} out of $shots shots.")
   }
 }
 
+** Puck const class: It's the "message" sent from the shooter to the goalie
+const class Puck
+{
+  const Str thrownBy
+  const Int number  
+  
+  new make(Str sender, Int nb) 
+  {
+    thrownBy = sender
+    number = nb
+  }
+}
 ** A Shooter, shoots pucks until scoring 3
 const class Shooter : Actor
 {
@@ -52,23 +67,12 @@ const class Shooter : Actor
         Actor.locals[goalsHandle] = goals + 1
         echo("Goal scored by $name on shot #"+(shots + 1))
       }
-      Actor.sleep(10ms)      
+      // random pause between shots
+      pause := Int.random(5..50).toStr + "ms"
+      Actor.sleep( Duration(pause))      
     }
-    echo("$name done: 5 goals on ${Actor.locals[shotsHandle]} shots")
+    echo("$name done: 3 goals on ${Actor.locals[shotsHandle]} shots")
     return Actor.locals[shotsHandle]
-  }
-}
-
-** Puck const class: It's the "message" sent from the shooter to the goalie
-const class Puck
-{
-  const Str thrownBy
-  const Int number  
-  
-  new make(Str sender, Int nb) 
-  {
-    thrownBy = sender
-    number = nb
   }
 }
 

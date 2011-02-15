@@ -20,11 +20,19 @@ class ActorCalls
 {
   Void main()
   {
+    pool := ActorPool()
+    actor := IncrActor(pool)
     // send now
-    //IncrActor().send(2)
+    actor.send(2)
     // send in 10ms
-    //Future f := IncrActor().sendLater("10ms", 5)
+    Future f := actor.sendLater(10ms, 5)
     // send after f is processed
-    //IncrActor().sendWhenDone(f, 7)
+    f2 := actor.sendWhenDone(f, 7)
+    // get return value (blocking))
+    val := f.get(null)
+    // try to cancel f2, if not yet processed
+    f2.cancel
+    // stop the pool (won't accept any more messages)
+    pool.stop
   }
 }

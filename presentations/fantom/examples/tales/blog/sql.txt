@@ -1,0 +1,13 @@
+CREATE TABLE `Blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(2000) DEFAULT NULL,
+  `subject` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `blogId` int(11) DEFAULT NULL,
+  `text` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;

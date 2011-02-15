@@ -54,21 +54,22 @@
             <div class="slide">
                 <h1>Why Fantom?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>In 1996 they founded Tridium, a Java framework for various markets(automation/aerospace...). 
-                                They Used Java, but some companies where MS only (.Net) and integration can be difficult.
+                    <li><a class="moreInfos"><span>
+                                In 1996 they founded Tridium, a Java framework for various markets(automation/aerospace...). <br/>
+                                They Used Java, but some companies where MS only (.Net) and integration can be difficult.<br/>
                                 Honeywell acquired Tridium in 2005. </span></a>
                         Brian And Andy Frank</li>
-                    <li><a class="moreInfos"><span>They Wanted java as well as .NET compatibility with a better concurrency model. 
-                                Started with a pure OO language, added simpler compiler/build system, then moved to Fcode.
-                                Fantom became "public" in 2008. They worked on Fantom(OSS) during spare time, then full time (Fantom  + SkyFoundry)
+                    <li><a class="moreInfos"><span>They Wanted java as well as .NET compatibility with a better concurrency model. <br/>
+                                Started with a pure OO language, added simpler compiler/build system, then moved to Fcode.<br/>
+                                Fantom became "public" in 2008. They worked on Fantom(OSS) during spare time, then full time (Fantom  + SkyFoundry)<br/>
                                 JavaScript target added after 2008(unified frontend/backend - Andy). FWT -> unified UI code (JS/HTML5 + Swing).
                             </span></a>
                         Short History</li>
-                    <li><a class="moreInfos"><span>Andy &amp; Brian experience / needs. 
-                                        Quite open to ideas/discussions with quick fixes/ implementation
-                        </span></a>
+                    <li><a class="moreInfos"><span>Andy &amp; Brian experience / needs. <br/>
+                                Quite open to ideas/discussions with quick fixes/ implementation
+                            </span></a>
                         Solve real Java and C# problems</li>
-                    <li><a class="moreInfos"><span>"Boring by design". It is not an academic language to explore bleeding edge theories, 
+                    <li><a class="moreInfos"><span>"Boring by design". It is not an academic language to explore bleeding edge theories, <br/>
                                 but based on solid real world experience (Obvious when you use it)</span></a>
                         Practical programming</li>
                 </ul>
@@ -77,28 +78,28 @@
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Compiles to Fcode bytecode, which can run on JVM, .NET and possibly more(LLVM).
+                    <li><a class="moreInfos"><span>Compiles to Fcode bytecode, which can run on JVM, .NET and possibly more(LLVM).<br/>
                                 JavaScript target(Huge feature IMO! No Fcode when compiling to js)</span></a>
                         Portability - JVM, .Net &amp; more</li>
-                    <li><a class="moreInfos"><span>Underrated fact. Few powerful classes. 
+                    <li><a class="moreInfos"><span>Underrated fact. Few powerful classes. <br/>
                                 Lots of cheap features (in part thanks to functions/closures).</span></a>
                         Clean API's </li>
-                    <li><a class="moreInfos"><span>Why have too choose one or the other? Choose as you please. 
-                                Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. 
+                    <li><a class="moreInfos"><span>Why have too choose one or the other? Choose as you please. <br/>
+                                Benefits of strong typing(type checking, tooling/IDE), plus flexibility of dynamic typing when needed. <br/>
                                 Type inference.</span></a>
                         Strong AND dynamic typing </li>
-                    <li><a class="moreInfos"><span>Bridge the gap between classes(inheritance issues) and interfaces(common code). 
-                                Like interface but can have implementation. 
+                    <li><a class="moreInfos"><span>Bridge the gap between classes(inheritance issues) and interfaces(common code). <br/>
+                                Like interface but can have implementation. <br/>
                                 Mixins can have methods and fields without state(abstract only)</span></a>
                         Mixins </li>
-                    <li><a class="moreInfos"><span>Pods are the unit of versioning and deployment. 
+                    <li><a class="moreInfos"><span>Pods are the unit of versioning and deployment. <br/>
                                 They are combined together using clear dependencies. No Classpath / DLL hell.</span></a>
                         Modularity - pods </li>
-                    <li><a class="moreInfos"><span>pod::type.slot pod is unit of deployment/versioning - serialization. 
+                    <li><a class="moreInfos"><span>pod::type.slot pod is unit of deployment/versioning - serialization. <br/>
                                 Cleaner than jars/classpath mess.</span></a>
                         Simple namespace </li>
-                    <li><a class="moreInfos"><span>Everything is an object (no primitives). 
-                                Like C# ValueTypes. 
+                    <li><a class="moreInfos"><span>Everything is an object (no primitives). <br/>
+                                Like C# ValueTypes. <br/>
                                 Automatically boxed/un-boxed when on JVM</span></a>
                         Truly object oriented </li>
                 </ul>
@@ -106,28 +107,28 @@
             <div class="slide">
                 <h1>What makes it special ?</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Built-in. Closures support. 
-                                Functions are a first class object. 
-                                API's make heavy/good use of closures(huge benefit). 
-                                While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala),
+                    <li><a class="moreInfos"><span>Built-in. Closures support. <br/>
+                                Functions are a first class object. <br/>
+                                API's make heavy/good use of closures(huge benefit). <br/>
+                                While Fantom provides functional programming features it does not feel like am intimidating "requirement" (as for Haskell/Scala),<br/>
                                 but rather a huge simplicity bonus (API's)</span></a>
                         Functional programming </li>
-                    <li><a class="moreInfos"><span>Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).
+                    <li><a class="moreInfos"><span>Built-in. Lists, maps, ranges, durations, serialization(JSON like "[0, 1, 2]".in.readObj).<br/>
                                 Reduces need for config files.</span></a>
                         Declarative programming </li>
                     <li><a class="moreInfos"><span>Actors model. More details later.</span></a>
                         Concurrency </li>
-                    <li><a class="moreInfos"><span>Generics greatly complicate the language. 
-                                List, Maps and Functions can be parameterized. Controversial subject. 
+                    <li><a class="moreInfos"><span>Generics greatly complicate the language. <br/>
+                                List, Maps and Functions can be parameterized. Controversial subject. <br/>
                                 Good concept but most implementations are too complex/painful</span></a>
                         Limited generics </li>
                     <li><a class="moreInfos"><span>Default parameters, type inference, Field Accessors, Nullable types, All numbers are 64bits.</span></a>
                         Syntax sugar </li>
                     <!-- added -->
-                    <li><a class="moreInfos"><span>Feels a lot like a boilerplate-less version of java. Not as complex/intimidating like Scala, Clojure. 
+                    <li><a class="moreInfos"><span>Feels a lot like a boilerplate-less version of java. Not as complex/intimidating like Scala, Clojure. <br/>
                                 Feels more like Groovy/Python but with strong types.</span></a>
                         Intuitive syntax for Java / C# programmers</li>
-                    <li><a class="moreInfos"><span>All you need in one small standalone package: module system, build framework, unit testing, documentation, tools, 
+                    <li><a class="moreInfos"><span>All you need in one small standalone package: module system, build framework, unit testing, documentation, tools, <br/>
                                 basic web framework and web server, desktop UI(FWT), JavaScript, ajax, email, SQL, common formats: xml, json, csv</span></a>
                         "Full" stack</li>  
                 </ul>
@@ -151,10 +152,11 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             <div class="slide">
                 <h1>Fantom tools</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Show a mini hello world demo. Str name := 23; name := "john"; echo("$name"); scope
+                    <li><a class="moreInfos"><span>Mention fanzy.net <br/>
+                                Show a mini hello world demo. Str name := 23; name := "john"; echo("$name"); scope
                             </span></a>
                         Fansh - Fantom shell</li>
-                    <li><a class="moreInfos"><span>Show a fan script. class Hello{static Void main() { echo("hello world #!")}}
+                    <li><a class="moreInfos"><span>Show a fan script. class Hello{static Void main() { echo("hello world #!")}}<br/>
                                 Explain pod later</span></a>
                         Fan - Fantom launcher</li>
                     <li><a class="moreInfos"><span>Show Demo unit test. (Show  Verify** ,methods in Netbeans)</span></a>
@@ -169,15 +171,15 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             <div class="slide">
                 <h1>Fantom code structure</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Fantom's namespace as well as the unit of deployment(pod::Type.slot). 
-                                A pod's name is globally unique. Also does Dependency management(show meta in build.fan).  
+                    <li><a class="moreInfos"><span>Fantom's namespace as well as the unit of deployment(pod::Type.slot). <br/>
+                                A pod's name is globally unique. Also does Dependency management(show meta in build.fan).  <br/>
                                 Plain zip file. Reflection: Demo: Pod.list, Pod.of("sys").types </span></a>
                         Pods</li>
-                    <li><a class="moreInfos"><span>Show hello pod example. Show explain pod folders(src, tst etc...). 
+                    <li><a class="moreInfos"><span>Show hello pod example. Show explain pod folders(src, tst etc...). <br/>
                                 Show/explain CompUnit.fan. Show/Explain pod meta (build.fan)</span></a>
                         Compilation Unit</li>
-                    <li><a class="moreInfos"><span>Can have multiple in single fan file. 
-                                A Type is an object oriented class which encapsulates state and behavior. 
+                    <li><a class="moreInfos"><span>Can have multiple in single fan file. <br/>
+                                A Type is an object oriented class which encapsulates state and behavior. <br/>
                                 Demo: Type.of("sys::Str").slots</span></a>
                         Types</li>
                 </ul>
@@ -186,22 +188,22 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
             <div class="slide">
                 <h1>Type system : Concepts</h1>
                 <ul>
-                    <li><a class="moreInfos"><span>Demo with fansh (Int, Bool etc..). 
+                    <li><a class="moreInfos"><span>Demo with fansh (Int, Bool etc..). <br/>
                                 Explain value-types(Int, Bool, Float)</span></a>
                         Purely object oriented</li>
-                    <li><a class="moreInfos"><span>Show in fansh: Bool, Int(64 bits, chars, 0x, underscores), Float, Decimal(4d - bigdecimal), 
-                                Str(multi-line, interpolation, triple quotes, locale($&lt;&gt;), Duration(day, hr, ms), Uri(can do interpolation),
+                    <li><a class="moreInfos"><span>Show in fansh: Bool, Int(64 bits, chars, 0x, underscores), Float, Decimal(4d - bigdecimal), <br/>
+                                Str(multi-line, interpolation, triple quotes, locale($&lt;&gt;), Duration(day, hr, ms), Uri(can do interpolation),<br/>
                                 Type(Str#), Slot(Int#plus), Range((0..3).contains(2), 0..&lt;3), List(add,first), Map(put,get)</span></a>
                         Fantom Literals</li>
-                    <li><a class="moreInfos"><span>Compiler warns you about simple mistakes. 
-                                Runtime checks for null coercing - fail fast. 
+                    <li><a class="moreInfos"><span>Compiler warns you about simple mistakes. <br/>
+                                Runtime checks for null coercing - fail fast. <br/>
                                 Show default values of Int vs Int? for example. </span></a>
                         (Non)Nullable Types</li>
-                    <li><a class="moreInfos"><span>But inference for local vars, maps, list. dynamic call operator(-&gt;). 
+                    <li><a class="moreInfos"><span>But inference for local vars, maps, list. dynamic call operator(-&gt;). <br/>
                                 Better tooling, error reporting.</span></a>
                         Statically typed</li>
-                    <li><a class="moreInfos"><span>A.fits(B)-&gt;ok  B.fits(A)-&gt; implicit cast   otherwise-&gt;error. 
-                                Allows dynamic calls(obj?) cast: Str name := x->person->name. 
+                    <li><a class="moreInfos"><span>A.fits(B)-&gt;ok  B.fits(A)-&gt; implicit cast   otherwise-&gt;error. <br/>
+                                Allows dynamic calls(obj?) cast: Str name := x->person->name. <br/>
                                 "Liskov Substitution Principle"</span></a>
                         Implicit casts</li>
                     <li><a class="moreInfos"><span>Limited for simplicity. List(V,L), Maps(K,V,M), Funcs(A-H, R). Functions explained more later.</span></a>
@@ -214,10 +216,10 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 <ul>
                     <li><a class="moreInfos"><span>Semi-columns optional. Show/explain examples in OtherThings.statements</span></a>
                         Statements</li>
-                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). 
+                    <li><a class="moreInfos"><span>All exceptions inherit from Err(useful methods). <br/>
                                 Show/explain examples in OtherThings.exceptions </span></a>
                         Exception Handling</li>
-                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. 
+                    <li><a class="moreInfos"><span>Show/explain examples in OtherThings.operators. <br/>
                                 Mapped to methods (and, or etc...). No bitwise ops(use methods)</span></a>
                         Expressions/Operators</li>
                 </ul>
@@ -228,27 +230,27 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 <ul>
                     <li>Types</li>
                     <ul>
-                        <li><a class="moreInfos"><span>Demo classes.fan. Can Inherit from One superclass and 0+ mixins. 
+                        <li><a class="moreInfos"><span>Demo classes.fan. Can Inherit from One superclass and 0+ mixins. <br/>
                                     Can be public/internal abstract/final. Const(Const fields only)</span></a>
                             Classes
                         </li>
                         <ul>
-                            <li><a class="moreInfos"><span>Demo Enumerations.fan. Normal class: (enum class but const &amp; final with fixed instances. 
+                            <li><a class="moreInfos"><span>Demo Enumerations.fan. Normal class: (enum class but const &amp; final with fixed instances. <br/>
                                         Inherit sys::Enum. Can have methods. private constructors.</span></a>
                                 Enumerations</li>
-                            <li><a class="moreInfos"><span>Demo Facets.fan. (~ annotations). 
+                            <li><a class="moreInfos"><span>Demo Facets.fan. (~ annotations). <br/>
                                         Facets are defined as normal classes(Implied const) using the facet positional keyword
                                     </span></a>
                                 Facets</li>
                         </ul>
-                        <li><a class="moreInfos"><span>Demo Mixins.fan. Like interfaces but can have methods (code reuse). 
+                        <li><a class="moreInfos"><span>Demo Mixins.fan. Like interfaces but can have methods (code reuse). <br/>
                                     Abstract, can't create instances. can't store state (can have abstract fields).</span></a>
                             Mixins</li>
                         <li><a class="moreInfos"><span>Demo inheritance.fan. Base class first(if any) then 'n' mixins
-                                    Covariance allowed for methods
-                                    Fantom avoids the diamond inheritance problem. 
-                                    First mixins can't declare concrete fields, which mean they never store state. 
-                                    Second any ambiguity that arises from diamond inheritance or otherwise requires the subclass to explicitly disambiguate (or if the inherited slots are not virtual, 
+                                    Covariance allowed for methods<br/>
+                                    Fantom avoids the diamond inheritance problem. <br/>
+                                    First mixins can't declare concrete fields, which mean they never store state. <br/>
+                                    Second any ambiguity that arises from diamond inheritance or otherwise requires the subclass to explicitly disambiguate (or if the inherited slots are not virtual, <br/>
                                     then the subtype simply cannot be created).
                                 </span></a>
                             Inheritance</li>
@@ -257,13 +259,13 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 <ul>
                     <li>Slots</li>
                     <ul>
-                        <li><a class="moreInfos"><span>Slots: Unique name(no overloading) but allows easy/fast reflection etc... (helped by lack of primitives)
-                                    Demo/explain Slots.fan. No inference. Storage + [getter/setter](automatic). 
-                                    Const fields (pre-assigned or in constructor)
-                                    static(must be const, thread safety), abstract, public, protected, internal
+                        <li><a class="moreInfos"><span>Slots: Unique name(no overloading) but allows easy/fast reflection etc... (helped by lack of primitives)<br/>
+                                    Demo/explain Slots.fan. No inference. Storage + [getter/setter](automatic). <br/>
+                                    Const fields (pre-assigned or in constructor)<br/>
+                                    static(must be const, thread safety), abstract, public, protected, internal<br/>
                                     readonly, virtual(getter/setter can be overriden)</span></a>
                             Fields</li>
-                        <li><a class="moreInfos"><span>Demo/explain Slots.fan. A method is a slot which defines a function within a class or mixin.
+                        <li><a class="moreInfos"><span>Demo/explain Slots.fan. A method is a slot which defines a function within a class or mixin.<br/>
                                     Covariance OK - allows an overridden method to narrow the return type of the inherited method.
                                 </span></a>
                             Methods
@@ -282,112 +284,161 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                 <ul>
                     <li>Functional Programming</li>
                     <ul>
-                        <li><a class="moreInfos"><span>Show Functions.fan
-                                    First class objects(sys::Func). Created through: methods, closures, binding. 
-                                    Explain parameterized with Builtin generic syntax |A-H->R|
+                        <li><a class="moreInfos"><span>Show Functions.fan<br/>
+                                    First class objects(sys::Func). Created through: methods, closures, binding. <br/>
+                                    Explain parameterized with Builtin generic syntax |A-H->R|<br/>
                                     Instance methods map to a function where the first argument is the implicit this parameter
                                 </span></a>
                             Functions</li>
-                        <li><a class="moreInfos"><span>Show Closures.fan
-                                    Closures are an expression to create a function inside the body of a method. 
-                                    Have own scope, but can reference local variables from their scope. 
-                                    Makes it easy to use closures as method arguments (used extensively in API's, to good effect) 
+                        <li><a class="moreInfos"><span>Show Closures.fan<br/>
+                                    Closures are an expression to create a function inside the body of a method. <br/>
+                                    Have own scope, but can reference local variables from their scope. <br/>
+                                    Makes it easy to use closures as method arguments (used extensively in API's, to good effect) <br/>
                                     Example: iteration mechanism</span></a>
                             Closures</li>
                     </ul>
                     <li>Java/.Net Interaction</li>
                     <ul>
-                        <li><a class="moreInfos"><span>.Net FFI are a work in progress.
-                                    Java, done, a few limitations: Multi-dimensional arrays, Sub-classing a Java class more than one level deep, 
-                                    can't override java overLOADED methods -> can be an issue, my solution -> create a java "pass-through" method.
+                        <li><a class="moreInfos"><span>.Net FFI are a work in progress.<br/>
+                                    Java, done, a few limitations: Multi-dimensional arrays, Sub-classing a Java class more than one level deep, <br/>
+                                    can't override java overLOADED methods -> can be an issue, my solution -> create a java "pass-through" method.<br/>
                                     You may not subclass from a Fantom class which itself subclasses from a Java class(constructors issue)</span></a>
                             Java / .Net FFI</li>
-                        <li><a class="moreInfos"><span>Show Hello:BuildJar task. Class naming Rule: fan.pod.class.method</span></a>
+                        <li><a class="moreInfos"><span>Show Hello:BuildJar task.<br/>
+                                Class naming Rule: fan.pod.class.method</span></a>
                             Using Fantom code from Java (jarDistEnv)</li>
                     </ul>
-                    <li><a class="moreInfos"><span>Show NativeClassExample, NativeExample. Don't use, except when If you need to call out native APIs, but still wish your Fantom pod to be portable across multiple platforms</span></a>
+                    <li><a class="moreInfos"><span>Show NativeClassExample, NativeExample. <br/>
+                                Don't use, except when If you need to call out native APIs, but still wish your Fantom pod to be portable across multiple platforms</span></a>
                         Natives
-                    <li><a class="moreInfos"><span>Show JsExamples.fan(show generated source) and standard Fantom examples.
-                            Very cool: Fantom provides support for compiling/running in JavaScript VMs(Rhno, browsers)
-                            Use @Js facet
-                            Most sys API's are available, however not all (JavaScript limitations).
-                            Can be run outside Fantom</span></a>
-                        JavaScript
-                    </li>
-                    <li><a class="moreInfos"><span>Persistance / also used with actors as a safe way to pass messages between actors. 
-                                Fantom serialization uses a human friendly text format (subset of fantom grammar).
-                            Tree based, not Graph based. Do cross-reference yourself(Uri's)
-                            Literal/simple/complex(collections)
-                            @Serializable facet
-                            Show FWT/demo: text and serialization tabs
-                            TODO: rework examples
-                            </span></a>
-                        Serialization
-                    </li>
-                    <li><a class="moreInfos"><span>
-                                No Shared Mutable State under any circumstances;
-                                Immutability(embedded into the language). Immutable data can be efficiently and safely shared between threads (static/const)
-                                Message Passing: the actor API is built around the idea of passing messages between asynchronous workers</span></a>
-                        Concurrency
-                    </li>
-                        <ul>
-                    <li><a class="moreInfos"><span>An object is said to be immutable if we can guarantee that once constructed it never changes state. 
-                            Any object instance of a const class
-                            The result of Obj.toImmutable on a List, Map(read only deep copy), or Func(dependsif uses mutable state)
-                            Otherwise can use serialization
-                            Can check with : Obj.IsImmutable
-                            </span></a>
-                        Immutability
-                    <li><a class="moreInfos"><span>Actors are light weight objects which asynchronously process work on a background thread. 
-                                Actors are given work by sending them asynchronous message. 
-                                Actor's then process those messages on background threads controlled by an ActorPool.
-                                Guaranteed to receive its messages atomically and process(not receive) in order</span></a>
-                        Actors
-                            
-                        </ul>
-            </div>
+                        <li><a class="moreInfos"><span>Show JsExamples.fan(show generated source) and standard Fantom examples.<br/>
+                                    Very cool: Fantom provides support for compiling/running in JavaScript VMs(Rhino, browsers)<br/>
+                                    Use @Js facet.
+                                    Most sys API's are available, however not all (JavaScript limitations).<br/>
+                                    Can be run outside Fantom</span></a>
+                            JavaScript
+                        </li>
+                        <li><a class="moreInfos"><span>Persistance / also used with actors as a safe way to pass messages between actors. <br/>
+                                    Fantom serialization uses a human friendly text format (subset of fantom grammar).<br/>
+                                    Tree based, not Graph based. Do cross-reference yourself(Uri's)<br/>
+                                    Literal/simple/complex(collections).
+                                    @Serializable facet.
+                                    Show FWT/demo: text and serialization tabs
+                                </span></a>
+                            Serialization
+                        </li>
+                        </div>
 
+                        <div class="slide">
+                            <h1>Concurrency</h1>
+                            <ul>
+                                <li><a class="moreInfos"><span>An object is said to be immutable if we can guarantee that once constructed it never changes state. <br/>
+                                            Immutability(embedded into the language). Immutable data can be efficiently and safely shared between threads (static/const)
+                                            Any object instance of a const class<br/>
+                                            The result of Obj.toImmutable on a List, Map(read only deep copy), or Func(depends if uses mutable state)<br/> 
+                                            Otherwise can use serialization<br/>
+                                            Can check with : Obj.IsImmutable<br/>
+                                        </span></a>
+                                    Immutability</li>
+                                <li><a class="moreInfos"><span>
+                                            No Shared Mutable State under any circumstances</br>
+                                            ActorPool control background threads and has actor process messages<br/>
+                                            Actor are guaranteed to receive its messages atomically and process(not receive) in order<br/>
+                                            Unbounded queues
+                                        </span></a>
+                                    ActorPool
+                                </li>
+                                <li><a class="moreInfos"><span>Show Actors.fan, HockeyActor<br/>
+                                            Actors are given work by sending them asynchronous message. <br/>
+                                            Use Actor.locals for mutable state<br/>
+                                            Messages need to be immutable or serializable
+                                            </span></a>
+                                    Actors
+                                <li><a class="moreInfos"><span>
+                                            A Future is used to deal with a sent message.<br/>
+                                            It allows waiting for the message to be processed and retrieving a result.</br>
+                                            Also allows chaining calls and managing the process(cancel, isDone etc...).
+                                        </span></a>
+                                    Futures
+                                </li>
+                                <li><a class="moreInfos"><span>
+                                            Example ?
+                                        </span></a>
+                                    Coalescing messages
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="slide">
+                            <h1>The Tales Framework</h1>
+                            <ul>
+                                <li><a class="moreInfos"><span>Will demo it<br/>
+                                         Simple/Practical. <br/>
+                                        Convention over configuration / good feedback(error messages etc...)<br/>
+                                        Clean "pure" HTML
+                                        </span></a>
+                                    Same philosophy as Fantom.
+                                </li>
+                                <li><a class="moreInfos"><span>client, server, SQL DSL's<br/>
+                                        JavaScript, code reload.<br/>
+                                        Write all in one file.
+                                        </span></a>
+                                    Takes full advantage of Fantom features
+                                </li>
+                                <li><a class="moreInfos"><span>Similar to Play! <br/>
+                                            Hot reload, great error reporting.
+                                        </span></a>
+                                    Very productive
+                                </li>
+                                <li><a class="moreInfos"><span>Simple ORM, Data mapping, JavaScript, SQL, Ajax ...
+                                        </span></a>
+                                    Full stack
+                                </li>
+                                <li><a class="moreInfos"><span>Similar to Guice.<br/>
+                                        TODO: Example ??
+                                        </span></a>
+                                    Dependency Injection
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- todo:
+                        Env, Naming, DSL's, 
+                        API's : FWT, Logging, Localization, DateTime
             
+                        fwt example
+                        javascript examples
             
-            <!-- todo:
-            fwt, Env, concurrency/actors, Naming, Logging, Localization, DSL's, DateTime
+                        Hello worlds ?            
+                        -->
 
-            actor -> thread locals discussion ?? http://fantom.org/sidewalk/topic/1374            
-            
-            fwt example
-            javascript examples
-
-            Hello worlds ?            
-
-            opened to ideas  quick fixes/ impl.
-            -->
-
-            <div class="slide">
-                <h1>Resources</h1>
-                <ul>
-                    <li>This presentation: <a target="_blank"  href="http://wiki.colar.net/fantompres">http://wiki.colar.net/fantompres</a></li><!--TODO: link-->
-                    <li><A target="_blank"  href="http://www.fantom.org">Fantom.org</a> </li>
-                    <ul>
-                        <li>Fantom.org - <A target="_blank"  href="http://www.fantom.org/doc/">API's Reference / Documentation</a></li>
-                        <li>Fantom.org - <A target="_blank"  href="http://www.fantom.org/sidewalk/topic/">Discussions</a></li>
-                    </ul>
-                    <li>Fantom <A target="_blank"  href="http://wiki.colar.net/fan_cheat_sheet">Cheat sheet</a></li>
-                    <li>List of Fantom <A target="_blank"  href="http://fantom.org/doc/docTools/IDEs.html">IDE's</a></li>
-                    <li>Fantom <A target="_blank"  href="http://www.fanzy.net/">online playground</a></li>
-                </ul>
-            </div>
-            <div class="slide">
-                <h1>Third party projects</h1>
-                <ul>
-                    <li><A target="_blank"  href="http://www.talesframework.org/">Tales</a> framework</li>
-                    <li><A  target="_blank" href="https://bitbucket.org/chunquedong/slan/overview">Slan</a> web framework</li>
-                    <li><A target="_blank"  href="https://bitbucket.org/liamstask/fanlet/overview">Fanlet</a> (Java Servlet interface)</li>
-                    <li><a target="_blank"  href="https://bitbucket.org/liamstask/fantomongo/overview">Fantomongo</a> MongoDb driver</li>
-                    <li><A target="_blank"  href="http://www.talesframework.org/examples/whoswho">AppEngine demo</a></li>
-                    <li><A target="_blank"  href="http://mustache.github.com/">Mustache</a> Logic-less templates</li>
-                </ul>
-            </div>
-            <!-- ============ End slides ============= -->    
-        </div>
-    </body>
-</html>
+                        <div class="slide">
+                            <h1>Resources</h1>
+                            <ul>
+                                <li>This presentation: <a target="_blank"  href="http://wiki.colar.net/fantompres">http://wiki.colar.net/fantompres</a></li><!--TODO: link-->
+                                <li><A target="_blank"  href="http://www.fantom.org">Fantom.org</a> </li>
+                                <ul>
+                                    <li>Fantom.org - <A target="_blank"  href="http://www.fantom.org/doc/">API's Reference / Documentation</a></li>
+                                    <li>Fantom.org - <A target="_blank"  href="http://www.fantom.org/doc/examples">Examples</a></li>
+                                    <li>Fantom.org - <A target="_blank"  href="http://www.fantom.org/sidewalk/topic/">Discussions</a></li>
+                                </ul>
+                                <li>Fantom <A target="_blank"  href="http://wiki.colar.net/fan_cheat_sheet">Cheat sheet</a></li>
+                                <li>List of Fantom <A target="_blank"  href="http://fantom.org/doc/docTools/IDEs.html">IDE's</a></li>
+                                <li>Fantom <A target="_blank"  href="http://www.fanzy.net/">online playground</a></li>
+                                <li>Rosetta code <A target="_blank"  href="http://rosettacode.org/wiki/Category:Fantom">examples</a></li>
+                            </ul>
+                        </div>
+                        <div class="slide">
+                            <h1>Third party projects</h1>
+                            <ul>
+                                <li><A target="_blank"  href="http://www.talesframework.org/">Tales</a> framework</li>
+                                <li><A  target="_blank" href="https://bitbucket.org/chunquedong/slan/overview">Slan</a> web framework</li>
+                                <li><A target="_blank"  href="https://bitbucket.org/liamstask/fanlet/overview">Fanlet</a> (Java Servlet interface)</li>
+                                <li><a target="_blank"  href="https://bitbucket.org/liamstask/fantomongo/overview">Fantomongo</a> MongoDb driver</li>
+                                <li><A target="_blank"  href="http://www.talesframework.org/examples/whoswho">AppEngine demo</a></li>
+                                <li><A target="_blank"  href="http://mustache.github.com/">Mustache</a> Logic-less templates</li>
+                            </ul>
+                        </div>
+                        <!-- ============ End slides ============= -->    
+                        </div>
+                        </body>
+                        </html>

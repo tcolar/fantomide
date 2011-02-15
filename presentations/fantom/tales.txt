@@ -1,0 +1,6 @@
+tales new echo
+cd echo
+tales run
+
+http://localhost:8000
+

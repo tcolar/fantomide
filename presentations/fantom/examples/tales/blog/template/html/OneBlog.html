@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title talesId="title">Blog</title>
+		<link rel="stylesheet" href="/res/css/page.css" type="text/css" />
+	</head>
+	<body>
+		<div align="center">
+			<div class="container">
+				<a href="/"> back to blogs</a> <br/>
+				<h2 talesId="blogsub"></h2>
+				<h4 talesId="text">
+
+				</h4>
+
+				<h2 style="margin-top:10px">
+					comments
+				</h2>
+				<div id="allcomments" class="comments">
+					<div class="one-comment" talesId="comment">
+						<div talesId="text"></div>
+					</div>
+				</div>
+
+
+				<textarea id="comment-text" class="form"></textarea> <br />
+				<input id="add-comment" type="button" value="Add comment" onclick="page.addComment();"/>
+			</div>
+		</div>
+		
+	</body>
+</html>
