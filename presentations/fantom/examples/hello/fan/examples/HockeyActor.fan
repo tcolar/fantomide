@@ -1,8 +1,8 @@
 using concurrent
 
 ** Actor Example
-** We have several shooters all sendingpucks at a goalie (at the same time !)
-** As soon as a shooter as scored 3 goals, he stops
+** We have several shooters all sending pucks at a goalie (at the same time !)
+** As soon as a shooter has scored 3 goals, he stops
 ** 
 ** Note: Echo() output can get "scrambled" as it's not synchronized (Logger would work best)
 class HockeyActorExample
