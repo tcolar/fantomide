@@ -1,0 +1,97 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>JsExamples.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='y'>// JavaScript examples</span>
+<span class='k'>using</span> fwt
+<span class='k'>using</span> gfx
+<span class='k'>using</span> util::AbstractMain
+<span class='k'>using</span> wisp
+<span class='k'>using</span> webmod
+<span class='k'>using</span> web
+
+@Js
+<span class='k'>class</span> Js1 : Window
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>()</span> : <span class='k'>super</span><span class='b'>(</span><span class='k'>null</span>, <span class='k'>null</span><span class='b'>)</span>
+  <span class='b'>{</span>
+    content = Label <span class='b'>{</span> text = <span class='s'>"Hello World - FWT compiled into JavaScript!"</span>; it.bg = Color<span class='b'>(</span><span class='s'>"#ccf"</span><span class='b'>)</span> <span class='b'>}</span>
+  <span class='b'>}</span>
+
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    open
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> JsServer : AbstractMain
+<span class='b'>{</span>
+  Int port := 8080
+
+  <span class='k'>override</span> Int run<span class='b'>()</span>
+  <span class='b'>{</span>
+    wisp := WispService
+    <span class='b'>{</span>
+      it.port = <span class='k'>this</span>.port
+      it.root = JsServerMod<span class='b'>(</span>homeDir<span class='b'>)</span>
+    <span class='b'>}</span>
+    <span class='k'>return</span> runServices<span class='b'>([</span>wisp<span class='b'>])</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>const</span> <span class='k'>class</span> JsServerMod : WebMod
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>(</span>File dir<span class='b'>)</span> <span class='b'>{</span> scriptDir = dir <span class='b'>}</span>
+
+  <span class='k'>const</span> File scriptDir
+
+  <span class='k'>override</span> Void onGet<span class='b'>()</span>
+  <span class='b'>{</span>
+    name := req.modRel.path.first
+    <span class='k'>if</span> <span class='b'>(</span>name == <span class='s'>"pod"</span><span class='b'>)</span>
+      onPodFile
+    <span class='k'>else</span>
+      onIndex
+  <span class='b'>}</span>
+
+  <span class='k'>override</span> Void onPost<span class='b'>()</span>
+  <span class='b'>{</span>
+    onGet
+  <span class='b'>}</span>
+
+  Void onIndex<span class='b'>()</span>
+  <span class='b'>{</span>
+    res.headers<span class='b'>[</span><span class='s'>"Content-Type"</span><span class='b'>]</span> = <span class='s'>"text/html; charset=utf-8"</span>
+    out := res.out
+    out.docType
+    out.html
+    out.head
+    out.title.w<span class='b'>(</span><span class='s'>"My Page"</span><span class='b'>)</span>.titleEnd
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/sys/sys.js`</span><span class='b'>)</span>
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/concurrent/concurrent.js`</span><span class='b'>)</span>
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/web/web.js`</span><span class='b'>)</span>
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/gfx/gfx.js`</span><span class='b'>)</span>
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/dom/dom.js`</span><span class='b'>)</span>
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/fwt/fwt.js`</span><span class='b'>)</span>
+    out.includeJs<span class='b'>(</span><span class='u'>`/pod/hello/hello.js`</span><span class='b'>)</span>
+    WebUtil.jsMain<span class='b'>(</span>out, <span class='s'>"hello::Js1"</span><span class='b'>)</span>
+    out.headEnd
+    out.body    
+    out.bodyEnd
+    out.htmlEnd
+  <span class='b'>}</span>
+
+  Void onPodFile<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// serve up pod resources</span>
+    File file := <span class='b'>(</span><span class='s'>"fan://"</span> + req.uri<span class='b'>[</span>1..-1<span class='b'>])</span>.toUri.get
+    <span class='k'>if</span> <span class='b'>(</span>!file.exists<span class='b'>)</span> <span class='b'>{</span> res.sendErr<span class='b'>(</span>404<span class='b'>)</span>; <span class='k'>return</span> <span class='b'>}</span>
+      FileWeblet<span class='b'>(</span>file<span class='b'>)</span>.onService
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

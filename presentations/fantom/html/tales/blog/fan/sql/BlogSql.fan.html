@@ -1,0 +1,22 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>BlogSql.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@Serializable
+<span class='k'>class</span> BlogSql : Sqls<span class='b'>{</span>
+
+	Str getComments :=  sql&lt;|
+								select * from comments where blogId = @blogid
+	  			         |&gt;
+	
+<span class='b'>}</span>
+
+</pre>
+</div>
+  </body></html>

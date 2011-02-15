@@ -1,0 +1,48 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Actors.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> concurrent
+
+<span class='y'>//Actors examples</span>
+<span class='k'>class</span> Actors
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>  <span class='y'>// pass receive to constructor as a closure function</span>
+    actor := Actor<span class='b'>(</span>ActorPool<span class='b'>())</span> |Int msg-&gt;Int| <span class='b'>{</span> msg + 1 <span class='b'>}</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='z'>** Actor class (override receive)</span>
+<span class='k'>const</span> <span class='k'>class</span> IncrActor : Actor
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>(</span>ActorPool p<span class='b'>)</span> : <span class='k'>super</span><span class='b'>(</span>p<span class='b'>)</span> <span class='b'>{}</span>
+  <span class='k'>override</span> Obj? receive<span class='b'>(</span>Obj? msg<span class='b'>)</span> <span class='b'>{</span> msg-&gt;increment <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> ActorCalls
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    pool := ActorPool<span class='b'>()</span>
+    actor := IncrActor<span class='b'>(</span>pool<span class='b'>)</span>
+    <span class='y'>// send now</span>
+    actor.send<span class='b'>(</span>2<span class='b'>)</span>
+    <span class='y'>// send in 10ms</span>
+    Future f := actor.sendLater<span class='b'>(</span>10ms, 5<span class='b'>)</span>
+    <span class='y'>// send after f is processed</span>
+    f2 := actor.sendWhenDone<span class='b'>(</span>f, 7<span class='b'>)</span>
+    <span class='y'>// get return value (blocking))</span>
+    val := f.get<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span>
+    <span class='y'>// try to cancel f2, if not yet processed</span>
+    f2.cancel
+    <span class='y'>// stop the pool (won't accept any more messages)</span>
+    pool.stop
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

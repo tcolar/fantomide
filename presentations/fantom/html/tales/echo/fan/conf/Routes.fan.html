@@ -1,0 +1,24 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Routes.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+<span class='k'>class</span> Routes
+<span class='b'>{</span>
+  Str favIcon := <span class='s'>"/res/images/favicon.ico"</span>
+
+  Route<span class='b'>[]</span> routes := Route<span class='b'>[</span>
+    Route<span class='b'>{</span>map=<span class='s'>"/echo/.*"</span>; to = <span class='s'>"Echo"</span><span class='b'>}</span>,      
+    Route<span class='b'>{</span>map=<span class='s'>"/"</span>; to = <span class='s'>"Index"</span><span class='b'>}</span>
+  <span class='b'>]</span>
+
+<span class='b'>}</span>
+
+
+</pre>
+</div>
+  </body></html>

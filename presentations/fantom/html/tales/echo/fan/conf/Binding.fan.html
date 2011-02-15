@@ -1,0 +1,19 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Binding.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+<span class='k'>class</span> Binding<span class='b'>{</span>
+	Bind<span class='b'>[]</span> bindings := Bind<span class='b'>[</span>,
+		<span class='y'>//Examples: Bind{type= Int#; name = "rows"; to = 10}</span>
+		<span class='y'>//       or Bind{type=Panel#; name="headerPanel"; to=`/panels/HeaderPanel.fan`}</span>
+		<span class='y'>//		or  Bind{type=UserService#; to= `/service/UserServiceImpl.fan`}</span>
+	<span class='b'>]</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

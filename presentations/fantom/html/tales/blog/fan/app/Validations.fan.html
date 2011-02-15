@@ -1,0 +1,37 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Validations.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@jscript
+<span class='k'>class</span> Validations : Script<span class='b'>{</span>
+	Bool? lessThan<span class='b'>(</span>Str? text, Int? val<span class='b'>){</span>
+		client&lt;|
+			<span class='k'>if</span><span class='b'>(</span>! text<span class='b'>){</span>
+				<span class='k'>return</span> <span class='k'>false</span>;
+			<span class='b'>}</span>
+			<span class='k'>else</span><span class='b'>{</span>
+				<span class='k'>return</span> text.length &lt; val;
+			<span class='b'>}</span>
+		|&gt;
+		
+		<span class='k'>return</span> <span class='k'>null</span>
+	<span class='b'>}</span> 
+	
+	Bool? notEmpty<span class='b'>(</span>Str? text<span class='b'>){</span>
+		client&lt;|
+			<span class='k'>if</span><span class='b'>(</span>! text<span class='b'>){</span>
+				<span class='k'>return</span> <span class='k'>false</span>
+			<span class='b'>}</span>
+			<span class='k'>return</span> <span class='b'>(</span>text.length != 0<span class='b'>)</span>
+		|&gt;
+		<span class='k'>return</span> <span class='k'>null</span>
+	<span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

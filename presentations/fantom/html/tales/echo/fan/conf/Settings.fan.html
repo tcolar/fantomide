@@ -1,0 +1,34 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Settings.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> sql
+<span class='k'>using</span> tales
+
+<span class='k'>class</span> Settings<span class='b'>{</span>
+	Str:Obj settings := Str:Obj<span class='b'>[</span>
+		<span class='s'>"db-host-string"</span> : <span class='s'>""</span>,
+		<span class='s'>"db-username"</span>: <span class='s'>""</span>,
+		<span class='s'>"db-password"</span> : <span class='s'>""</span>,
+	
+		<span class='s'>"mail-host"</span> : <span class='s'>""</span>,
+		<span class='s'>"mail-username"</span>:<span class='s'>""</span>,
+		<span class='s'>"mail-password"</span>:<span class='s'>""</span>,
+		
+		<span class='s'>"jquery-location"</span> :  <span class='s'>"/talesRes/jquery-1.3.2.min.js"</span>,
+		<span class='s'>"doc-type"</span>: <span class='s'>""</span><span class='s'>"&lt;!DOCTYPE html PUBLIC "</span>-<span class='y'>//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;""",</span>
+		
+		<span class='s'>"assume-js-globals"</span>: Str<span class='b'>[</span><span class='s'>"\$"</span>, <span class='s'>"alert"</span>, <span class='s'>"confirm"</span>, <span class='s'>"prompt"</span>, <span class='s'>"window"</span>, 
+					<span class='s'>"document"</span>, <span class='s'>"parseInt"</span>, <span class='s'>"encodeURI"</span>, <span class='s'>"encodeURIComponent"</span>,
+					 <span class='s'>"decodeURI"</span>, <span class='s'>"decodeURIComponent"</span>, 
+					<span class='s'>"parseFloat"</span>, <span class='s'>"isNaN"</span>, <span class='s'>"isFinite"</span>, <span class='s'>"eval"</span>, <span class='s'>"callServer"</span>, <span class='s'>"Math"</span><span class='b'>]</span>,
+		<span class='s'>"assume-js-objects"</span>: Str<span class='b'>[</span>,<span class='b'>]</span>
+		
+	<span class='b'>]</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

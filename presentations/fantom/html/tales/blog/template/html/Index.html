@@ -1,0 +1,40 @@
+<html>
+ <head>
+	<title>Your blogs</title>
+	<link rel="stylesheet" href="/res/css/page.css" type="text/css" />
+</head>
+<body> 
+	
+	
+	<div align="center">
+		<div class="container" align="left">
+			<h3>All Your Blogs:</h3>
+
+			<div >
+				<ul id="allblogs">
+					<li talesId="blogs">
+						<a href="#" talesId="name">Blog name</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="add-blog-panel">
+				<h3>Add a blog:</h3>
+				
+				<div>
+					subject: 
+					<input id="blog-sub" type="text" class="form" /><br/>
+
+					Your blog:<br/>
+					<textarea id="blog-msg" class="form"></textarea> <br/> <br/>
+					<input id="add-blog" type="button" value="Add blog" onclick="page.addBlog();return false;"/>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	
+</body>
+</html>

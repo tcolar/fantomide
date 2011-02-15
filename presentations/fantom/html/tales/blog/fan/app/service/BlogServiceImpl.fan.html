@@ -1,0 +1,28 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>BlogServiceImpl.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@Serializable
+<span class='k'>class</span> BlogServiceImpl : BlogService<span class='b'>{</span>
+	<span class='k'>override</span> Blog addBlog<span class='b'>(</span>Blog blogInfo<span class='b'>){</span>
+		Blog blog := Blog<span class='b'>{</span>
+			it.subject = blogInfo.subject
+			it.text = blogInfo.text
+		<span class='b'>}</span>.create
+		
+		<span class='k'>return</span> blog
+	<span class='b'>}</span>
+	
+	<span class='k'>override</span> Comment addComment<span class='b'>(</span>Str text, Int blogId<span class='b'>){</span>
+		Comment comment := Comment<span class='b'>{</span>it.blogId = blogId; it.comment = text<span class='b'>}</span>.create
+		<span class='k'>return</span> comment
+	<span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

@@ -1,0 +1,47 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Echo.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@Serializable
+<span class='k'>class</span> Echo : Page
+<span class='b'>{</span>
+  <span class='y'>// domReady() is called when the page loads</span>
+  @jscript
+  Void domReady<span class='b'>()</span>
+  <span class='b'>{</span> 
+    client&lt;|
+      $<span class='b'>(</span><span class='s'>"#echo"</span><span class='b'>)</span>.click<span class='b'>(</span>function<span class='b'>(){</span>
+        current.say<span class='b'>()</span>;
+      <span class='b'>})</span>;
+    |&gt;
+  <span class='b'>}</span>
+
+  <span class='y'>// annotated with "@jscript". This means that this method is both a server and client method.   </span>
+  @jscript
+  Void say<span class='b'>()</span>
+  <span class='b'>{</span>
+    client&lt;|
+      <span class='y'>//Client code written in javascript      </span>
+      params<span class='b'>[</span><span class='s'>"text"</span><span class='b'>]</span> = $<span class='b'>(</span><span class='s'>"#input"</span><span class='b'>)</span>.val<span class='b'>()</span>;
+    |&gt;
+    server<span class='b'>{</span>
+      <span class='y'>//Server code written in fantom	</span>
+      params<span class='b'>[</span><span class='s'>"output"</span><span class='b'>]</span> = <span class='s'>"You said "</span> + params<span class='b'>[</span><span class='s'>"text"</span><span class='b'>]</span> + <span class='s'>" at "</span> 
+      + DateTime.now.toLocale<span class='b'>(</span><span class='s'>"hh:mm a"</span><span class='b'>)</span>
+    <span class='b'>}</span>
+    client&lt;|
+      $<span class='b'>(</span><span class='s'>"#output"</span><span class='b'>)</span>.text<span class='b'>(</span>params<span class='b'>[</span><span class='s'>"output"</span><span class='b'>])</span>;
+    |&gt;
+  <span class='b'>}</span>
+  Void startMarkup<span class='b'>()</span>
+  <span class='b'>{</span>
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

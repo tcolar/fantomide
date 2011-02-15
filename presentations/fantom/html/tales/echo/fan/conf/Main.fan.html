@@ -1,0 +1,37 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Main.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+<span class='k'>class</span> Main 
+<span class='b'>{</span>
+   Void main<span class='b'>(</span>Str<span class='b'>[]</span> args<span class='b'>)</span>
+   <span class='b'>{</span>
+		Int port := 80
+		<span class='k'>if</span><span class='b'>(</span>args.size &gt;0<span class='b'>){</span>
+			port = args<span class='b'>[</span>0<span class='b'>]</span>.toInt
+		<span class='b'>}</span>
+		args = Str<span class='b'>[</span>,<span class='b'>]</span>
+		
+		Str? podName 
+		
+		<span class='k'>if</span><span class='b'>(</span>typeof-&gt;sourceFile == <span class='s'>"Main.fan"</span><span class='b'>){</span>
+			podName = <span class='k'>this</span>.typeof.pod.name
+		<span class='b'>}</span>
+		<span class='k'>else</span><span class='b'>{</span>
+			File f := File<span class='b'>(</span> <span class='b'>(</span>typeof-&gt;sourceFile<span class='b'>)</span>-&gt;toUri<span class='b'>)</span>
+			podName = f.parent.parent.name
+		<span class='b'>}</span>
+		
+		tales::Run.start<span class='b'>(</span>typeof-&gt;sourceFile, podName, port<span class='b'>)</span>
+   <span class='b'>}</span>
+<span class='b'>}</span>
+
+</pre>
+</div>
+  </body></html>

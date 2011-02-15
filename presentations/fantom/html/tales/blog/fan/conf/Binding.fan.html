@@ -1,0 +1,20 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Binding.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+<span class='k'>class</span> Binding<span class='b'>{</span>
+	
+	Bind<span class='b'>[]</span> bindings := Bind<span class='b'>[</span>
+		Bind<span class='b'>{</span>type=BlogService#; name=<span class='s'>"blogService"</span>; toType=<span class='s'>"BlogServiceImpl"</span><span class='b'>}</span>,
+		Bind<span class='b'>{</span>name=<span class='s'>"blogScript"</span>; toType = <span class='s'>"BlogScript"</span>; <span class='b'>}</span>,
+		Bind<span class='b'>{</span>name=<span class='s'>"validations"</span>; toType = <span class='s'>"Validations"</span><span class='b'>}</span>
+	<span class='b'>]</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

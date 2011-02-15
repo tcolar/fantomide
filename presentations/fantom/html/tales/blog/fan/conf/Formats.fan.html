@@ -1,0 +1,38 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Formats.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+<span class='k'>class</span> Formats<span class='b'>{</span>
+	Format<span class='b'>[]</span> formats := Format<span class='b'>[</span>
+		<span class='x'>/*
+			- Name uniquely identifies a format
+			- Exension serves two purpose
+				a) To pick the default view name (which is TypeName.{extension})
+				b) To auto idenitfy the format fromt he url
+			- Content type is the set of allowed MIME type for this format
+			- FormmatAs can be any of the following
+				a) html - If the output needs to be processed as HTML (using talesId for templating)
+				b) xml  - If the output needs to be processed as XML (using talesId for templating)
+				c) text - If the output needs to be processed as Text(using mustache for templating)
+				d) File - If the output is an binary file 
+				e) objToJson - Auto formats the return object as json
+		*/</span>
+		Format<span class='b'>{</span>name=<span class='s'>"html"</span>; extension = <span class='s'>"html"</span>; contentType= <span class='b'>[</span><span class='s'>"text/html"</span><span class='b'>]</span>; formatAs = FormatAS.html<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"xml"</span>; extension = <span class='s'>"xml"</span>;  contentType= <span class='b'>[</span><span class='s'>"application/xml"</span><span class='b'>]</span>;  formatAs = FormatAS.xml<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"xhtml"</span>; extension = <span class='s'>"html"</span>;  contentType= <span class='b'>[</span><span class='s'>"application/xhtml"</span>, <span class='s'>"application/xhtml+xml"</span><span class='b'>]</span>;  formatAs = FormatAS.html<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"text"</span>; extension = <span class='s'>"txt"</span>;  contentType= <span class='b'>[</span><span class='s'>"text/plain"</span><span class='b'>]</span>;  formatAs = FormatAS.text<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"javascript"</span>; extension = <span class='s'>"json"</span>;  contentType= <span class='b'>[</span><span class='s'>"text/javascript"</span><span class='b'>]</span>;  formatAs = FormatAS.text<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"json"</span>; extension = <span class='s'>"json"</span>;  contentType= <span class='b'>[</span><span class='s'>"application/json"</span><span class='b'>]</span>;  formatAs = FormatAS.text<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"csv"</span>; extension = <span class='s'>"csv"</span>;  contentType= <span class='b'>[</span><span class='s'>"text/csv"</span><span class='b'>]</span>;  formatAs = FormatAS.text<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"objToJson"</span>; extension = <span class='s'>"js"</span>; contentType = <span class='b'>[</span><span class='s'>"application/json"</span><span class='b'>]</span>; formatAs = FormatAS.objToJson<span class='b'>}</span>,
+		Format<span class='b'>{</span>name=<span class='s'>"pdf"</span>; extension = <span class='s'>"pdf"</span>; contentType = <span class='b'>[</span><span class='s'>"application/pdf"</span><span class='b'>]</span>; formatAs = FormatAS.file<span class='b'>}</span>
+	<span class='b'>]</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

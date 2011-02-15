@@ -1,0 +1,83 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>OneBlog.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@JSFiles<span class='b'>{</span>
+	fromModels = <span class='b'>[</span>Blog#<span class='b'>]</span>
+<span class='b'>}</span>
+<span class='k'>class</span> OneBlog : Page<span class='b'>{</span>
+	@inject Sqls? blogSql 
+	@inject BlogService? blogService
+	@inject Script? blogScript
+	
+	@inject PageMap? pageMap
+	
+	Int? id<span class='b'>{</span> 
+			set <span class='b'>{</span>
+					<span class='k'>if</span><span class='b'>(</span>pageMap != <span class='k'>null</span><span class='b'>){</span>
+						pageMap<span class='b'>[</span><span class='s'>"OneBlog.id"</span><span class='b'>]</span> = it;
+					<span class='b'>}</span>
+				<span class='b'>}</span> 
+				get<span class='b'>{</span>
+					<span class='k'>if</span><span class='b'>(</span>pageMap != <span class='k'>null</span><span class='b'>){</span>
+						Int? val := pageMap<span class='b'>[</span><span class='s'>"OneBlog.id"</span><span class='b'>]</span>
+						<span class='k'>return</span> val == <span class='k'>null</span>?<span class='k'>null</span>:val
+					<span class='b'>}</span>
+					<span class='k'>else</span><span class='b'>{</span>
+						<span class='k'>return</span> <span class='k'>null</span>
+					<span class='b'>}</span>
+				<span class='b'>}</span>
+		  <span class='b'>}</span>
+	
+	
+	
+	Void index<span class='b'>(</span>Int? id<span class='b'>){</span>
+		<span class='k'>this</span>.id = id
+		
+		Blog blog := Blog<span class='b'>{</span>it.id = id<span class='b'>}</span>.one
+		blog.comments = Comment<span class='b'>{}</span>.queryList<span class='b'>(</span>blogSql-&gt;getComments, <span class='b'>[</span><span class='s'>"blogid"</span>: blog.id<span class='b'>])</span>
+		
+		add<span class='b'>(</span>label-&gt;title<span class='b'>(</span><span class='s'>"Blog - $blog.subject"</span><span class='b'>))</span>
+		add<span class='b'>(</span>label-&gt;blogsub<span class='b'>(</span><span class='s'>"$blog.subject"</span><span class='b'>))</span>
+		add<span class='b'>(</span>label-&gt;text<span class='b'>(</span><span class='s'>"$blog.text"</span><span class='b'>))</span>
+
+		add<span class='b'>(</span>repeater-&gt;comment<span class='b'>(</span>blog.comments<span class='b'>)</span>|Comment comment|<span class='b'>{</span>
+			addCommentRow<span class='b'>(</span>comment<span class='b'>)</span>
+		<span class='b'>})</span>
+		
+		
+	<span class='b'>}</span>
+
+	
+	Void addCommentRow<span class='b'>(</span>Comment comment<span class='b'>){</span>  <span class='y'>//Same code reused to add ajax row.</span>
+		add<span class='b'>(</span>label-&gt;text<span class='b'>(</span>comment.comment<span class='b'>))</span>
+	<span class='b'>}</span>
+	
+	
+	@jscript
+	Void addComment<span class='b'>(){</span>
+		client&lt;|
+			params<span class='b'>[</span><span class='s'>"comment"</span><span class='b'>]</span> = $<span class='b'>(</span><span class='s'>"#comment-text"</span><span class='b'>)</span>.val<span class='b'>()</span>;
+		|&gt;
+		server<span class='b'>{</span>
+			Comment comment := blogService.addComment<span class='b'>(</span>params<span class='b'>[</span><span class='s'>"comment"</span><span class='b'>]</span>, <span class='k'>this</span>.id<span class='b'>)</span>
+			
+			Str html := htmlFor<span class='b'>(</span>markup-&gt;comment<span class='b'>{</span>
+								addCommentRow<span class='b'>(</span>comment<span class='b'>)</span>
+							<span class='b'>})</span>
+			params<span class='b'>[</span><span class='s'>"html"</span><span class='b'>]</span> = html
+		<span class='b'>}</span>
+		client&lt;|
+			$<span class='b'>(</span><span class='s'>"#allcomments"</span><span class='b'>)</span>.append<span class='b'>(</span>$<span class='b'>(</span>params<span class='b'>[</span><span class='s'>"html"</span><span class='b'>]))</span>;
+			blogScript.clearCommentFields<span class='b'>()</span>;
+		|&gt;
+	<span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

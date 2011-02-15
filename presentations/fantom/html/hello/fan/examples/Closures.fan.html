@@ -32,7 +32,9 @@
   
   <span class='z'>** Examples of nice closure use in API's</span>
   Void apiExamples<span class='b'>()</span>
-  <span class='b'>{</span> 
+  <span class='b'>{</span>     
+    5.times <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"Hello #$it"</span><span class='b'>)</span> <span class='b'>}</span> <span class='y'>// Hello #0 to Hello #4</span>
+    
     <span class='y'>// List.findAll (findAll(|V item, Int index-&gt;Bool| c)) -&gt; Return a new list containing the items for which c returns true </span>
     odds := <span class='b'>[</span>1, 2, 3, 4, 5<span class='b'>]</span>.findAll |val| <span class='b'>{</span> val.isOdd <span class='b'>}</span>
     

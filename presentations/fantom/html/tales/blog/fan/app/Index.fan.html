@@ -1,0 +1,64 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Index.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@JSFiles<span class='b'>{</span>
+	fromModels = <span class='b'>[</span>Blog#<span class='b'>]</span>
+<span class='b'>}</span>
+<span class='k'>class</span> Index : Page<span class='b'>{</span>
+	
+	@inject BlogService? blogService
+	@inject Script? blogScript
+	
+	Void startMarkup<span class='b'>(</span>Format format, <span class='b'>[</span>Str:Obj<span class='b'>]</span> params <span class='b'>){</span>
+		Blog<span class='b'>[]</span>? blogs := Blog<span class='b'>{}</span>.list
+		add<span class='b'>(</span>repeater-&gt;blogs<span class='b'>(</span>blogs<span class='b'>)</span>|Blog blog|<span class='b'>{</span>
+			addBlogRow<span class='b'>(</span>blog<span class='b'>)</span>
+		<span class='b'>})</span>
+	<span class='b'>}</span>
+
+	Void addBlogRow<span class='b'>(</span>Blog blog<span class='b'>){</span> 
+		add<span class='b'>(</span>label-&gt;name<span class='b'>(</span>blog.subject<span class='b'>){</span>
+			attr-&gt;href<span class='b'>(</span><span class='s'>"/blog/$blog.id"</span><span class='b'>)</span>
+		<span class='b'>})</span>
+	<span class='b'>}</span>
+	
+
+	@jscript
+	Void addBlog<span class='b'>(){</span>
+		client&lt;|
+			var blog = <span class='k'>new</span> Blog<span class='b'>()</span>;
+			blog.subject = $<span class='b'>(</span><span class='s'>"#blog-sub"</span><span class='b'>)</span>.val<span class='b'>()</span>;
+			blog.text = $<span class='b'>(</span><span class='s'>"#blog-msg"</span><span class='b'>)</span>.val<span class='b'>()</span>;
+			
+			blogScript.validateBlogObject<span class='b'>(</span>blog<span class='b'>)</span>
+			params<span class='b'>[</span><span class='s'>"blog"</span><span class='b'>]</span> = blog;
+		|&gt;
+		server<span class='b'>{</span>
+			Blog blog := params<span class='b'>[</span><span class='s'>"blog"</span><span class='b'>]</span>
+			blog = blogService.addBlog<span class='b'>(</span>blog<span class='b'>)</span>
+			
+			params<span class='b'>[</span><span class='s'>"html"</span><span class='b'>]</span> = htmlFor<span class='b'>(</span>markup-&gt;blogs<span class='b'>{</span>
+								addBlogRow<span class='b'>(</span>blog<span class='b'>)</span>
+							<span class='b'>})</span>
+		<span class='b'>}</span>
+		client&lt;|
+			$<span class='b'>(</span><span class='s'>"#allblogs"</span><span class='b'>)</span>.append<span class='b'>(</span>$<span class='b'>(</span>params<span class='b'>[</span><span class='s'>"html"</span><span class='b'>]))</span>;
+			blogScript.clearBlogFields<span class='b'>()</span>;
+		|&gt;
+	<span class='b'>}</span>
+
+	
+<span class='b'>}</span>
+
+
+
+</pre>
+</div>
+  </body></html>

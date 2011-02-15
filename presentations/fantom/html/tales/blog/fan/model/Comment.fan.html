@@ -1,0 +1,20 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Comment.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@Table<span class='b'>{</span>name=<span class='s'>"comments"</span><span class='b'>}</span>
+<span class='k'>class</span> Comment : Entity<span class='b'>{</span>
+	Int? id
+	Int? blogId
+	
+	@Column<span class='b'>{</span>name=<span class='s'>"text"</span><span class='b'>}</span>
+	Str? comment
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

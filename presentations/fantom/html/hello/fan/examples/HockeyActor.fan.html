@@ -1,0 +1,106 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>HockeyActor.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> concurrent
+
+<span class='z'>** Actor Example</span>
+<span class='z'>** We have several shooters all sending pucks at a goalie (at the same time !)</span>
+<span class='z'>** As soon as a shooter has scored 3 goals, he stops</span>
+<span class='z'>** </span>
+<span class='z'>** Note: Echo() output can get "scrambled" as it's not synchronized (Logger would work best)</span>
+<span class='k'>class</span> HockeyActorExample
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    pool := ActorPool<span class='b'>()</span>
+    goalie := Goalie<span class='b'>(</span>pool<span class='b'>)</span>
+    f1 :=Shooter<span class='b'>(</span>pool, <span class='s'>"Wayne"</span>, goalie<span class='b'>)</span>.send<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span>
+    f2 := Shooter<span class='b'>(</span>pool, <span class='s'>"Mario"</span>, goalie<span class='b'>)</span>.send<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span>
+    f3 := Shooter<span class='b'>(</span>pool, <span class='s'>"Goardie"</span>, goalie<span class='b'>)</span>.send<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span>
+    
+    <span class='y'>// Wait for shooters to be done and see how many shots they fired</span>
+    s1 := f1.get<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span> <span class='k'>as</span> Int
+    s2 := f2.get<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span> <span class='k'>as</span> Int
+    s3 := f3.get<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span> <span class='k'>as</span> Int
+    
+    shots := s1 + s2 + s3    
+    echo<span class='b'>(</span><span class='s'>"## The goalie saved ${shots - 9} out of $shots shots."</span><span class='b'>)</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='z'>** Puck const class: It's the "message" sent from the shooter to the goalie</span>
+<span class='k'>const</span> <span class='k'>class</span> Puck
+<span class='b'>{</span>
+  <span class='k'>const</span> Str thrownBy
+  <span class='k'>const</span> Int number  
+  
+  <span class='k'>new</span> make<span class='b'>(</span>Str sender, Int nb<span class='b'>)</span> 
+  <span class='b'>{</span>
+    thrownBy = sender
+    number = nb
+  <span class='b'>}</span>
+<span class='b'>}</span>
+<span class='z'>** A Shooter, shoots pucks until scoring 3</span>
+<span class='k'>const</span> <span class='k'>class</span> Shooter : Actor
+<span class='b'>{</span>
+  <span class='k'>const</span> Str name
+  <span class='k'>const</span> Goalie goalie
+  <span class='k'>const</span> Str shotsHandle
+  <span class='k'>const</span> Str goalsHandle
+  
+  <span class='k'>new</span> make<span class='b'>(</span>ActorPool pool, Str name, Actor goalie<span class='b'>)</span> : <span class='k'>super</span><span class='b'>(</span>pool<span class='b'>)</span> 
+  <span class='b'>{</span>
+    <span class='k'>this</span>.name = name
+    <span class='k'>this</span>.goalie = goalie
+    shotsHandle = <span class='s'>"Shooter.shots."</span>+name
+    goalsHandle = <span class='s'>"Shooter.goals."</span>+name
+  <span class='b'>}</span>
+  
+  <span class='k'>override</span> Obj? receive<span class='b'>(</span>Obj? msg<span class='b'>)</span>
+  <span class='b'>{</span>    
+    <span class='k'>while</span><span class='b'>(</span>Actor.locals<span class='b'>[</span>goalsHandle<span class='b'>]</span> != 3<span class='b'>)</span>
+    <span class='b'>{</span>
+      shots := Actor.locals<span class='b'>[</span>shotsHandle<span class='b'>]</span> <span class='k'>as</span> Int ?: 0
+      goals := Actor.locals<span class='b'>[</span>goalsHandle<span class='b'>]</span> <span class='k'>as</span> Int ?: 0
+      Actor.locals<span class='b'>[</span>shotsHandle<span class='b'>]</span> = shots + 1
+      puck := Puck<span class='b'>(</span>name, shots + 1<span class='b'>)</span>
+      goal := goalie.send<span class='b'>(</span>puck<span class='b'>)</span>.get<span class='b'>(</span><span class='k'>null</span><span class='b'>)</span>
+      <span class='k'>if</span><span class='b'>(</span>goal<span class='b'>)</span>
+      <span class='b'>{</span>
+        Actor.locals<span class='b'>[</span>goalsHandle<span class='b'>]</span> = goals + 1
+        echo<span class='b'>(</span><span class='s'>"Goal scored by $name on shot #"</span>+<span class='b'>(</span>shots + 1<span class='b'>))</span>
+      <span class='b'>}</span>
+      <span class='y'>// random pause between shots</span>
+      pause := Int.random<span class='b'>(</span>5..50<span class='b'>)</span>.toStr + <span class='s'>"ms"</span>
+      Actor.sleep<span class='b'>(</span> Duration<span class='b'>(</span>pause<span class='b'>))</span>      
+    <span class='b'>}</span>
+    echo<span class='b'>(</span><span class='s'>"$name done: 3 goals on ${Actor.locals[shotsHandle]} shots"</span><span class='b'>)</span>
+    <span class='k'>return</span> Actor.locals<span class='b'>[</span>shotsHandle<span class='b'>]</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='z'>** The goalie who stops ~90% of pucks (random)</span>
+<span class='k'>const</span> <span class='k'>class</span> Goalie : Actor
+<span class='b'>{</span>
+  <span class='k'>const</span> Str handle := <span class='s'>"Goalie.saves.counter"</span>
+  
+  <span class='k'>new</span> make<span class='b'>(</span>ActorPool pool<span class='b'>)</span> : <span class='k'>super</span><span class='b'>(</span>pool<span class='b'>)</span> <span class='b'>{}</span>
+  
+  <span class='k'>override</span> Obj? receive<span class='b'>(</span>Obj? msg<span class='b'>)</span>
+  <span class='b'>{</span>
+    id := Actor.locals<span class='b'>[</span>handle<span class='b'>]</span> <span class='k'>as</span> Int ?: 0
+    Actor.locals<span class='b'>[</span>handle<span class='b'>]</span>  = id + 1
+    puck := msg <span class='k'>as</span> Puck
+    saved := Int.random<span class='b'>(</span>0..100<span class='b'>)</span> &lt;= 90
+    <span class='k'>if</span><span class='b'>(</span>saved<span class='b'>)</span>
+      echo<span class='b'>(</span><span class='s'>"Stopped puck #$id sent by ${puck.thrownBy} (#${puck.number})"</span><span class='b'>)</span>  
+    <span class='k'>return</span> ! saved
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

@@ -1,0 +1,51 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>BlogScript.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='k'>using</span> tales
+
+@jscript
+<span class='k'>class</span> BlogScript : Script<span class='b'>{</span>
+	@inject Script? validations
+	
+	
+	Void clearBlogFields<span class='b'>(){</span>
+		client&lt;|
+			$<span class='b'>(</span><span class='s'>"#blog-sub"</span><span class='b'>)</span>.val<span class='b'>(</span><span class='s'>''</span><span class='b'>)</span>;
+			$<span class='b'>(</span><span class='s'>"#blog-msg"</span><span class='b'>)</span>.val<span class='b'>(</span><span class='s'>''</span><span class='b'>)</span>;
+		|&gt;
+	<span class='b'>}</span>
+	
+	Void clearCommentFields<span class='b'>(){</span>
+		client&lt;|
+			$<span class='b'>(</span><span class='s'>"#comment-text"</span><span class='b'>)</span>.val<span class='b'>(</span><span class='s'>""</span><span class='b'>)</span>;
+		|&gt;
+	<span class='b'>}</span>
+	
+	
+	Bool? validateBlog<span class='b'>(</span>Str? title, Str? text<span class='b'>){</span>
+		client&lt;|
+			<span class='k'>return</span> validations.notEmpty<span class='b'>(</span>title<span class='b'>)</span> &amp;&amp; 
+					validations.notEmpty<span class='b'>(</span>text<span class='b'>)</span> &amp;&amp;
+				 	validations.lessThan<span class='b'>(</span>title, 40<span class='b'>)</span> &amp;&amp; 
+					validations.lessThan<span class='b'>(</span>text, 2000<span class='b'>)</span>
+		|&gt;
+		<span class='k'>return</span> <span class='k'>null</span> 
+	<span class='b'>}</span>
+	
+	
+	Bool? validateBlogObject<span class='b'>(</span>Blog? blog<span class='b'>){</span>
+		client&lt;|
+			<span class='k'>return</span> <span class='k'>this</span>.validateBlog<span class='b'>(</span>blog.subject, blog.text<span class='b'>)</span>
+		|&gt;
+		
+		<span class='k'>return</span> <span class='k'>null</span>
+	<span class='b'>}</span>
+	
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

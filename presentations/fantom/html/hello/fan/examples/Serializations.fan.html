@@ -1,0 +1,33 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Serializations.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='y'>// seralization examples</span>
+
+@Serializable
+<span class='k'>const</span> <span class='k'>class</span> Rec
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>(</span>|This| f<span class='b'>)</span>
+  <span class='b'>{</span>
+    f<span class='b'>(</span><span class='k'>this</span><span class='b'>)</span>
+    <span class='k'>if</span> <span class='b'>(</span>id &lt;= 0<span class='b'>)</span> 
+      <span class='k'>throw</span> ArgErr<span class='b'>(</span><span class='s'>"id &lt;= 0"</span><span class='b'>)</span>
+  <span class='b'>}</span>
+  <span class='k'>const</span> Int id
+<span class='b'>}</span>
+
+<span class='k'>class</span> SerExample
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>  
+    obj1 := <span class='s'>"Rec { id = 3 }"</span>.in.readObj 
+    <span class='y'>// will fail, as id must be provided (const))</span>
+    obj2 := <span class='s'>"Rec {}"</span>.in.readObj  
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>
