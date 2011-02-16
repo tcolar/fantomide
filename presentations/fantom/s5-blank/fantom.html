@@ -307,16 +307,6 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                 Class naming Rule: fan.pod.class.method</span></a>
                             Using Fantom code from Java (jarDistEnv)</li>
                     </ul>
-                    <li><a class="moreInfos"><span>Show NativeClassExample, NativeExample. <br/>
-                                Don't use, except when If you need to call out native APIs, but still wish your Fantom pod to be portable across multiple platforms</span></a>
-                        Natives
-                        <li><a class="moreInfos"><span>Show JsExamples.fan(show generated source) and standard Fantom examples.<br/>
-                                    Very cool: Fantom provides support for compiling/running in JavaScript VMs(Rhino, browsers)<br/>
-                                    Use @Js facet.
-                                    Most sys API's are available, however not all (JavaScript limitations).<br/>
-                                    Can be run outside Fantom</span></a>
-                            JavaScript
-                        </li>
                         <li><a class="moreInfos"><span>Persistance / also used with actors as a safe way to pass messages between actors. <br/>
                                     Fantom serialization uses a human friendly text format (subset of fantom grammar).<br/>
                                     Tree based, not Graph based. Do cross-reference yourself(Uri's)<br/>
@@ -326,6 +316,21 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                 </span></a>
                             Serialization
                         </li>
+                    <li><a class="moreInfos"><span>Show NativeClassExample, NativeExample. <br/>
+                                Don't use, except when If you need to call out native APIs, but still wish your Fantom pod to be portable across multiple platforms</span></a>
+                        Natives
+                        <li><a class="moreInfos"><span>Show JsExamples.fan(show generated source) and standard Fantom examples.<br/>
+                                    Very cool: Fantom provides support for compiling/running in JavaScript VMs(Rhino, browsers)<br/>
+                                    Use @Js facet. Can be run outside Fantom.
+                                    Most sys API's are available, however not all (JavaScript limitations).<br/>
+                                    </span></a>
+                            JavaScript
+                        </li>
+                        <li><a class="moreInfos"><span>Show Dsls.fan. Domain Specific Languages - Allow you to embed other languages into your Fantom source code. Built-in: Str, Regex.
+                                </span></a>
+                            Dsl's
+                        </li>
+                        
                         </div>
 
                         <div class="slide">
@@ -340,7 +345,7 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                         </span></a>
                                     Immutability</li>
                                 <li><a class="moreInfos"><span>
-                                            No Shared Mutable State under any circumstances</br>
+                                            No Shared Mutable State.</br>
                                             ActorPool control background threads and has actor process messages<br/>
                                             Actor are guaranteed to receive its messages atomically and process(not receive) in order<br/>
                                             Unbounded queues
@@ -360,14 +365,50 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                         </span></a>
                                     Futures
                                 </li>
-                                <li><a class="moreInfos"><span>
-                                            Example ?
-                                        </span></a>
+                                <li><a class="moreInfos"><span>Group / process by key<br/>
+                                            An actor can have its messages automatically coalesced using the makeCoalescing() constructor.</span></a>
                                     Coalescing messages
                                 </li>
                             </ul>
                         </div>
-
+            
+                        <div class="slide">
+                            <h1>Features / API's</h1>
+                            <ul>
+                               <li><a class="moreInfos"><span>Fantom Env (customizable)<br/>
+                                       Show Otherthings.fan : EnvExample</span></a>
+                                    Env
+                                </li> 
+                               <li><a class="moreInfos"><span>Uri schemes(Can make your own)<br/>
+                                       Fantom scheme: fan://mypod/res/file.txt<br/>
+                                       Show Otherthings.fan : NamingExample</span></a>
+                                    Naming
+                                </li> 
+                               <li><a class="moreInfos"><span>Built-in log4J style logging<br/>
+                                       Show OtherThings : LoggingExample<br/>
+                                       Can be configured in etc/sys/log.props</span></a>
+                                    Logging
+                                </li> 
+                               <li><a class="moreInfos"><span>Built-in locale/properties support.<br/>
+                                       Show OtherThings : LocalizationExample
+                                       </span></a>
+                                    Localization
+                                </li> 
+                               <li><a class="moreInfos"><span>cleaner than Java(doh !). Base on 'ticks' (nanoseconds since 1/1/200)<br/>
+                                           Immutable: Duration/DateTime/TimeZone Date/Time/Month/Weekday<br/>
+                                           TimeZones In Fantom are both: offset from UTC AND daylight saving time rules. Uses ZoneInfo DB<br/>
+                                           Gregorian calendar only<br/>
+                                       Show OtherThings : DateExamples</span></a>
+                                    DateTime
+                                </li> 
+                               <li><a class="moreInfos"><span>demo: FWT(show examples/fwt/demo.fan), File/Buf(Show API's), Dom, Xml<br/>
+                                        Few classes but feature full
+                                        </span></a>
+                                    Useful and simple API's
+                                </li> 
+                            </ul>
+                        </div>
+            
                         <div class="slide">
                             <h1>The Tales Framework</h1>
                             <ul>
@@ -393,15 +434,16 @@ export PATH=$PATH:/home/me/fantom-1.0.57/bin
                                         </span></a>
                                     Full stack
                                 </li>
-                                <li><a class="moreInfos"><span>Similar to Guice.<br/>
-                                        TODO: Example ??
+                                <li><a class="moreInfos"><span>Similar to Guice.
                                         </span></a>
                                     Dependency Injection
                                 </li>
                             </ul>
                         </div>
+            
+                        
                         <!-- todo:
-                        Env, Naming, DSL's, 
+                        Env, Naming, 
                         API's : FWT, Logging, Localization, DateTime
             
                         fwt example
