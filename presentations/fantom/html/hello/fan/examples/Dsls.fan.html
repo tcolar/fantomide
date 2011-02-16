@@ -1,0 +1,40 @@
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head> 
+  <title>Dsls.fan</title>
+  <link rel='stylesheet' type='text/css' href='../../../doc.css'/>
+</head>
+<body><div class='src'>
+<pre>
+<span class='y'>//DSL examples</span>
+<span class='k'>using</span> compiler
+
+<span class='k'>class</span> Dsls
+<span class='b'>{</span>
+  <span class='y'>//using bult-in DSL's</span>
+  Void builtin<span class='b'>()</span>
+  <span class='b'>{</span>
+    s := Str&lt;| some text <span class='s'>""</span><span class='s'>" with no worries about quotations etc... \" \' ' "</span> $notAVar 
+                Another line 
+|&gt;
+
+    Regex r := Regex&lt;||foo|foo/<span class='b'>(</span>\d*<span class='b'>)</span>||&gt;  
+    b := r.matcher<span class='b'>(</span><span class='s'>"foo"</span><span class='b'>)</span>.matches
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='z'>** Custom DSL example (Regex)</span>
+<span class='k'>class</span> CustomRegex : DslPlugin
+<span class='b'>{</span>
+  <span class='k'>new</span> make<span class='b'>(</span>Compiler c<span class='b'>)</span> : <span class='k'>super</span><span class='b'>(</span>c<span class='b'>)</span> <span class='b'>{}</span>
+
+  <span class='k'>override</span> Expr compile<span class='b'>(</span>DslExpr dsl<span class='b'>)</span>
+  <span class='b'>{</span>
+    regexType := ns.resolveType<span class='b'>(</span><span class='s'>"sys::Regex"</span><span class='b'>)</span>
+    fromStr := regexType.method<span class='b'>(</span><span class='s'>"fromStr"</span><span class='b'>)</span>
+    args := <span class='b'>[</span>Expr.makeForLiteral<span class='b'>(</span>dsl.loc, ns, dsl.src<span class='b'>)]</span>
+    <span class='k'>return</span> CallExpr.makeWithMethod<span class='b'>(</span>dsl.loc, <span class='k'>null</span>, fromStr, args<span class='b'>)</span>
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
+</div>
+  </body></html>

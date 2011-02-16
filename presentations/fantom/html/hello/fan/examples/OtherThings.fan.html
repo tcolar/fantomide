@@ -27,14 +27,14 @@
     s2 := <span class='s'>"s2 and $s1"</span> <span class='y'>//inferred assignment with interpolation</span>
     
     <span class='k'>while</span> <span class='b'>(</span>s1.size &lt;= 5<span class='b'>)</span> <span class='y'>// while loop</span>
-        s1 += <span class='s'>" "</span>  <span class='y'>// single statment doesn't need curlies</span>
+      s1 += <span class='s'>" "</span>  <span class='y'>// single statment doesn't need curlies</span>
     
     <span class='k'>for</span> <span class='b'>(</span>i:=0; i&lt;4; ++i<span class='b'>)</span> <span class='y'>// for loop</span>
     <span class='b'>{</span>
-        <span class='k'>if</span> <span class='b'>(</span>i == 2<span class='b'>)</span> <span class='k'>continue</span> <span class='y'>//continue</span>
+      <span class='k'>if</span> <span class='b'>(</span>i == 2<span class='b'>)</span> <span class='k'>continue</span> <span class='y'>//continue</span>
         echo<span class='b'>(</span>i<span class='b'>)</span>
-        <span class='k'>if</span> <span class='b'>(</span>i == 3<span class='b'>)</span> <span class='k'>break</span>   <span class='y'>// break</span>
-    <span class='b'>}</span>  
+      <span class='k'>if</span> <span class='b'>(</span>i == 3<span class='b'>)</span> <span class='k'>break</span>   <span class='y'>// break</span>
+      <span class='b'>}</span>  
             
     <span class='k'>switch</span> <span class='b'>(</span>s1<span class='b'>)</span> <span class='y'>// switch example (Int, Enum values or any other type(equals) can be used)</span>
     <span class='b'>{</span>
@@ -51,18 +51,18 @@
   <span class='z'>** Exception handling examples</span>
   Void exceptions<span class='b'>()</span>
   <span class='b'>{</span>
-      <span class='y'>// try/catch/finaly example</span>
-      Int? a  
-      <span class='k'>try</span>
-          s := a + 2
-      <span class='k'>catch</span><span class='b'>(</span>NullErr npe<span class='b'>)</span>
-          echo<span class='b'>(</span><span class='s'>"Catched NPE"</span><span class='b'>)</span>
-      <span class='k'>catch</span><span class='b'>(</span>Err e<span class='b'>)</span>
-          e.trace    <span class='y'>// dump trace to system out, can also use a log file </span>
-      <span class='k'>finally</span>
-          echo<span class='b'>(</span><span class='s'>"Done"</span><span class='b'>)</span>     
+    <span class='y'>// try/catch/finaly example</span>
+    Int? a  
+    <span class='k'>try</span>
+      s := a + 2
+    <span class='k'>catch</span><span class='b'>(</span>NullErr npe<span class='b'>)</span>
+      echo<span class='b'>(</span><span class='s'>"Catched NPE"</span><span class='b'>)</span>
+    <span class='k'>catch</span><span class='b'>(</span>Err e<span class='b'>)</span>
+      e.trace    <span class='y'>// dump trace to system out, can also use a log file </span>
+    <span class='k'>finally</span>
+      echo<span class='b'>(</span><span class='s'>"Done"</span><span class='b'>)</span>     
           
-      <span class='k'>throw</span> IndexErr<span class='b'>(</span><span class='s'>"Index error"</span><span class='b'>)</span>  <span class='y'>// exception throwing        </span>
+    <span class='k'>throw</span> IndexErr<span class='b'>(</span><span class='s'>"Index error"</span><span class='b'>)</span>  <span class='y'>// exception throwing        </span>
   <span class='b'>}</span>    
               
   <span class='z'>** Expressions examples  </span>
@@ -120,6 +120,91 @@
 <span class='b'>}</span>
 
 
-</pre>
+<span class='k'>class</span> EnvExample
+<span class='b'>{</span>
+  <span class='x'>/*
+  in build.fan:
+  index = [myPod.myProp": "some value]
+  */</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    prop := Env.cur.index<span class='b'>(</span><span class='s'>"mypod.myProp"</span><span class='b'>)</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> NamingExample
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    File f := <span class='u'>`file:/dir/file.txt`</span>.get
+    f2 := File<span class='b'>(</span><span class='u'>`fan://hello/res/file.txt`</span><span class='b'>)</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> LoggingExample
+<span class='b'>{</span>
+  <span class='y'>// custom logger</span>
+  <span class='k'>const</span> <span class='k'>static</span> Log log := Log.get<span class='b'>(</span><span class='s'>"mylog"</span><span class='b'>)</span>
+  
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// Use standard default logger</span>
+    Pod.of<span class='b'>(</span><span class='k'>this</span><span class='b'>)</span>.log.err<span class='b'>(</span><span class='s'>"..."</span><span class='b'>)</span>
+    <span class='y'>// Use cutom logger</span>
+    log.warn<span class='b'>(</span><span class='s'>"error"</span>, Err<span class='b'>())</span>
+    <span class='y'>// find log</span>
+    Log.find<span class='b'>(</span><span class='s'>"mylog"</span><span class='b'>)</span>.debug<span class='b'>(</span><span class='s'>"dbg"</span><span class='b'>)</span>
+    <span class='y'>// Custom handler</span>
+    Log.addHandler |entry| <span class='b'>{</span> echo<span class='b'>(</span><span class='s'>"My Handler: $entry"</span><span class='b'>)</span> <span class='b'>}</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> LocalizationExample
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    <span class='y'>// will lookup into locale/*.props files. (ex: en-US.props))</span>
+    pod := Pod.of<span class='b'>(</span><span class='k'>this</span><span class='b'>)</span>
+    ok := pod.locale<span class='b'>(</span><span class='s'>"ok"</span><span class='b'>)</span>
+    <span class='y'>// locale interpolation</span>
+    hello := <span class='s'>"$&lt;hello&gt; Bob"</span>
+    <span class='y'>// locale interpolation with default value</span>
+    frenchHello := <span class='s'>"$&lt;hello=bonjour&gt; Bob"</span>
+  <span class='b'>}</span>
+<span class='b'>}</span>
+
+<span class='k'>class</span> DateExamples
+<span class='b'>{</span>
+  Void main<span class='b'>()</span>
+  <span class='b'>{</span>
+    d := DateTime.now
+    echo<span class='b'>(</span><span class='s'>"$d.day $d.month $d.year | $d.hour $d.min | $d.tz"</span><span class='b'>)</span> <span class='y'>// 9 sep 2010 | 8 58 | Los_Angeles</span>
+    echo<span class='b'>(</span><span class='s'>"$d.date | $d.time"</span><span class='b'>)</span> <span class='y'>// 2010-09-09 | 08:58:54.668</span>
+    echo<span class='b'>(</span>DateTime.now<span class='b'>)</span> <span class='y'>// 2010-09-09T09:00:41.09-04:00 Los_Angeles</span>
+    echo<span class='b'>(</span>DateTime.nowUtc<span class='b'>)</span> <span class='y'>// 2010-09-09T10:00:41.106Z UTC</span>
+    echo<span class='b'>(</span>DateTime.now.toTimeZone<span class='b'>(</span>TimeZone<span class='b'>(</span><span class='s'>"Taipei"</span><span class='b'>)))</span> <span class='y'>// 2010-09-09T18:00:41.09+08:00 Taipei</span>
+    
+    <span class='y'>// Localization</span>
+    DateTime.now.toLocale<span class='b'>(</span><span class='s'>"kk:mmaa"</span><span class='b'>)</span>              <span class='y'>//  09:10am</span>
+    DateTime.now.toLocale<span class='b'>(</span><span class='s'>"DDD 'of' MMMM, YYYY"</span><span class='b'>)</span>  <span class='y'>//  9th of September, 2010</span>
+    
+    <span class='y'>// TZ alias:</span>
+    TimeZone<span class='b'>(</span><span class='s'>"Asia/Saigon"</span><span class='b'>)</span>  <span class='y'>//  Asia/Ho_Chi_Minh</span>
+  <span class='b'>}</span>
+  
+  <span class='z'>** relative timezone - use to compare time ignoring the timezone.</span>
+  Void relativeTz<span class='b'>()</span>
+  <span class='b'>{</span>
+    pattern := <span class='s'>"DD-MM-YYYY hh:mm zzz"</span>
+    a := DateTime.fromLocale<span class='b'>(</span><span class='s'>"01-09-2010 03:00 Los_Angeles"</span>, pattern<span class='b'>)</span>
+    b := DateTime.fromLocale<span class='b'>(</span><span class='s'>"01-09-2010 03:00 Chicago"</span>, pattern<span class='b'>)</span>
+    echo<span class='b'>(</span><span class='s'>"$a ?= $b =&gt; ${a==b}"</span><span class='b'>)</span> 
+    <span class='y'>// --&gt; 2010-09-01T03:00:00-07:00 Los_Angeles ?= 2010-09-01T03:00:00-05:00 Chicago =&gt; false</span>
+    a = a.toRel <span class='y'>// special "relative" timezone</span>
+    b = b.toRel<span class='y'>// special "relative" timezone</span>
+    echo<span class='b'>(</span><span class='s'>"$a ?= $b =&gt; ${a==b}"</span><span class='b'>)</span> 
+    <span class='y'>// --&gt; 2010-09-01T03:00:00Z Rel ?= 2010-09-01T03:00:00Z Rel =&gt; true</span>
+  <span class='b'>}</span>
+<span class='b'>}</span></pre>
 </div>
   </body></html>
