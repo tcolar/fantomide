@@ -5,3 +5,5 @@
 \.conflict\~$
 build
 release
+syntax: glob
+dist/

@@ -1,22 +1,6 @@
 Notes:
 
-To intall the standalone IDE, download and install:
- - OSX: fantomide-x.y.z.app.tgz
- - Linux/Windows: fantomide-x.y.z.zip
+Follow install instructions at:
 
-To install the plugin:
+http://fantomide.colar.net/install
 
-IMPORTANT:update.xml mow points to a plugin built for netbeans 6.9
-For netbeans 6.8 point to nb6.8-updates.xml instead.
-
-  - Open Netbeans
-  - Go to tools / plugins
-  - Go to settings tab (List of update centers), click "Add"
-  - Add -> Name: Fantom Url: http://cdn.bitbucket.org/tcolar/fantomide/downloads/updates.xml
-  - Press OK to save it
-  - Go to "Available plugins" Tab (sort by Name)
-  - Select the checkbox next to "Fantom"
-  - Click "Install"
-  - Follow the wizzrad (Next/Install), ignore the "Not trusted" warning (Continue)
-  - Click Finish and close the plugins panel.
-  - Restart Netbeans
